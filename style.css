@@ -254,3 +254,55 @@ video {
     padding: 20px;
   }
 }
+
+.header-logo-image {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.hero-logo {
+  display: block;
+  width: min(820px, 92vw);
+  height: auto;
+  margin: 0 auto 28px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+}
+
+@media (max-width: 800px) {
+  .header-logo-image {
+    width: 170px;
+  }
+
+  .hero-logo {
+    width: min(520px, 94vw);
+    margin-bottom: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-logo-image {
+    width: 145px;
+  }
+
+  .hero-logo {
+    width: 96vw;
+  }
+}
