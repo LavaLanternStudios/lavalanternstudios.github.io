@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lava Lantern Studios | Devlogs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Lava Lantern Studios</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="fab.html">Fab</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About Lava Lantern</a>
+        <a href="contact.html">Contact Us</a>
+        <a class="active" href="devlogs.html">Devlogs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-section">
+    <h1>Devlogs</h1>
+    <p class="page-intro">
+      Development updates, project notes, progress reports, and behind-the-scenes work from Lava Lantern Studios.
+    </p>
+
+    <div class="filter-buttons">
+      <button class="filter-button active" data-filter="all">All</button>
+      <button class="filter-button" data-filter="studio">Studio Updates</button>
+      <button class="filter-button" data-filter="game-one">Game One</button>
+      <button class="filter-button" data-filter="game-two">Game Two</button>
+    </div>
+
+    <div class="card-grid">
+      <article class="card devlog-card" data-game="studio">
+        <h3>Website Setup Begins</h3>
+        <p>Studio update about setting up the official Lava Lantern Studios website.</p>
+        <span class="tag">Studio Updates</span>
+      </article>
+
+      <article class="card devlog-card" data-game="game-one">
+        <h3>First Game Update</h3>
+        <p>A placeholder devlog post for the first game project.</p>
+        <span class="tag">Game One</span>
+      </article>
+
+      <article class="card devlog-card" data-game="game-two">
+        <h3>Second Game Update</h3>
+        <p>A placeholder devlog post for another project.</p>
+        <span class="tag">Game Two</span>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Lava Lantern Studios. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
