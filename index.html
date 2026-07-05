@@ -34,50 +34,202 @@
   </header>
 
   <main>
-    <section class="hero">
-      <img
-        class="hero-logo"
-        src="assets/images/logo/lava-lantern-main-logo.png"
-        alt="Lava Lantern Studios"
-      />
+    <section class="home-hero">
+      <video class="hero-background-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="assets/videos/general/home-showreel.mp4" type="video/mp4" />
+      </video>
 
-      <h1 class="visually-hidden">Lava Lantern Studios</h1>
-      <p>
-        Independent game development, digital worlds, Unreal Engine content,
-        and creative interactive experiences.
-      </p>
+      <div class="hero-overlay"></div>
 
-      <div class="button-row">
-        <a class="button" href="games.html">View Games</a>
-        <a class="button secondary" href="portfolio.html">View Portfolio</a>
+      <div class="hero-content">
+        <p class="hero-kicker">Welcome to</p>
+
+        <img
+          class="hero-logo"
+          src="assets/images/logo/lava-lantern-main-logo.png"
+          alt="Lava Lantern Studios"
+        />
+
+        <h1 class="visually-hidden">Lava Lantern Studios</h1>
+
+        <p class="hero-tagline">
+          Creating games, assets, and digital worlds with atmosphere, character, and craft.
+        </p>
+
+        <div class="button-row">
+          <a class="button" href="games.html">View Games</a>
+          <a class="button secondary" href="about.html">About Us</a>
+        </div>
       </div>
     </section>
 
     <section class="page-section">
-      <h2>Welcome to Lava Lantern Studios</h2>
-      <p class="page-intro">
-        This is the official home of Lava Lantern Studios. Explore our games,
-        Fab marketplace content, portfolio work, studio updates, and development logs.
+      <div class="intro-panel">
+        <div>
+          <p class="section-kicker">About the Studio</p>
+          <h2>Independent games, creative tools, and characterful worlds.</h2>
+          <p>
+            Lava Lantern Studios is an independent creative studio focused on game development,
+            Unreal Engine content, digital environments, and interactive experiences.
+          </p>
+          <p>
+            Guided by a love of atmosphere, playful worlds, strong visual identity, and a curious
+            corgi named Loki, we create projects designed to feel polished, memorable, and full of personality.
+          </p>
+          <a class="button" href="about.html">Learn More</a>
+        </div>
+
+        <div class="mascot-placeholder">
+          <img
+            class="mascot-image"
+            src="assets/images/home/home-loki-mascot.png"
+            alt="Loki the corgi mascot"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="section-heading">
+        <p class="section-kicker">Featured Work</p>
+        <h2>Games & Projects</h2>
+        <p class="page-intro">
+          A preview of current, upcoming, and in-development projects from Lava Lantern Studios.
+        </p>
+      </div>
+
+      <div class="feature-grid three-columns">
+        <article class="feature-card game-preview-card">
+          <div class="status-ribbon status-available">Available</div>
+          <img
+            class="square-preview-image"
+            src="assets/images/home/home-game-available.jpg"
+            alt="Available game preview"
+          />
+        </article>
+
+        <article class="feature-card game-preview-card">
+          <div class="status-ribbon status-upcoming">Upcoming</div>
+          <img
+            class="square-preview-image"
+            src="assets/images/home/home-game-upcoming-01.jpg"
+            alt="Upcoming game preview"
+          />
+        </article>
+
+        <article class="feature-card game-preview-card">
+          <div class="status-ribbon status-upcoming">Upcoming</div>
+          <img
+            class="square-preview-image"
+            src="assets/images/home/home-game-upcoming-02.jpg"
+            alt="Upcoming game preview"
+          />
+        </article>
+      </div>
+ 
+      <div class="section-button-row">
+        <a class="button secondary" href="games.html">View All Games</a>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="split-preview-grid">
+        <div class="preview-panel">
+          <div class="section-heading compact">
+            <p class="section-kicker">Fab Marketplace</p>
+            <h2>Fab Previews</h2>
+            <p>
+              Game-ready assets, tools, and creative resources for developers.
+            </p>
+          </div>
+
+          <div class="mini-card-grid">
+            <article class="mini-card">
+              <img
+                class="mini-preview-image"
+                src="assets/images/home/home-fab-preview-01.jpg"
+                alt="Fab product preview"
+              />
+              <h3>Fab Product 1</h3>
+              <p>Short product preview.</p>
+            </article>
+
+            <article class="mini-card">
+              <img
+                class="mini-preview-image"
+                src="assets/images/home/home-fab-preview-02.jpg"
+                alt="Fab product preview"
+              />
+              <h3>Fab Product 2</h3>
+              <p>Short product preview.</p>
+            </article>
+          </div>
+
+          <a class="button secondary" href="fab.html">View Fab Content</a>
+        </div>
+
+        <div class="preview-panel">
+          <div class="section-heading compact">
+            <p class="section-kicker">Portfolio</p>
+            <h2>Portfolio Highlights</h2>
+            <p>
+              A selected look at visual, technical, and interactive work.
+            </p>
+          </div>
+
+          <div class="mini-card-grid">
+            <article class="mini-card">
+              <img
+                class="mini-preview-image"
+                src="assets/images/home/home-portfolio-preview-01.jpg"
+                alt="Portfolio preview"
+              />
+              <h3>Portfolio Piece 1</h3>
+              <p>Short portfolio preview.</p>
+            </article>
+
+            <article class="mini-card">
+              <img
+                class="mini-preview-image"
+                src="assets/images/home/home-portfolio-preview-02.jpg"
+                alt="Portfolio preview"
+              />
+              <h3>Portfolio Piece 2</h3>
+              <p>Short portfolio preview.</p>
+            </article>
+          </div>
+
+          <a class="button secondary" href="portfolio.html">View Portfolio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="latest-panel">
+        <div>
+          <p class="section-kicker">Latest From The Studio</p>
+          <h2>Website development begins</h2>
+          <p>
+            Lava Lantern Studios is building its official home for games, Fab content,
+            portfolio work, development updates, and future studio news.
+          </p>
+        </div>
+
+        <a class="button" href="devlogs.html">Read Devlogs</a>
+      </div>
+    </section>
+
+    <section class="home-cta">
+      <h2>Explore Lava Lantern Studios</h2>
+      <p>
+        Discover our games, follow development progress, view marketplace content,
+        or get in touch.
       </p>
 
-      <div class="card-grid">
-        <article class="card">
-          <h3>Games</h3>
-          <p>Original games, prototypes, and projects created by Lava Lantern Studios.</p>
-          <a href="games.html">Explore games</a>
-        </article>
-
-        <article class="card">
-          <h3>Fab</h3>
-          <p>Marketplace assets, tools, and creative resources for game developers.</p>
-          <a href="fab.html">View Fab content</a>
-        </article>
-
-        <article class="card">
-          <h3>Devlogs</h3>
-          <p>Follow progress updates, development notes, and behind-the-scenes work.</p>
-          <a href="devlogs.html">Read devlogs</a>
-        </article>
+      <div class="button-row">
+        <a class="button" href="games.html">Games</a>
+        <a class="button secondary" href="devlogs.html">Devlogs</a>
+        <a class="button secondary" href="contact.html">Contact Us</a>
       </div>
     </section>
   </main>
@@ -85,6 +237,7 @@
   <footer class="site-footer">
     <p>© 2026 Lava Lantern Studios. All rights reserved.</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
