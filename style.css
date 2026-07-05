@@ -191,3 +191,66 @@ a {
     padding: 64px 20px;
   }
 }
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.menu-toggle {
+  display: none;
+  padding: 10px 14px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .header-inner {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+  }
+
+  .site-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 14px;
+    border-top: 1px solid #2b2f3a;
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding: 10px 0;
+  }
+
+  .hero {
+    padding: 64px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .page-section {
+    padding: 44px 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
