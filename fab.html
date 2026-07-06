@@ -1,54 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lava Lantern Studios | Fab</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
-        <img
-          class="header-logo-image"
-          src="assets/images/logo/lava-lantern-header-logo.png"
-          alt="Lava Lantern Studios logo"
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lava Lantern Studios | Fab</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body>
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
+					<img
+					  class="header-logo-image"
+					  src="assets/images/logo/lava-lantern-header-logo.png"
+					  alt="Lava Lantern Studios logo"
         />
-      </a>
+				</a>
 
-      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-        Menu
-      </button>
+				<button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+					Menu
+				</button>
 
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="games.html">Games</a>
-        <a class="active" href="fab.html">Fab</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="about.html">About Lava Lantern</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="devlogs.html">Devlogs</a>
-      </nav>
-    </div>
-  </header>
+				<nav class="site-nav">
+					<a href="index.html">Home</a>
+					<a href="games.html">Games</a>
+					<a class="active" href="fab.html">Fab</a>
+					<a href="portfolio.html">Portfolio</a>
+					<a href="about.html">About Lava Lantern</a>
+					<a href="contact.html">Contact Us</a>
+					<a href="devlogs.html">Devlogs</a>
+				</nav>
+			</div>
+		</header>
 
-  <main class="page-section">
-    <h1>Fab</h1>
-    <p class="page-intro">A showcase of Lava Lantern Studios content available through Fab.</p>
+		<main class="fab-page">
 
-    <div class="card-grid">
-      <article class="card">
-        <h3>Fab Asset Pack</h3>
-        <p>Details for an asset, pack, tool, or resource will go here.</p>
-        <span class="tag">Marketplace Content</span>
-      </article>
-    </div>
-  </main>
+			<section class="fab-hero">
+				<div class="section-inner">
+					<h1>Fab Products</h1>
 
-  <footer class="site-footer">
-    <p>© 2026 Lava Lantern Studios. All rights reserved.</p>
-  </footer>
-  <script src="script.js"></script>
-</body>
+					<p>
+						Explore Lava Lantern Studios content available through Fab, including
+						game-ready assets, tools, resources, and creative packs designed to support
+						developers, creators, and studios.
+					</p>
+				</div>
+			</section>
+
+			<section class="latest-fab-section">
+				<div class="section-inner">
+					<div class="section-heading">
+						<p class="section-label">Latest Release</p>
+						<h2>Latest Fab Product</h2>
+					</div>
+
+					<div id="latest-fab-product">
+						<!-- The latest product will load here from assets/data/fab-products.json -->
+					</div>
+				</div>
+			</section>
+
+			<section class="fab-products-section">
+				<div class="section-inner">
+					<div class="section-heading">
+						<p class="section-label">More Products</p>
+						<h2>Available on Fab</h2>
+					</div>
+
+					<div id="fab-product-grid">
+						<!-- Older Fab products will load here from assets/data/fab-products.json -->
+					</div>
+				</div>
+			</section>
+
+		</main>
+
+		<footer class="site-footer">
+			<p>© 2026 Lava Lantern Studios. All rights reserved.</p>
+		</footer>
+
+		<script src="assets/data/fab-products.js"></script>
+		<script src="script.js"></script>
+	</body>
 </html>

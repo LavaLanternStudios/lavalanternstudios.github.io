@@ -1,75 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lava Lantern Studios | Devlogs</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
-        <img
-          class="header-logo-image"
-          src="assets/images/logo/lava-lantern-header-logo.png"
-          alt="Lava Lantern Studios logo"
-        />
-      </a>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lava Lantern Studios | Devlogs</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
 
-      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-        Menu
-      </button>
+	<body>
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
+					<img
+						class="header-logo-image"
+						src="assets/images/logo/lava-lantern-header-logo.png"
+						alt="Lava Lantern Studios logo"
+					/>
+				</a>
 
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="games.html">Games</a>
-        <a href="fab.html">Fab</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="about.html">About Lava Lantern</a>
-        <a href="contact.html">Contact Us</a>
-        <a class="active" href="devlogs.html">Devlogs</a>
-      </nav>
-    </div>
-  </header>
+				<button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+					Menu
+				</button>
 
-  <main class="page-section">
-    <h1>Devlogs</h1>
-    <p class="page-intro">
-      Development updates, project notes, progress reports, and behind-the-scenes work from Lava Lantern Studios.
-    </p>
+				<nav class="site-nav">
+					<a href="index.html">Home</a>
+					<a href="games.html">Games</a>
+					<a href="fab.html">Fab</a>
+					<a href="portfolio.html">Portfolio</a>
+					<a href="about.html">About Lava Lantern</a>
+					<a href="contact.html">Contact Us</a>
+					<a class="active" aria-current="page" href="devlogs.html">Devlogs</a>
+				</nav>
+			</div>
+		</header>
 
-    <div class="filter-buttons">
-      <button class="filter-button active" data-filter="all">All</button>
-      <button class="filter-button" data-filter="studio">Studio Updates</button>
-      <button class="filter-button" data-filter="game-one">Game One</button>
-      <button class="filter-button" data-filter="game-two">Game Two</button>
-    </div>
+		<main>
+			<section class="devlogs-hero">
+				<div class="section-inner devlogs-hero-inner">
+					<p class="section-kicker">DEVLOGS</p>
+					<h1>Development updates, progress notes, and project changes.</h1>
+					<p class="devlogs-hero-text">
+						Follow the latest Lava Lantern Studios development updates, including gameplay changes,
+						project progress, visual improvements, experiments, and release notes.
+					</p>
+				</div>
+			</section>
 
-    <div class="card-grid">
-      <article class="card devlog-card" data-game="studio">
-        <h3>Website Setup Begins</h3>
-        <p>Studio update about setting up the official Lava Lantern Studios website.</p>
-        <span class="tag">Studio Updates</span>
-      </article>
+			<section class="devlogs-browser-section">
+				<div class="section-inner">
+					<div class="devlogs-section-heading">
+						<p class="section-kicker">BROWSE UPDATES</p>
+						<h2>All devlogs</h2>
+					</div>
 
-      <article class="card devlog-card" data-game="game-one">
-        <h3>First Game Update</h3>
-        <p>A placeholder devlog post for the first game project.</p>
-        <span class="tag">Game One</span>
-      </article>
+					<div class="devlog-controls-card">
+						<label class="devlog-control">
+							<span>Filter by game</span>
+							<select data-devlog-game-filter="">
+								<option value="all">All games</option>
+							</select>
+						</label>
 
-      <article class="card devlog-card" data-game="game-two">
-        <h3>Second Game Update</h3>
-        <p>A placeholder devlog post for another project.</p>
-        <span class="tag">Game Two</span>
-      </article>
-    </div>
-  </main>
+						<label class="devlog-control">
+							<span>Filter by date</span>
+							<select data-devlog-date-filter="">
+								<option value="all">All time</option>
+								<option value="24h">Past 24 hours</option>
+								<option value="week">Past week</option>
+								<option value="month">Past month</option>
+								<option value="year">Past year</option>
+							</select>
+						</label>
 
-  <footer class="site-footer">
-    <p>© 2026 Lava Lantern Studios. All rights reserved.</p>
-  </footer>
-  <script src="script.js"></script>
-</body>
+						<button class="devlog-reset-button" type="button" data-devlog-reset="">
+							Reset filters
+						</button>
+					</div>
+
+					<p class="devlog-count" data-devlog-count="">Loading devlogs...</p>
+
+					<div class="devlog-list" data-devlog-list="">
+						<div class="devlog-empty-state">
+							<h3>Loading devlogs...</h3>
+							<p>Please wait while the latest updates are gathered.</p>
+						</div>
+					</div>
+
+					<div class="devlog-pagination" data-devlog-pagination="" hidden="">
+						<button type="button" data-devlog-previous="">Previous page</button>
+						<span data-devlog-page-label="">Page 1 of 1</span>
+						<button type="button" data-devlog-next="">Next page</button>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="section-inner footer-inner">
+				<p>&copy; 2026 Lava Lantern Studios. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<script src="script.js"></script>
+		<script src="assets/data/devlogs/devlog-sources.js"></script>
+		<script src="assets/js/devlogs.js"></script>
+	</body>
 </html>

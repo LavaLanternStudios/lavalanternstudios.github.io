@@ -1,177 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lava Lantern Studios | Games</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
-        <img
-          class="header-logo-image"
-          src="assets/images/logo/lava-lantern-header-logo.png"
-          alt="Lava Lantern Studios logo"
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lava Lantern Studios | Games</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body>
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
+					<img
+					  class="header-logo-image"
+					  src="assets/images/logo/lava-lantern-header-logo.png"
+					  alt="Lava Lantern Studios logo"
         />
-      </a>
+				</a>
 
-      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-        Menu
-      </button>
+				<button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+					Menu
+				</button>
 
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a class="active" href="games.html">Games</a>
-        <a href="fab.html">Fab</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="about.html">About Lava Lantern</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="devlogs.html">Devlogs</a>
-      </nav>
-    </div>
-  </header>
+				<nav class="site-nav">
+					<a href="index.html">Home</a>
+					<a class="active" href="games.html">Games</a>
+					<a href="fab.html">Fab</a>
+					<a href="portfolio.html">Portfolio</a>
+					<a href="about.html">About Lava Lantern</a>
+					<a href="contact.html">Contact Us</a>
+					<a href="devlogs.html">Devlogs</a>
+				</nav>
+			</div>
+		</header>
 
-  <main>
-    <section class="games-hero">
-      <div class="page-section">
-        <p class="section-kicker">Games</p>
-        <h1>Player-focused games with atmosphere, character, and craft.</h1>
-        <p class="games-hero-text">
-          At Lava Lantern Studios, each game is built around the player experience.
-          We aim to create games that feel responsive, memorable, and rewarding,
-          refining ideas through feedback, playtesting, and player input.
-        </p>
-      </div>
-    </section>
+		<main>
+			<section class="games-hero">
+				<div class="page-section">
+					<p class="section-kicker">Games</p>
+					<h1>Player-focused games with atmosphere, character, and craft.</h1>
+					<p class="games-hero-text">
+						At Lava Lantern Studios, each game is built around the player experience.
+						We aim to create games that feel responsive, memorable, and rewarding,
+						refining ideas through feedback, playtesting, and player input.
+					</p>
+				</div>
+			</section>
 
-    <section class="page-section">
-      <div class="section-heading">
-        <p class="section-kicker">Latest Release</p>
-        <h2>Lava Below</h2>
-        <p class="page-intro">
-          Our latest playable release, available now.
-        </p>
-      </div>
+			<section class="page-section">
+				<div class="section-heading">
+					<p class="section-kicker">Latest Release</p>
+					<h2 id="latest-game-heading">Latest Game</h2>
+					<p class="page-intro">
+						Our latest playable release, available now.
+					</p>
+				</div>
 
-      <article class="latest-game-panel">
-        <div class="latest-game-image-wrap">
-          <div class="status-ribbon status-available">Available</div>
+				<div id="latest-game-container">
+					<!-- Latest game loads here from assets/data/games.js -->
+				</div>
+			</section>
 
-          <img
-            class="latest-game-image"
-            src="assets/images/games/lava-below-cover.jpg"
-            alt="Lava Below game cover"
-          />
-        </div>
+			<section class="page-section">
+				<div class="section-heading">
+					<p class="section-kicker">More Games & Projects</p>
+					<h2>Current and upcoming work</h2>
+					<p class="page-intro">
+						A growing collection of released games, prototypes, experiments, and upcoming projects.
+					</p>
+				</div>
 
-        <div class="latest-game-content">
-          <div class="game-tag-row">
-            <span class="game-info-tag price-tag">Free to Play</span>
-            <span class="game-info-tag">Itch.io</span>
-            <span class="game-info-tag">Browser / PC</span>
-          </div>
+				<div id="game-library-grid" class="game-library-grid">
+					<!-- Older and upcoming games load here from assets/data/games.js -->
+				</div>
+			</section>
+		</main>
 
-          <h3>Lava Below</h3>
+		<footer class="site-footer">
+			<p>© 2026 Lava Lantern Studios. All rights reserved.</p>
+		</footer>
 
-          <p>
-            Lava Below is a compact game experience built around atmosphere,
-            timing, and exploration beneath the surface. This section will briefly
-            explain the game, what the player does, and why it is worth trying.
-          </p>
-
-          <p>
-            Play it through Itch.io and follow future updates as Lava Lantern Studios
-            continues developing new projects.
-          </p>
-
-          <a
-            class="button"
-            href="https://lava-lantern-studios.itch.io/lava-below"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Play It Now
-          </a>
-        </div>
-      </article>
-    </section>
-
-    <section class="page-section">
-      <div class="section-heading">
-        <p class="section-kicker">More Games & Projects</p>
-        <h2>Current and upcoming work</h2>
-        <p class="page-intro">
-          A growing collection of released games, prototypes, experiments, and upcoming projects.
-        </p>
-      </div>
-
-      <div class="game-library-grid">
-        <article class="game-library-card">
-          <div class="game-card-image-wrap">
-            <div class="status-ribbon status-available">Available</div>
-            <img
-              class="game-card-image"
-              src="assets/images/games/game-preview-02.jpg"
-              alt="Game preview"
-            />
-          </div>
-
-          <div class="game-card-content">
-            <h3>Game Title 2</h3>
-            <p>
-              A short description of this game or project. Explain the core idea,
-              genre, or player experience in one or two sentences.
-            </p>
-          </div>
-        </article>
-
-        <article class="game-library-card">
-          <div class="game-card-image-wrap">
-            <div class="status-ribbon status-upcoming">Upcoming</div>
-            <img
-              class="game-card-image"
-              src="assets/images/games/game-preview-03.jpg"
-              alt="Upcoming game preview"
-            />
-          </div>
-
-          <div class="game-card-content">
-            <h3>Game Title 3</h3>
-            <p>
-              A short description of this upcoming game, prototype, or project.
-              Keep it brief and easy to understand.
-            </p>
-          </div>
-        </article>
-
-        <article class="game-library-card">
-          <div class="game-card-image-wrap">
-            <div class="status-ribbon status-upcoming">Upcoming</div>
-            <img
-              class="game-card-image"
-              src="assets/images/games/game-preview-04.jpg"
-              alt="Upcoming game preview"
-            />
-          </div>
-
-          <div class="game-card-content">
-            <h3>Game Title 4</h3>
-            <p>
-              A short description of another upcoming project. This can be replaced
-              later when the project is ready to reveal.
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>© 2026 Lava Lantern Studios. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+		<script src="assets/data/games.js"></script>
+		<script src="script.js"></script>
+	</body>
 </html>

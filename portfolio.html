@@ -1,54 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lava Lantern Studios | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
-        <img
-          class="header-logo-image"
-          src="assets/images/logo/lava-lantern-header-logo.png"
-          alt="Lava Lantern Studios logo"
-        />
-      </a>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-        Menu
-      </button>
+		<title>Lava Lantern Studios | Portfolio</title>
 
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="games.html">Games</a>
-        <a href="fab.html">Fab</a>
-        <a class="active" href="portfolio.html">Portfolio</a>
-        <a href="about.html">About Lava Lantern</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="devlogs.html">Devlogs</a>
-      </nav>
-    </div>
-  </header>
+		<link rel="stylesheet" href="style.css" />
+	</head>
 
-  <main class="page-section">
-    <h1>Portfolio</h1>
-    <p class="page-intro">A selection of creative, technical, and visual work from Lava Lantern Studios.</p>
+	<body class="portfolio-page">
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
+					<img
+						class="header-logo-image"
+						src="assets/images/logo/lava-lantern-header-logo.png"
+						alt="Lava Lantern Studios logo"
+					/>
+				</a>
 
-    <div class="card-grid">
-      <article class="card">
-        <h3>Portfolio Piece</h3>
-        <p>Project screenshots, videos, descriptions, or case studies will go here.</p>
-        <span class="tag">Portfolio</span>
-      </article>
-    </div>
-  </main>
+				<button
+					class="menu-toggle"
+					type="button"
+					aria-label="Toggle navigation"
+					aria-expanded="false"
+				>
+					Menu
+				</button>
 
-  <footer class="site-footer">
-    <p>© 2026 Lava Lantern Studios. All rights reserved.</p>
-  </footer>
-  <script src="script.js"></script>
-</body>
+				<nav class="site-nav">
+					<a href="index.html">Home</a>
+					<a href="games.html">Games</a>
+					<a href="fab.html">Fab</a>
+					<a class="active" href="portfolio.html">Portfolio</a>
+					<a href="about.html">About Lava Lantern</a>
+					<a href="contact.html">Contact Us</a>
+					<a href="devlogs.html">Devlogs</a>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<section class="portfolio-hero">
+				<div class="section-inner">
+					<p class="section-label">Portfolio</p>
+
+					<h1>Creative work, projects, and visual development.</h1>
+
+					<p>
+						Explore a selection of Lava Lantern Studios projects, artwork,
+						environments, assets, and creative development work.
+					</p>
+				</div>
+			</section>
+
+			<section class="portfolio-showcase-section">
+				<div class="section-inner">
+					<div class="section-heading portfolio-showcase-heading">
+						<p class="section-label">Featured Work</p>
+						<h2>Top Picks</h2>
+					</div>
+
+					<div class="top-pick-slider" id="topPickSlider">
+						<!-- Top pick content is added by JavaScript -->
+					</div>
+
+					<div class="top-pick-dots" id="topPickDots">
+						<!-- Slider dots are added by JavaScript -->
+					</div>
+
+					<div class="section-heading portfolio-grid-heading">
+						<p class="section-label">Full Collection</p>
+						<h2>All Portfolio Pieces</h2>
+					</div>
+
+					<div class="portfolio-grid" id="portfolioGrid">
+						<!-- Thumbnail cards are added by JavaScript -->
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<p>© 2026 Lava Lantern Studios. All rights reserved.</p>
+		</footer>
+
+		<script src="script.js"></script>
+		<script src="assets/data/portfolio-data.js"></script>
+		<script src="assets/js/portfolio.js"></script>
+	</body>
 </html>

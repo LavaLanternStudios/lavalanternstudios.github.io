@@ -1,61 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lava Lantern Studios | Contact</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
-        <img
-          class="header-logo-image"
-          src="assets/images/logo/lava-lantern-header-logo.png"
-          alt="Lava Lantern Studios logo"
-        />
-      </a>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lava Lantern Studios | Contact Us</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
 
-      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-        Menu
-      </button>
+	<body>
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
+					<img
+						class="header-logo-image"
+						src="assets/images/logo/lava-lantern-header-logo.png"
+						alt="Lava Lantern Studios logo"
+					/>
+				</a>
 
-      <nav class="site-nav">
-        <a href="index.html">Home</a>
-        <a href="games.html">Games</a>
-        <a href="fab.html">Fab</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="about.html">About Lava Lantern</a>
-        <a class="active" href="contact.html">Contact Us</a>
-        <a href="devlogs.html">Devlogs</a>
-      </nav>
-    </div>
-  </header>
+				<button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+					Menu
+				</button>
 
-  <main class="page-section">
-    <h1>Contact Us</h1>
-    <p class="page-intro">
-      For business enquiries, collaborations, support, or general contact, use the links below.
-    </p>
+				<nav class="site-nav">
+					<a href="index.html">Home</a>
+					<a href="games.html">Games</a>
+					<a href="fab.html">Fab</a>
+					<a href="portfolio.html">Portfolio</a>
+					<a href="about.html">About Lava Lantern</a>
+					<a class="active" aria-current="page" href="contact.html">Contact Us</a>
+					<a href="devlogs.html">Devlogs</a>
+				</nav>
+			</div>
+		</header>
 
-    <div class="card-grid">
-      <article class="card">
-        <h3>Email</h3>
-        <p>Replace this with your business email address.</p>
-        <a href="mailto:example@email.com">example@email.com</a>
-      </article>
+		<main>
+			<section class="contact-hero">
+				<div class="section-inner contact-hero-inner">
+					<p class="section-kicker">CONTACT US</p>
+					<h1>Follow the glow. Stay connected.</h1>
+					<p class="contact-hero-text">
+						Follow Lava Lantern Studios on our socials for updates, content, releases,
+						behind-the-scenes development, and future project news.
+					</p>
+				</div>
+			</section>
 
-      <article class="card">
-        <h3>Social Links</h3>
-        <p>Add links to Steam, Itch.io, Fab, Patreon, YouTube, Discord, or other platforms.</p>
-      </article>
-    </div>
-  </main>
+			<section class="contact-socials-section">
+				<div class="section-inner">
+					<div class="contact-section-heading centered">
+						<p class="section-kicker">SOCIALS</p>
+						<h2>Follow us for updates and content.</h2>
+					</div>
 
-  <footer class="site-footer">
-    <p>© 2026 Lava Lantern Studios. All rights reserved.</p>
-  </footer>
-  <script src="script.js"></script>
-</body>
+					<div class="contact-socials-list" data-socials-list="">
+						<!-- Social links are loaded from assets/data/socials.js -->
+					</div>
+				</div>
+			</section>
+
+			<section class="contact-email-section">
+				<div class="section-inner contact-email-card">
+					<div>
+						<p class="section-kicker">COLLABORATION & QUESTIONS</p>
+						<h2>Want to collaborate, ask a question, or get in touch?</h2>
+					</div>
+
+					<div class="contact-email-copy">
+						<p>
+							For collaboration opportunities, general questions, project discussions,
+							or business enquiries, you can contact Lava Lantern Studios directly by email.
+						</p>
+
+						<a class="contact-email-link" href="#" data-contact-email-link="">
+							lavalanternstudios@gmail.com
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="section-inner footer-inner">
+				<p>&copy; 2026 Lava Lantern Studios. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<script src="script.js"></script>
+		<script src="assets/data/socials.js"></script>
+		<script src="assets/js/contact.js"></script>
+	</body>
 </html>
