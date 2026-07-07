@@ -3,19 +3,21 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="referrer" content="strict-origin-when-cross-origin" />
 		<title>Lava Lantern Studios | Games</title>
 		<link rel="stylesheet" href="style.css" />
 	</head>
 
-	<body>
+	<body class="games-page">
 		<header class="site-header">
 			<div class="header-inner">
 				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
 					<img
-					  class="header-logo-image"
-					  src="assets/images/logo/lava-lantern-header-logo.png"
-					  alt="Lava Lantern Studios logo"
-        />
+						class="header-logo-image"
+						data-games-main-menu-logo=""
+						src="assets/images/logo/lava-lantern-header-logo.png"
+						alt="Lava Lantern Studios logo"
+					/>
 				</a>
 
 				<button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
@@ -36,10 +38,18 @@
 
 		<main>
 			<section class="games-hero">
-				<div class="page-section">
-					<p class="section-kicker">Games</p>
-					<h1>Player-focused games with atmosphere, character, and craft.</h1>
-					<p class="games-hero-text">
+				<div class="games-video-embed" data-games-showreel=""></div>
+
+				<div class="games-hero-overlay"></div>
+
+				<div class="page-section games-hero-content">
+					<p class="section-kicker" data-games-hero-heading="">Games</p>
+
+					<h1 data-games-hero-title="">
+						Player-focused games with atmosphere, character, and craft.
+					</h1>
+
+					<p class="games-hero-text" data-games-hero-body="">
 						At Lava Lantern Studios, each game is built around the player experience.
 						We aim to create games that feel responsive, memorable, and rewarding,
 						refining ideas through feedback, playtesting, and player input.
@@ -49,38 +59,100 @@
 
 			<section class="page-section">
 				<div class="section-heading">
-					<p class="section-kicker">Latest Release</p>
+					<p class="section-kicker" data-games-latest-heading="">Latest Release</p>
+
 					<h2 id="latest-game-heading">Latest Game</h2>
-					<p class="page-intro">
+
+					<p class="page-intro" data-games-latest-intro="">
 						Our latest playable release, available now.
 					</p>
 				</div>
 
 				<div id="latest-game-container">
-					<!-- Latest game loads here from assets/data/games.js -->
+					<article class="latest-game-panel">
+						<div class="latest-game-image-wrap">
+							<div class="mock-square">Latest Game Image</div>
+						</div>
+
+						<div class="latest-game-content">
+							<div class="game-tag-row">
+								<span class="game-info-tag mock-price">Free to Play</span>
+								<span class="game-info-tag">PC</span>
+								<span class="game-info-tag">Browser</span>
+							</div>
+
+							<h3>Lava Below</h3>
+
+							<p>
+								A playable Lava Lantern release focused on atmosphere, responsive controls,
+								and feedback-led design.
+							</p>
+
+							<a class="button" href="#">Play It Now</a>
+						</div>
+					</article>
 				</div>
 			</section>
 
 			<section class="page-section">
 				<div class="section-heading">
-					<p class="section-kicker">More Games & Projects</p>
-					<h2>Current and upcoming work</h2>
-					<p class="page-intro">
+					<p class="section-kicker" data-games-more-heading="">More Games & Projects</p>
+
+					<h2 data-games-more-title="">Current and upcoming work</h2>
+
+					<p class="page-intro" data-games-more-body="">
 						A growing collection of released games, prototypes, experiments, and upcoming projects.
 					</p>
 				</div>
 
 				<div id="game-library-grid" class="game-library-grid">
-					<!-- Older and upcoming games load here from assets/data/games.js -->
+					<article class="game-library-card">
+						<div class="game-card-image-wrap">
+							<span class="status-ribbon status-upcoming">Upcoming</span>
+							<div class="mock-square">Game Image</div>
+						</div>
+
+						<div class="game-card-content">
+							<h3>Lantern Trials</h3>
+							<p>An upcoming game concept shaped around quick playtesting and player input.</p>
+						</div>
+					</article>
+
+					<article class="game-library-card">
+						<div class="game-card-image-wrap">
+							<span class="status-ribbon status-available">Available</span>
+							<div class="mock-square">Game Image</div>
+						</div>
+
+						<div class="game-card-content">
+							<h3>Prototype Archive</h3>
+							<p>A released experimental project from the studio archive.</p>
+						</div>
+					</article>
+
+					<article class="game-library-card">
+						<div class="game-card-image-wrap">
+							<span class="status-ribbon status-available">Available</span>
+							<div class="mock-square">Game Image</div>
+						</div>
+
+						<div class="game-card-content">
+							<h3>World Test Build</h3>
+							<p>A compact project exploring mood, pacing, and readable interaction.</p>
+						</div>
+					</article>
 				</div>
 			</section>
 		</main>
 
 		<footer class="site-footer">
-			<p>© 2026 Lava Lantern Studios. All rights reserved.</p>
+			<p>&copy; 2026 Lava Lantern Studios. All rights reserved.</p>
 		</footer>
 
 		<script src="assets/data/games.js"></script>
 		<script src="script.js"></script>
+
+		<script src="assets/content/games-page.js"></script>
+		<script src="assets/js/games-content.js"></script>
 	</body>
 </html>

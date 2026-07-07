@@ -934,6 +934,55 @@ video {
   color: #111111;
 }
 
+.hero-video-embed {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.hero-video-embed iframe {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100vw;
+	height: 56.25vw;
+	min-width: 177.78vh;
+	min-height: 100vh;
+	transform: translate(-50%, -50%);
+	border: 0;
+}
+
+.home-page .hero-kicker,
+.home-page .section-kicker {
+	font-size: var(--home-orange-heading-size, 1rem);
+}
+
+.home-page .section-heading h2,
+.home-page .intro-panel h2,
+.home-page .preview-panel h2,
+.home-page .home-cta h2 {
+	font-size: var(--home-white-title-size, 3rem);
+}
+
+.home-page .hero-tagline,
+.home-page .page-intro,
+.home-page .intro-panel p,
+.home-page .preview-panel p,
+.home-page .home-cta p {
+	font-size: var(--home-white-body-size, 1.1rem);
+}
+
+/* ================================
+   Home Page Editable Orange Heading Size
+================================ */
+
+.home-page .hero-kicker,
+.home-page .section-kicker {
+	font-size: var(--home-orange-heading-size, 1rem) !important;
+}
+
 /* ================================
    Games Page
 ================================ */
@@ -1109,6 +1158,63 @@ video {
   border-radius: 18px;
   color: #c7cad6;
   font-weight: 800;
+}
+
+/* ================================
+   Games Page Editable Content
+================================ */
+
+.games-hero {
+	position: relative;
+	overflow: hidden;
+}
+
+.games-video-embed {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.games-video-embed iframe {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100vw;
+	height: 56.25vw;
+	min-width: 177.78vh;
+	min-height: 100vh;
+	transform: translate(-50%, -50%);
+	border: 0;
+}
+
+.games-hero-overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background:
+		linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.72)),
+		radial-gradient(circle at center, rgba(255, 138, 36, 0.14), transparent 50%);
+}
+
+.games-hero-content {
+	position: relative;
+	z-index: 2;
+}
+
+.games-page .section-kicker {
+	font-size: var(--games-orange-heading-size, 1rem) !important;
+}
+
+.games-page .games-hero h1,
+.games-page .section-heading h2 {
+	font-size: var(--games-white-title-size, 3rem);
+}
+
+.games-page .games-hero-text,
+.games-page .page-intro {
+	font-size: var(--games-white-body-size, 1.15rem);
 }
 
 /* ================================
@@ -1323,6 +1429,63 @@ video {
   .fab-hero p {
     font-size: 1rem;
   }
+}
+
+/* ================================
+   Fab Page Editable Content + Video
+================================ */
+
+.fab-hero {
+	position: relative;
+	overflow: hidden;
+}
+
+.fab-video-embed {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.fab-video-embed iframe {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100vw;
+	height: 56.25vw;
+	min-width: 177.78vh;
+	min-height: 100vh;
+	transform: translate(-50%, -50%);
+	border: 0;
+}
+
+.fab-hero-overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background:
+		linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.72)),
+		radial-gradient(circle at center, rgba(255, 138, 36, 0.14), transparent 50%);
+}
+
+.fab-hero-content {
+	position: relative;
+	z-index: 2;
+}
+
+.fab-page .section-label {
+	font-size: var(--fab-orange-heading-size, 1rem) !important;
+}
+
+.fab-page .fab-hero h1,
+.fab-page .section-heading h2 {
+	font-size: var(--fab-white-title-size, 3rem);
+}
+
+.fab-page .fab-hero p,
+.fab-page .fab-description {
+	font-size: var(--fab-white-body-size, 1.15rem);
 }
 
 /* ================================
@@ -1585,6 +1748,63 @@ video {
 }
 
 /* ================================
+   Portfolio Page Editable Content + Video
+================================ */
+
+.portfolio-hero {
+	position: relative;
+	overflow: hidden;
+}
+
+.portfolio-video-embed {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.portfolio-video-embed iframe {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100vw;
+	height: 56.25vw;
+	min-width: 177.78vh;
+	min-height: 100vh;
+	transform: translate(-50%, -50%);
+	border: 0;
+}
+
+.portfolio-hero-overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background:
+		linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.72)),
+		radial-gradient(circle at center, rgba(255, 138, 36, 0.14), transparent 50%);
+}
+
+.portfolio-hero-content {
+	position: relative;
+	z-index: 2;
+}
+
+.portfolio-page .section-label {
+	font-size: var(--portfolio-orange-heading-size, 1rem) !important;
+}
+
+.portfolio-page .portfolio-hero h1,
+.portfolio-page .portfolio-grid-heading h2 {
+	font-size: var(--portfolio-white-title-size, 3rem);
+}
+
+.portfolio-page .portfolio-hero p,
+.portfolio-page .top-pick-content p {
+	font-size: var(--portfolio-white-body-size, 1.15rem);
+}
+
+/* ================================
    About Lava Lantern Page
 ================================ */
 
@@ -1817,6 +2037,152 @@ video {
 }
 
 /* ================================
+   About Page Editable Content + Hero Image
+================================ */
+
+.about-page .about-hero {
+	position: relative;
+	overflow: hidden;
+}
+
+.about-hero-image-wrap {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+}
+
+.about-hero-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
+}
+
+.about-hero-overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background:
+		linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.72)),
+		radial-gradient(circle at center, rgba(255, 138, 36, 0.14), transparent 50%);
+}
+
+.about-hero-content {
+	position: relative;
+	z-index: 2;
+}
+
+.about-loki-card {
+	display: grid;
+	grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1fr);
+	gap: 2rem;
+	align-items: center;
+	margin-top: 2rem;
+	padding: 2rem;
+	background: #102133;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 18px;
+}
+
+.about-loki-image-wrap {
+	overflow: hidden;
+	border-radius: 14px;
+	background: #0b0c10;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-loki-image {
+	display: block;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	object-position: center center;
+}
+
+.about-loki-content p {
+	color: #d8dbe8;
+	line-height: 1.7;
+}
+
+.about-reviews-section {
+	padding: 5rem 1.5rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-reviews-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.5rem;
+}
+
+.about-review-card {
+	background: #102133;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 18px;
+	padding: 1.5rem;
+	text-align: center;
+}
+
+.about-review-card img {
+	width: 96px;
+	height: 96px;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: center center;
+	background: #0b0c10;
+	margin-bottom: 1rem;
+}
+
+.about-review-card h3 {
+	margin: 0 0 1rem;
+	color: #ffffff;
+}
+
+.about-review-card blockquote {
+	margin: 0;
+	color: #d8dbe8;
+	line-height: 1.7;
+}
+
+.about-review-card blockquote::before {
+	content: open-quote;
+}
+
+.about-review-card blockquote::after {
+	content: close-quote;
+}
+
+.about-page .section-kicker {
+	font-size: var(--about-orange-heading-size, 1rem) !important;
+}
+
+.about-page .about-hero h1,
+.about-page .about-feature-card h2,
+.about-page .about-section-heading h2,
+.about-page .about-direction-card h2 {
+	font-size: var(--about-white-title-size, 3rem);
+}
+
+.about-page .about-hero-text,
+.about-page .about-feature-card p,
+.about-page .about-card p,
+.about-page .about-direction-copy p,
+.about-page .about-value p,
+.about-page .about-loki-content p,
+.about-page .about-review-card blockquote {
+	font-size: var(--about-white-body-size, 1.15rem);
+}
+
+@media (max-width: 900px) {
+	.about-loki-card,
+	.about-reviews-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ================================
    Contact Page
 ================================ */
 
@@ -2004,6 +2370,59 @@ video {
 		width: 100%;
 		text-align: center;
 	}
+}
+
+/* ================================
+   Contact Page Editable Content + Hero Image
+================================ */
+
+.contact-page .contact-hero {
+	position: relative;
+	overflow: hidden;
+}
+
+.contact-hero-image-wrap {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
+}
+
+.contact-hero-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
+}
+
+.contact-hero-overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background:
+		linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.72)),
+		radial-gradient(circle at center, rgba(255, 138, 36, 0.14), transparent 50%);
+}
+
+.contact-hero-content {
+	position: relative;
+	z-index: 2;
+}
+
+.contact-page .section-kicker {
+	font-size: var(--contact-orange-heading-size, 1rem) !important;
+}
+
+.contact-page .contact-hero h1,
+.contact-page .contact-section-heading h2,
+.contact-page .contact-email-card h2 {
+	font-size: var(--contact-white-title-size, 3rem);
+}
+
+.contact-page .contact-hero-text,
+.contact-page .contact-email-copy p {
+	font-size: var(--contact-white-body-size, 1.15rem);
 }
 
 /* ================================
@@ -2328,6 +2747,64 @@ video {
 }
 
 /* ================================
+   Devlogs Content-Controlled Page
+================================ */
+
+.devlogs-page .devlogs-hero {
+	position: relative;
+	overflow: hidden;
+	background: #050506;
+}
+
+.devlogs-hero-image-wrap {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+}
+
+.devlogs-hero-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+}
+
+.devlogs-hero-overlay {
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background:
+		linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.72)),
+		radial-gradient(circle at center, rgba(255, 138, 36, 0.14), transparent 50%);
+}
+
+.devlogs-hero-content {
+	position: relative;
+	z-index: 2;
+}
+
+.devlogs-page .section-kicker,
+.devlogs-page .devlog-control span {
+	font-size: var(--devlogs-orange-heading-size, 1rem) !important;
+}
+
+.devlogs-page .devlogs-hero h1,
+.devlogs-page .devlogs-section-heading h2 {
+	font-size: var(--devlogs-white-title-size, 4.2rem);
+}
+
+.devlogs-page .devlogs-hero-text,
+.devlogs-page .devlog-card p,
+.devlogs-page .devlog-count {
+	font-size: var(--devlogs-white-body-size, 1.25rem);
+}
+
+.devlogs-page .devlog-card-content .devlog-read-link {
+	margin-top: 1.5rem !important;
+}
+
+/* ================================
    Home Page Data-Driven Previews
 ================================ */
 
@@ -2467,4 +2944,452 @@ video {
 	display: block;
 	width: fit-content;
 	margin: 1.75rem auto 0;
+}
+
+/* ================================
+   Colour Scheme Mockup Preview
+================================ */
+
+:root {
+	--lava-navy: #0d2b42;
+	--lava-navy-cell: #2b526f;
+	--lava-navy-deep: #061622;
+	--lava-panel: #100e0d;
+	--lava-panel-soft: #16120f;
+	--lava-white: #ffffff;
+	--lava-text-muted: #d9e2e8;
+	--lava-orange: #e58745;
+	--lava-orange-soft: rgba(229, 135, 69, 0.18);
+	--lava-green: #4cbb54;
+	--lava-border: rgba(255, 255, 255, 0.13);
+}
+
+body,
+.fab-page,
+.portfolio-page {
+	background:
+		radial-gradient(circle at top left, rgba(229, 135, 69, 0.12), transparent 30rem),
+		linear-gradient(180deg, #100e0d 0%, #070605 100%);
+	color: var(--lava-white);
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.site-header,
+.site-footer {
+	background: var(--lava-panel);
+	border-color: var(--lava-border);
+}
+
+.site-nav a,
+.site-footer,
+.footer-inner,
+.page-intro,
+.hero p,
+.card p,
+.intro-panel p,
+.preview-panel p,
+.latest-panel p,
+.feature-card-content p,
+.mini-card p,
+.games-hero-text,
+.latest-game-content p,
+.game-card-content p,
+.fab-description,
+.fab-hero p,
+.portfolio-hero p,
+.top-pick-content p,
+.about-hero-text,
+.about-feature-card p,
+.about-card p,
+.about-direction-copy p,
+.about-value p,
+.contact-hero-text,
+.contact-email-copy p,
+.devlogs-hero-text,
+.devlog-card p,
+.devlog-empty-state p {
+	color: var(--lava-text-muted);
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+	color: var(--lava-orange);
+	text-decoration-color: var(--lava-orange);
+}
+
+.hero-kicker,
+.section-kicker,
+.fab-page .section-label,
+.portfolio-page .section-label,
+.about-stat span,
+.about-value span,
+.devlog-control span,
+.home-devlog-meta {
+	color: var(--lava-orange);
+}
+
+h1,
+h2,
+h3,
+.about-feature-card h2,
+.about-section-heading h2,
+.about-direction-card h2,
+.about-card h3,
+.about-value h3,
+.contact-section-heading h2,
+.contact-email-card h2,
+.devlogs-section-heading h2,
+.devlog-card h2 {
+	color: var(--lava-white);
+}
+
+.button,
+.fab-buy-button,
+.contact-email-link,
+.devlog-reset-button,
+.devlog-pagination button,
+.devlog-read-link {
+	background: var(--lava-white);
+	border: 1px solid var(--lava-white);
+	color: var(--lava-panel);
+	transition:
+		transform 0.2s ease,
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease;
+}
+
+.button.secondary {
+	background: var(--lava-white);
+	color: var(--lava-panel);
+	border-color: var(--lava-white);
+}
+
+.button:hover,
+.button:focus-visible,
+.fab-buy-button:hover,
+.fab-buy-button:focus-visible,
+.contact-email-link:hover,
+.contact-email-link:focus-visible,
+.devlog-reset-button:hover,
+.devlog-reset-button:focus-visible,
+.devlog-pagination button:hover,
+.devlog-pagination button:focus-visible,
+.devlog-read-link:hover,
+.devlog-read-link:focus-visible {
+	background: var(--lava-orange);
+	border-color: var(--lava-orange);
+	color: var(--lava-panel);
+	transform: translateY(-2px);
+}
+
+.filter-button {
+	border-color: var(--lava-white);
+	color: var(--lava-white);
+}
+
+.filter-button.active,
+.filter-button:hover {
+	background: var(--lava-orange);
+	border-color: var(--lava-orange);
+	color: var(--lava-panel);
+}
+
+.home-hero,
+.games-hero,
+.fab-hero,
+.portfolio-hero,
+.about-hero,
+.contact-hero,
+.devlogs-hero {
+	background:
+		linear-gradient(rgba(16, 14, 13, 0.32), rgba(16, 14, 13, 0.74)),
+		radial-gradient(circle at top left, rgba(229, 135, 69, 0.24), transparent 28rem),
+		linear-gradient(135deg, #14100d 0%, #070605 70%);
+	border-color: var(--lava-border);
+}
+
+.hero-overlay {
+	background:
+		linear-gradient(rgba(16, 14, 13, 0.2), rgba(16, 14, 13, 0.68)),
+		radial-gradient(circle at center, rgba(229, 135, 69, 0.15), rgba(11, 34, 51, 0.72));
+}
+
+.intro-panel,
+.preview-panel,
+.latest-panel,
+.home-cta,
+.feature-card,
+.mini-card,
+.home-preview-empty,
+.latest-game-panel,
+.game-library-card,
+.game-empty-message,
+.latest-fab-card,
+.fab-product-card,
+.empty-message,
+.top-pick-card,
+.portfolio-thumbnail-card,
+.about-feature-card,
+.about-side-panel,
+.about-direction-card,
+.about-card,
+.about-value,
+.contact-social-card,
+.contact-email-card,
+.devlog-controls-card,
+.devlog-card,
+.devlog-empty-state,
+.card {
+	background:
+		linear-gradient(to bottom right, var(--lava-navy-deep) 0%, #092034 42%, var(--lava-navy) 100%);
+	border-color: var(--lava-border);
+	box-shadow: 0 1.1rem 2.8rem rgba(0, 0, 0, 0.22);
+}
+
+.about-intro-section,
+.about-content-section,
+.about-direction-section,
+.about-values-section,
+.contact-socials-section,
+.contact-email-section,
+.devlogs-browser-section,
+.portfolio-showcase-section {
+	background: transparent;
+	border-color: var(--lava-border);
+}
+
+.mascot-placeholder,
+.image-placeholder,
+.small-image-placeholder,
+.portrait-image-placeholder,
+.square-image-placeholder,
+.home-16-9-placeholder,
+.latest-game-image-wrap,
+.game-card-image-wrap,
+.latest-fab-image,
+.fab-product-image,
+.top-pick-image-wrap,
+.devlog-card-image-wrap {
+	background:
+		linear-gradient(rgba(16, 14, 13, 0.1), rgba(16, 14, 13, 0.52)),
+		linear-gradient(135deg, #164260, var(--lava-navy-deep));
+	border-color: rgba(229, 135, 69, 0.32);
+	color: var(--lava-text-muted);
+}
+
+.mock-image,
+.mock-thumb,
+.mock-square,
+.mock-wide {
+	display: grid;
+	place-items: center;
+	background:
+		linear-gradient(rgba(16, 14, 13, 0.08), rgba(16, 14, 13, 0.55)),
+		linear-gradient(135deg, #164260, var(--lava-navy-deep));
+	border: 1px solid rgba(229, 135, 69, 0.32);
+	color: var(--lava-white);
+	font-weight: 900;
+	text-align: center;
+	padding: 1rem;
+}
+
+.mock-square {
+	aspect-ratio: 1 / 1;
+	border-radius: 18px;
+}
+
+.mock-wide {
+	aspect-ratio: 16 / 9;
+	border-radius: 18px;
+}
+
+.mock-thumb {
+	aspect-ratio: 1 / 1;
+}
+
+.portfolio-thumbnail-card .mock-thumb,
+.devlog-card-image-wrap .mock-wide {
+	width: 100%;
+	height: 100%;
+	border: 0;
+	border-radius: 0;
+}
+
+.devlog-card-image-wrap .mock-wide {
+	min-height: 220px;
+	aspect-ratio: auto;
+}
+
+.status-ribbon,
+.status-upcoming {
+	background: var(--lava-orange);
+	color: var(--lava-panel);
+}
+
+.status-available,
+.price-tag,
+.mock-available,
+.mock-price {
+	background: var(--lava-green);
+	color: #071108;
+	border-color: rgba(76, 187, 84, 0.45);
+	box-shadow: 0 0 18px rgba(76, 187, 84, 0.34);
+}
+
+.game-info-tag,
+.fab-tag,
+.tag,
+.top-pick-label,
+.devlog-card-meta span {
+	background: var(--lava-orange-soft);
+	border: 1px solid rgba(229, 135, 69, 0.36);
+	color: #ffc79b;
+}
+
+.fab-keyword-tags .fab-tag {
+	background: var(--lava-orange-soft);
+	border-color: rgba(229, 135, 69, 0.36);
+	color: #ffc79b;
+}
+
+.devlog-control select {
+	background: var(--lava-panel);
+	border-color: var(--lava-border);
+	color: var(--lava-white);
+}
+
+.top-pick-dot.active,
+.top-pick-dot:hover {
+	background: var(--lava-orange);
+}
+
+.top-pick-dot {
+	background: rgba(255, 255, 255, 0.35);
+}
+
+.contact-social-card:hover,
+.contact-social-card:focus-visible,
+.home-data-card:hover,
+.home-data-card:focus-within,
+.home-mini-card:hover,
+.home-mini-card:focus-within,
+.top-pick-card:hover,
+.top-pick-card:focus-visible {
+	border-color: rgba(229, 135, 69, 0.7);
+	background: #184864;
+}
+
+.mini-card h3,
+.feature-card-content,
+.about-stat {
+	background: var(--lava-navy-cell);
+	border-color: rgba(255, 255, 255, 0.11);
+}
+
+.mini-card h3 {
+	margin: 0;
+	padding: 1rem 1.1rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.feature-card-content {
+	border-top: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.about-stat {
+	border: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+#home-fab-preview .home-mini-card,
+#home-portfolio-preview .home-mini-card {
+	background: var(--lava-navy-cell);
+}
+
+#home-fab-preview .home-mini-card h3,
+#home-portfolio-preview .home-mini-card h3 {
+	background: transparent;
+	border: 0;
+	margin: 0;
+	padding: 0.75rem 0.8rem 0.85rem;
+}
+
+.fab-page .fab-product-content {
+	background: transparent;
+}
+
+.mascot-placeholder {
+	padding: 0;
+	overflow: hidden;
+}
+
+.mascot-placeholder::before {
+	content: none;
+}
+
+.mascot-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-height: none;
+	object-fit: cover;
+	object-position: center center;
+	padding: 0;
+}
+
+.intro-panel .section-kicker,
+.preview-panel .section-kicker,
+.latest-panel .section-kicker,
+.about-feature-card .section-kicker,
+.about-section-heading .section-kicker,
+.about-direction-card .section-kicker,
+.contact-section-heading .section-kicker,
+.contact-email-card .section-kicker,
+.devlogs-section-heading .section-kicker,
+.section-heading .section-kicker,
+.section-heading .section-label,
+.portfolio-showcase-heading .section-label,
+.portfolio-grid-heading .section-label {
+	color: var(--lava-orange);
+}
+
+.games-hero,
+.fab-hero,
+.portfolio-hero,
+.about-hero,
+.contact-hero,
+.devlogs-hero {
+	padding: 0;
+}
+
+.games-hero .page-section,
+.fab-hero .section-inner,
+.portfolio-hero .section-inner,
+.about-hero .section-inner,
+.contact-hero .section-inner,
+.devlogs-hero .section-inner {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 82px 24px;
+}
+
+.portfolio-showcase-heading h2:empty {
+	display: none;
+}
+
+.top-pick-label {
+	display: none;
+}
+
+.game-info-tag.price-tag,
+.game-info-tag.mock-price,
+.fab-tag.price-tag,
+.fab-tag.mock-price,
+.price-tag,
+.mock-price {
+	background: var(--lava-green);
+	color: #071108;
+	border-color: rgba(76, 187, 84, 0.45);
+	box-shadow: 0 0 18px rgba(76, 187, 84, 0.34);
 }

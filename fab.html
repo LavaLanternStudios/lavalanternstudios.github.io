@@ -3,19 +3,21 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="referrer" content="strict-origin-when-cross-origin" />
 		<title>Lava Lantern Studios | Fab</title>
 		<link rel="stylesheet" href="style.css" />
 	</head>
 
-	<body>
+	<body class="fab-page">
 		<header class="site-header">
 			<div class="header-inner">
 				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
 					<img
-					  class="header-logo-image"
-					  src="assets/images/logo/lava-lantern-header-logo.png"
-					  alt="Lava Lantern Studios logo"
-        />
+						class="header-logo-image"
+						data-fab-main-menu-logo=""
+						src="assets/images/logo/lava-lantern-header-logo.png"
+						alt="Lava Lantern Studios logo"
+					/>
 				</a>
 
 				<button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
@@ -34,13 +36,16 @@
 			</div>
 		</header>
 
-		<main class="fab-page">
-
+		<main>
 			<section class="fab-hero">
-				<div class="section-inner">
-					<h1>Fab Products</h1>
+				<div class="fab-video-embed" data-fab-showreel=""></div>
 
-					<p>
+				<div class="fab-hero-overlay"></div>
+
+				<div class="section-inner fab-hero-content">
+					<h1 data-fab-hero-title="">Fab Products</h1>
+
+					<p data-fab-hero-body="">
 						Explore Lava Lantern Studios content available through Fab, including
 						game-ready assets, tools, resources, and creative packs designed to support
 						developers, creators, and studios.
@@ -51,12 +56,35 @@
 			<section class="latest-fab-section">
 				<div class="section-inner">
 					<div class="section-heading">
-						<p class="section-label">Latest Release</p>
-						<h2>Latest Fab Product</h2>
+						<p class="section-label" data-fab-latest-heading="">Latest Release</p>
+
+						<h2 data-fab-latest-title="">Latest Fab Product</h2>
 					</div>
 
 					<div id="latest-fab-product">
-						<!-- The latest product will load here from assets/data/fab-products.json -->
+						<article class="latest-fab-card">
+							<div class="latest-fab-image">
+								<div class="mock-wide">Latest Fab Product Image</div>
+							</div>
+
+							<div class="latest-fab-content">
+								<p class="section-label">Available Now</p>
+
+								<h3>Stylised Environment Pack</h3>
+
+								<p class="fab-description">
+									A game-ready asset pack preview presented with the new slate, onyx, orange, and green palette.
+								</p>
+
+								<div class="fab-tag-group">
+									<span class="fab-tag mock-price">£4.99</span>
+									<span class="fab-tag">Unreal Engine</span>
+									<span class="fab-tag">Environment</span>
+								</div>
+
+								<a class="fab-buy-button" href="#">View on Fab</a>
+							</div>
+						</article>
 					</div>
 				</div>
 			</section>
@@ -64,23 +92,69 @@
 			<section class="fab-products-section">
 				<div class="section-inner">
 					<div class="section-heading">
-						<p class="section-label">More Products</p>
-						<h2>Available on Fab</h2>
+						<p class="section-label" data-fab-more-heading="">More Products</p>
+
+						<h2 data-fab-more-title="">Available on Fab</h2>
 					</div>
 
 					<div id="fab-product-grid">
-						<!-- Older Fab products will load here from assets/data/fab-products.json -->
+						<article class="fab-product-card">
+							<div class="fab-product-image">
+								<div class="mock-wide">Product Image</div>
+							</div>
+
+							<div class="fab-product-content">
+								<h3>Developer UI Toolkit</h3>
+
+								<div class="fab-tag-group">
+									<span class="fab-tag mock-price">£2.99</span>
+									<span class="fab-tag">Tools</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="fab-product-card">
+							<div class="fab-product-image">
+								<div class="mock-wide">Product Image</div>
+							</div>
+
+							<div class="fab-product-content">
+								<h3>Atmospheric Prop Set</h3>
+
+								<div class="fab-tag-group">
+									<span class="fab-tag mock-price">Free</span>
+									<span class="fab-tag">Props</span>
+								</div>
+							</div>
+						</article>
+
+						<article class="fab-product-card">
+							<div class="fab-product-image">
+								<div class="mock-wide">Product Image</div>
+							</div>
+
+							<div class="fab-product-content">
+								<h3>Lighting Preset Pack</h3>
+
+								<div class="fab-tag-group">
+									<span class="fab-tag mock-price">£1.99</span>
+									<span class="fab-tag">Lighting</span>
+								</div>
+							</div>
+						</article>
 					</div>
 				</div>
 			</section>
-
 		</main>
 
 		<footer class="site-footer">
-			<p>© 2026 Lava Lantern Studios. All rights reserved.</p>
+			<p>&copy; 2026 Lava Lantern Studios. All rights reserved.</p>
 		</footer>
 
 		<script src="assets/data/fab-products.js"></script>
 		<script src="script.js"></script>
+
+		<script src="assets/content/fab-page.js"></script>
+		<script src="assets/js/fab-content.js"></script>
 	</body>
 </html>

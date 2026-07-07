@@ -7,12 +7,13 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 
-	<body>
+	<body class="contact-page">
 		<header class="site-header">
 			<div class="header-inner">
 				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
 					<img
 						class="header-logo-image"
+						data-contact-main-menu-logo=""
 						src="assets/images/logo/lava-lantern-header-logo.png"
 						alt="Lava Lantern Studios logo"
 					/>
@@ -36,12 +37,28 @@
 
 		<main>
 			<section class="contact-hero">
-				<div class="section-inner contact-hero-inner">
-					<p class="section-kicker">CONTACT US</p>
-					<h1>Follow the glow. Stay connected.</h1>
-					<p class="contact-hero-text">
-						Follow Lava Lantern Studios on our socials for updates, content, releases,
-						behind-the-scenes development, and future project news.
+				<div class="contact-hero-image-wrap">
+					<img
+						class="contact-hero-image"
+						data-contact-hero-image=""
+						src="assets/images/contact/contact-hero-image.png"
+						alt=""
+						aria-hidden="true"
+					/>
+				</div>
+
+				<div class="contact-hero-overlay"></div>
+
+				<div class="section-inner contact-hero-inner contact-hero-content">
+					<p class="section-kicker" data-contact-hero-heading="">Contact Us</p>
+
+					<h1 data-contact-hero-title="">
+						Available for freelance and creative collaboration.
+					</h1>
+
+					<p class="contact-hero-text" data-contact-hero-body="">
+						Lava Lantern Studios is available for freelance game development, Unreal Engine content,
+						visual development, environment work, and creative project support.
 					</p>
 				</div>
 			</section>
@@ -49,12 +66,29 @@
 			<section class="contact-socials-section">
 				<div class="section-inner">
 					<div class="contact-section-heading centered">
-						<p class="section-kicker">SOCIALS</p>
-						<h2>Follow us for updates and content.</h2>
+						<p class="section-kicker" data-contact-socials-heading="">Socials</p>
+
+						<h2 data-contact-socials-title="">
+							Follow along for updates and work-in-progress content.
+						</h2>
 					</div>
 
 					<div class="contact-socials-list" data-socials-list="">
-						<!-- Social links are loaded from assets/data/socials.js -->
+						<a class="contact-social-card" href="#">
+							<span>Itch.io</span>
+						</a>
+
+						<a class="contact-social-card" href="#">
+							<span>Fab</span>
+						</a>
+
+						<a class="contact-social-card" href="#">
+							<span>YouTube</span>
+						</a>
+
+						<a class="contact-social-card" href="#">
+							<span>Discord</span>
+						</a>
 					</div>
 				</div>
 			</section>
@@ -62,17 +96,24 @@
 			<section class="contact-email-section">
 				<div class="section-inner contact-email-card">
 					<div>
-						<p class="section-kicker">COLLABORATION & QUESTIONS</p>
-						<h2>Want to collaborate, ask a question, or get in touch?</h2>
+						<p class="section-kicker" data-contact-email-heading="">Freelance & Enquiries</p>
+
+						<h2 data-contact-email-title="">
+							Looking for creative support on a project?
+						</h2>
 					</div>
 
 					<div class="contact-email-copy">
-						<p>
-							For collaboration opportunities, general questions, project discussions,
-							or business enquiries, you can contact Lava Lantern Studios directly by email.
+						<p data-contact-email-body="">
+							For freelance availability, project discussions, collaboration enquiries,
+							or general questions, you can contact Lava Lantern Studios directly by email.
 						</p>
 
-						<a class="contact-email-link" href="#" data-contact-email-link="">
+						<a
+							class="contact-email-link"
+							href="mailto:lavalanternstudios@gmail.com"
+							data-contact-email-link=""
+						>
 							lavalanternstudios@gmail.com
 						</a>
 					</div>
@@ -89,5 +130,8 @@
 		<script src="script.js"></script>
 		<script src="assets/data/socials.js"></script>
 		<script src="assets/js/contact.js"></script>
+
+		<script src="assets/content/contact-page.js"></script>
+		<script src="assets/js/contact-content.js"></script>
 	</body>
 </html>

@@ -7,12 +7,13 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 
-	<body>
+	<body class="about-page">
 		<header class="site-header">
 			<div class="header-inner">
 				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
 					<img
 						class="header-logo-image"
+						data-about-main-menu-logo=""
 						src="assets/images/logo/lava-lantern-header-logo.png"
 						alt="Lava Lantern Studios logo"
 					/>
@@ -36,10 +37,26 @@
 
 		<main>
 			<section class="about-hero">
-				<div class="section-inner about-hero-inner">
-					<p class="section-kicker">ABOUT LAVA LANTERN</p>
-					<h1>Small studio. Atmospheric worlds. Player-focused design.</h1>
-					<p class="about-hero-text">
+				<div class="about-hero-image-wrap">
+					<img
+						class="about-hero-image"
+						data-about-hero-image=""
+						src="assets/images/about/about-hero-image.png"
+						alt=""
+						aria-hidden="true"
+					/>
+				</div>
+
+				<div class="about-hero-overlay"></div>
+
+				<div class="section-inner about-hero-inner about-hero-content">
+					<p class="section-kicker" data-about-hero-heading="">About Lava Lantern</p>
+
+					<h1 data-about-hero-title="">
+						Small studio. Atmospheric worlds. Player-focused design.
+					</h1>
+
+					<p class="about-hero-text" data-about-hero-body="">
 						Lava Lantern Studios is an independent creative studio focused on building games,
 						assets, and digital experiences with atmosphere, character, and care.
 					</p>
@@ -49,19 +66,53 @@
 			<section class="about-intro-section">
 				<div class="section-inner about-intro-grid">
 					<article class="about-feature-card">
-						<p class="section-kicker">WHO ARE WE?</p>
-						<h2>Independent, creative, and hands-on.</h2>
-						<p>
-							We are a small independent studio creating projects with a strong sense of identity.
-							Our work is shaped by curiosity, experimentation, and a love for atmospheric digital worlds.
-						</p>
-						<p>
-							Lava Lantern Studios exists to make work that feels memorable, crafted, and personal —
-							whether that is a playable game, a visual environment, or a game-ready creative asset.
-						</p>
+						<p class="section-kicker" data-about-who-heading="">Who Are We?</p>
+
+						<h2 data-about-who-title="">Independent, creative, and hands-on.</h2>
+
+						<div data-about-who-body="">
+							<p>
+								We are a small independent studio creating projects with a strong sense of identity.
+								Our work is shaped by curiosity, experimentation, and a love for atmospheric digital worlds.
+							</p>
+
+							<p>
+								Lava Lantern Studios exists to make work that feels memorable, crafted, and personal,
+								whether that is a playable game, a visual environment, or a game-ready creative asset.
+							</p>
+						</div>
+
+						<div class="about-loki-card">
+							<div class="about-loki-image-wrap">
+								<img
+									class="about-loki-image"
+									data-about-loki-image=""
+									src="assets/images/about/loki.png"
+									alt="Loki"
+								/>
+							</div>
+
+							<div class="about-loki-content">
+								<p class="section-kicker" data-about-loki-heading="">Meet Loki</p>
+
+								<h3 data-about-loki-title="">
+									The studio companion behind the lantern.
+								</h3>
+
+								<p data-about-loki-body="">
+									Loki is part of the personality behind Lava Lantern Studios. Her curious,
+									playful energy reflects the kind of work we want to make: characterful,
+									memorable, and full of life.
+								</p>
+							</div>
+						</div>
 					</article>
 
-					<aside class="about-side-panel" aria-label="Lava Lantern Studios summary">
+					<aside
+						class="about-side-panel"
+						aria-label="Lava Lantern Studios summary"
+						data-about-summary-points=""
+					>
 						<div class="about-stat">
 							<span>01</span>
 							<p>Games with atmosphere and player focus.</p>
@@ -83,11 +134,14 @@
 			<section class="about-content-section">
 				<div class="section-inner">
 					<div class="about-section-heading">
-						<p class="section-kicker">WHAT WE DO</p>
-						<h2>Games, assets, worlds, and creative development.</h2>
+						<p class="section-kicker" data-about-what-heading="">What We Do</p>
+
+						<h2 data-about-what-title="">
+							Games, assets, worlds, and creative development.
+						</h2>
 					</div>
 
-					<div class="about-card-grid">
+					<div class="about-card-grid" data-about-work-cards="">
 						<article class="about-card">
 							<h3>Game Development</h3>
 							<p>
@@ -118,11 +172,14 @@
 			<section class="about-direction-section">
 				<div class="section-inner about-direction-card">
 					<div>
-						<p class="section-kicker">GOALS & DIRECTION</p>
-						<h2>Build steadily. Improve constantly. Stay recognisable.</h2>
+						<p class="section-kicker" data-about-direction-heading="">Goals & Direction</p>
+
+						<h2 data-about-direction-title="">
+							Build steadily. Improve constantly. Stay recognisable.
+						</h2>
 					</div>
 
-					<div class="about-direction-copy">
+					<div class="about-direction-copy" data-about-direction-body="">
 						<p>
 							Our direction is to grow Lava Lantern Studios into a recognisable independent studio
 							known for atmospheric games, useful creative assets, and a consistent visual identity.
@@ -140,16 +197,17 @@
 			<section class="about-values-section">
 				<div class="section-inner">
 					<div class="about-section-heading centered">
-						<p class="section-kicker">OUR MORALS</p>
-						<h2>The values behind the work.</h2>
+						<p class="section-kicker" data-about-values-heading="">Our Morals</p>
+
+						<h2 data-about-values-title="">The values behind the work.</h2>
 					</div>
 
-					<div class="about-values-grid">
+					<div class="about-values-grid" data-about-values="">
 						<article class="about-value">
 							<span>01</span>
 							<h3>Player respect</h3>
 							<p>
-								We aim to create experiences that respect the player’s time, attention, feedback,
+								We aim to create experiences that respect the player's time, attention, feedback,
 								and enjoyment.
 							</p>
 						</article>
@@ -183,6 +241,44 @@
 					</div>
 				</div>
 			</section>
+
+			<section class="about-reviews-section">
+				<div class="section-inner">
+					<div class="about-section-heading centered">
+						<p class="section-kicker" data-about-feedback-heading="">Feedback</p>
+
+						<h2 data-about-feedback-title="">
+							What people say after working with Lava Lantern Studios.
+						</h2>
+					</div>
+
+					<div class="about-reviews-grid" data-about-reviews="">
+						<article class="about-review-card">
+							<img src="assets/images/about/reviews/reviewer-one.png" alt="Reviewer Name" />
+							<h3>Reviewer Name</h3>
+							<blockquote>
+								Lava Lantern Studios brought care, clarity, and a strong creative eye to the project.
+							</blockquote>
+						</article>
+
+						<article class="about-review-card">
+							<img src="assets/images/about/reviews/reviewer-two.png" alt="Company Name" />
+							<h3>Company Name</h3>
+							<blockquote>
+								The work felt polished, thoughtful, and easy to build from.
+							</blockquote>
+						</article>
+
+						<article class="about-review-card">
+							<img src="assets/images/about/reviews/reviewer-three.png" alt="Reviewer Name" />
+							<h3>Reviewer Name</h3>
+							<blockquote>
+								A reliable creative collaborator with strong attention to atmosphere and detail.
+							</blockquote>
+						</article>
+					</div>
+				</div>
+			</section>
 		</main>
 
 		<footer class="site-footer">
@@ -192,5 +288,7 @@
 		</footer>
 
 		<script src="script.js"></script>
+		<script src="assets/content/about-page.js"></script>
+		<script src="assets/js/about-content.js"></script>
 	</body>
 </html>

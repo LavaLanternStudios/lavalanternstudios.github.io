@@ -1,194 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lava Lantern Studios | Home</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
-        <img
-          class="header-logo-image"
-          src="assets/images/logo/lava-lantern-header-logo.png"
-          alt="Lava Lantern Studios logo"
-        />
-      </a>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="referrer" content="strict-origin-when-cross-origin" />
+		<title>Lava Lantern Studios | Home</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
 
-      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-        Menu
-      </button>
+	<body class="home-page">
+		<header class="site-header">
+			<div class="header-inner">
+				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
+					<img
+						class="header-logo-image"
+						data-home-main-menu-logo=""
+						src="assets/images/logo/lava-lantern-header-logo.png"
+						alt="Lava Lantern Studios logo"
+					/>
+				</a>
 
-      <nav class="site-nav">
-        <a class="active" href="index.html">Home</a>
-        <a href="games.html">Games</a>
-        <a href="fab.html">Fab</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="about.html">About Lava Lantern</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="devlogs.html">Devlogs</a>
-      </nav>
-    </div>
-  </header>
+				<button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+					Menu
+				</button>
 
-  <main>
-    <section class="home-hero">
-      <video class="hero-background-video" autoplay muted loop playsinline aria-hidden="true">
-        <source src="assets/videos/general/home-showreel.mp4" type="video/mp4" />
-      </video>
-
-      <div class="hero-overlay"></div>
-
-      <div class="hero-content">
-        <p class="hero-kicker">Welcome to</p>
-
-        <img
-          class="hero-logo"
-          src="assets/images/logo/lava-lantern-main-logo.png"
-          alt="Lava Lantern Studios"
-        />
-
-        <h1 class="visually-hidden">Lava Lantern Studios</h1>
-
-        <p class="hero-tagline">
-          Creating games, assets, and digital worlds with atmosphere, character, and craft.
-        </p>
-
-        <div class="button-row">
-          <a class="button" href="games.html">View Games</a>
-          <a class="button secondary" href="about.html">About Us</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="page-section">
-      <div class="intro-panel">
-        <div>
-          <p class="section-kicker">About the Studio</p>
-          <h2>Independent games, creative tools, and characterful worlds.</h2>
-          <p>
-            Lava Lantern Studios is an independent creative studio focused on game development,
-            Unreal Engine content, digital environments, and interactive experiences.
-          </p>
-          <p>
-            Guided by a love of atmosphere, playful worlds, strong visual identity, and a curious
-            corgi named Loki, we create projects designed to feel polished, memorable, and full of personality.
-          </p>
-          <a class="button" href="about.html">Learn More</a>
-        </div>
-
-        <div class="mascot-placeholder">
-          <img
-            class="mascot-image"
-            src="assets/images/home/home-loki-mascot.png"
-            alt="Loki the corgi mascot"
-          />
-        </div>
-      </div>
-    </section>
-
-    <section class="page-section">
-	    <div class="section-heading">
-	  	  <p class="section-kicker">Featured Work</p>
-			<h2>Games & Projects</h2>
-			<p class="page-intro">
-			  A preview of current, upcoming, and in-development projects from Lava Lantern Studios.
-		    </p>
-		</div>
-
-		<div class="feature-grid three-columns" id="home-games-preview">
-			<div class="home-preview-empty">
-				<p>Loading games...</p>
+				<nav class="site-nav">
+					<a class="active" href="index.html">Home</a>
+					<a href="games.html">Games</a>
+					<a href="fab.html">Fab</a>
+					<a href="portfolio.html">Portfolio</a>
+					<a href="about.html">About Lava Lantern</a>
+					<a href="contact.html">Contact Us</a>
+					<a href="devlogs.html">Devlogs</a>
+				</nav>
 			</div>
-		</div>
+		</header>
 
-		<div class="section-button-row">
-			<a class="button secondary" href="games.html">View All Games</a>
-		</div>
-    </section>
+		<main>
+			<section class="home-hero">
+				<div class="hero-video-embed" data-home-showreel=""></div>
 
-	  <section class="page-section">
-		<div class="split-preview-grid">
-			<div class="preview-panel">
-				<div class="section-heading compact">
-					<p class="section-kicker">Fab Marketplace</p>
-					<h2>Fab Previews</h2>
-					<p>
-						Game-ready assets, tools, and creative resources for developers.
+				<div class="hero-overlay"></div>
+
+				<div class="hero-content">
+					<p class="hero-kicker">Welcome to</p>
+
+					<img
+						class="hero-logo"
+						data-home-central-logo=""
+						src="assets/images/logo/lava-lantern-main-logo.png"
+						alt="Lava Lantern Studios"
+					/>
+
+					<h1 class="visually-hidden">Lava Lantern Studios</h1>
+
+					<p class="hero-tagline" data-home-hero-tagline="">
+						Creating games, assets, and digital worlds with atmosphere, character, and craft.
+					</p>
+
+					<div class="button-row">
+						<a class="button" href="games.html">View Games</a>
+						<a class="button secondary" href="about.html">About Us</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="page-section">
+				<div class="intro-panel">
+					<div>
+						<p class="section-kicker" data-home-about-heading="">About the Studio</p>
+
+						<h2 data-home-about-title="">
+							Independent games, creative tools, and characterful worlds.
+						</h2>
+
+						<div data-home-about-body="">
+							<p>
+								Lava Lantern Studios is an independent creative studio focused on game development,
+								Unreal Engine content, digital environments, and interactive experiences.
+							</p>
+
+							<p>
+								Guided by a love of atmosphere, playful worlds, strong visual identity, and a curious
+								corgi named Loki, we create projects designed to feel polished, memorable, and full of personality.
+							</p>
+						</div>
+
+						<a class="button" href="about.html">Learn More</a>
+					</div>
+
+					<div class="mascot-placeholder">
+						<img
+							class="mascot-image"
+							data-home-about-image=""
+							src="assets/images/home/home-loki-mascot.png"
+							alt="Lava Lantern Studios preview"
+						/>
+					</div>
+				</div>
+			</section>
+
+			<section class="page-section">
+				<div class="section-heading">
+					<p class="section-kicker" data-home-featured-heading="">Featured Work</p>
+
+					<h2 data-home-featured-title="">Games & Projects</h2>
+
+					<p class="page-intro" data-home-featured-body="">
+						A preview of current, upcoming, and in-development projects from Lava Lantern Studios.
 					</p>
 				</div>
 
-				<div class="mini-card-grid" id="home-fab-preview">
+				<div class="feature-grid three-columns" id="home-games-preview">
 					<div class="home-preview-empty">
-						<p>Loading Fab products...</p>
+						<p>Loading games...</p>
 					</div>
 				</div>
 
-				<a class="button secondary" href="fab.html">View Fab Content</a>
-			</div>
-
-			<div class="preview-panel">
-				<div class="section-heading compact">
-					<p class="section-kicker">Portfolio</p>
-					<h2>Portfolio Highlights</h2>
-					<p>
-						A selected look at visual, technical, and interactive work.
-					</p>
+				<div class="section-button-row">
+					<a class="button secondary" href="games.html">View All Games</a>
 				</div>
+			</section>
 
-				<div class="mini-card-grid" id="home-portfolio-preview">
-					<div class="home-preview-empty">
-						<p>Loading portfolio pieces...</p>
+			<section class="page-section">
+				<div class="split-preview-grid">
+					<div class="preview-panel">
+						<div class="section-heading compact">
+							<p class="section-kicker" data-home-fab-heading="">Fab Marketplace</p>
+
+							<h2 data-home-fab-title="">Fab Previews</h2>
+
+							<p data-home-fab-body="">
+								Game-ready assets, tools, and creative resources for developers.
+							</p>
+						</div>
+
+						<div class="mini-card-grid" id="home-fab-preview">
+							<div class="home-preview-empty">
+								<p>Loading Fab products...</p>
+							</div>
+						</div>
+
+						<a class="button secondary" href="fab.html">View Fab Content</a>
+					</div>
+
+					<div class="preview-panel">
+						<div class="section-heading compact">
+							<p class="section-kicker" data-home-portfolio-heading="">Portfolio</p>
+
+							<h2 data-home-portfolio-title="">Portfolio Highlights</h2>
+
+							<p data-home-portfolio-body="">
+								A selected look at visual, technical, and interactive work.
+							</p>
+						</div>
+
+						<div class="mini-card-grid" id="home-portfolio-preview">
+							<div class="home-preview-empty">
+								<p>Loading portfolio pieces...</p>
+							</div>
+						</div>
+
+						<a class="button secondary" href="portfolio.html">View Portfolio</a>
 					</div>
 				</div>
+			</section>
 
-				<a class="button secondary" href="portfolio.html">View Portfolio</a>
-			</div>
-		</div>
-	</section>
+			<section class="page-section">
+				<div class="latest-panel" data-home-latest-devlog="">
+					<div>
+						<p class="section-kicker">Latest From The Studio</p>
 
-	<section class="page-section">
-		<div class="latest-panel" data-home-latest-devlog="">
-			<div>
-				<p class="section-kicker">Latest From The Studio</p>
-				<h2>Loading latest devlog...</h2>
-				<p>
-					Checking the latest development update from Lava Lantern Studios.
+						<h2>Loading latest devlog...</h2>
+
+						<p>
+							Checking the latest development update from Lava Lantern Studios.
+						</p>
+					</div>
+
+					<a class="button" href="devlogs.html">View Devlogs</a>
+				</div>
+			</section>
+
+			<section class="home-cta">
+				<h2 data-home-bottom-title="">Explore Lava Lantern Studios</h2>
+
+				<p data-home-bottom-body="">
+					Discover our games, follow development progress, view marketplace content,
+					or get in touch.
 				</p>
-			</div>
 
-			<a class="button" href="devlogs.html">View Devlogs</a>
-		</div>
-	</section>
+				<div class="button-row">
+					<a class="button" href="games.html">Games</a>
+					<a class="button secondary" href="devlogs.html">Devlogs</a>
+					<a class="button secondary" href="contact.html">Contact Us</a>
+				</div>
+			</section>
+		</main>
 
-    <section class="home-cta">
-      <h2>Explore Lava Lantern Studios</h2>
-      <p>
-        Discover our games, follow development progress, view marketplace content,
-        or get in touch.
-      </p>
+		<footer class="site-footer">
+			<p>&copy; 2026 Lava Lantern Studios. All rights reserved.</p>
+		</footer>
 
-      <div class="button-row">
-        <a class="button" href="games.html">Games</a>
-        <a class="button secondary" href="devlogs.html">Devlogs</a>
-        <a class="button secondary" href="contact.html">Contact Us</a>
-      </div>
-    </section>
-  </main>
+		<script src="script.js"></script>
 
-  <footer class="site-footer">
-    <p>© 2026 Lava Lantern Studios. All rights reserved.</p>
-  </footer>
+		<script src="assets/content/home-page.js"></script>
+		<script src="assets/js/home-content.js"></script>
 
-  <script src="script.js"></script>
+		<script src="assets/data/games.js"></script>
+		<script src="assets/data/fab-products.js"></script>
+		<script src="assets/data/portfolio-data.js"></script>
+		<script src="assets/data/devlogs/devlog-sources.js"></script>
 
-  <script src="assets/data/games.js"></script>
-  <script src="assets/data/fab-products.js"></script>
-  <script src="assets/data/portfolio-data.js"></script>
-  <script src="assets/data/devlogs/devlog-sources.js"></script>
-
-  <script src="assets/js/home.js"></script>
-</body>
+		<script src="assets/js/home.js"></script>
+	</body>
 </html>

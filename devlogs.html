@@ -7,12 +7,13 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 
-	<body>
+	<body class="devlogs-page">
 		<header class="site-header">
 			<div class="header-inner">
 				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
 					<img
 						class="header-logo-image"
+						data-devlogs-main-menu-logo=""
 						src="assets/images/logo/lava-lantern-header-logo.png"
 						alt="Lava Lantern Studios logo"
 					/>
@@ -36,10 +37,25 @@
 
 		<main>
 			<section class="devlogs-hero">
-				<div class="section-inner devlogs-hero-inner">
-					<p class="section-kicker">DEVLOGS</p>
-					<h1>Development updates, progress notes, and project changes.</h1>
-					<p class="devlogs-hero-text">
+				<div class="devlogs-hero-image-wrap">
+					<img
+						class="devlogs-hero-image"
+						data-devlogs-hero-image=""
+						src="assets/images/devlogs/devlogs-hero-image.png"
+						alt="Lava Lantern Studios devlog hero image"
+					/>
+				</div>
+
+				<div class="devlogs-hero-overlay"></div>
+
+				<div class="section-inner devlogs-hero-inner devlogs-hero-content">
+					<p class="section-kicker" data-devlogs-hero-heading="">DEVLOGS</p>
+
+					<h1 data-devlogs-hero-title="">
+						Development updates, progress notes, and project changes.
+					</h1>
+
+					<p class="devlogs-hero-text" data-devlogs-hero-body="">
 						Follow the latest Lava Lantern Studios development updates, including gameplay changes,
 						project progress, visual improvements, experiments, and release notes.
 					</p>
@@ -49,8 +65,8 @@
 			<section class="devlogs-browser-section">
 				<div class="section-inner">
 					<div class="devlogs-section-heading">
-						<p class="section-kicker">BROWSE UPDATES</p>
-						<h2>All devlogs</h2>
+						<p class="section-kicker" data-devlogs-browser-heading="">BROWSE UPDATES</p>
+						<h2 data-devlogs-browser-title="">All devlogs</h2>
 					</div>
 
 					<div class="devlog-controls-card">
@@ -102,7 +118,11 @@
 		</footer>
 
 		<script src="script.js"></script>
+
 		<script src="assets/data/devlogs/devlog-sources.js"></script>
 		<script src="assets/js/devlogs.js"></script>
+
+		<script src="assets/content/devlogs-page.js"></script>
+		<script src="assets/js/devlogs-content.js"></script>
 	</body>
 </html>

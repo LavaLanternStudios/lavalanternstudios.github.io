@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="referrer" content="strict-origin-when-cross-origin" />
 
 		<title>Lava Lantern Studios | Portfolio</title>
 
@@ -15,6 +16,7 @@
 				<a class="logo" href="index.html" aria-label="Lava Lantern Studios Home">
 					<img
 						class="header-logo-image"
+						data-portfolio-main-menu-logo=""
 						src="assets/images/logo/lava-lantern-header-logo.png"
 						alt="Lava Lantern Studios logo"
 					/>
@@ -43,12 +45,18 @@
 
 		<main>
 			<section class="portfolio-hero">
-				<div class="section-inner">
-					<p class="section-label">Portfolio</p>
+				<div class="portfolio-video-embed" data-portfolio-showreel=""></div>
 
-					<h1>Creative work, projects, and visual development.</h1>
+				<div class="portfolio-hero-overlay"></div>
 
-					<p>
+				<div class="section-inner portfolio-hero-content">
+					<p class="section-label" data-portfolio-hero-heading="">Portfolio</p>
+
+					<h1 data-portfolio-hero-title="">
+						Creative work, projects, and visual development.
+					</h1>
+
+					<p data-portfolio-hero-body="">
 						Explore a selection of Lava Lantern Studios projects, artwork,
 						environments, assets, and creative development work.
 					</p>
@@ -58,35 +66,83 @@
 			<section class="portfolio-showcase-section">
 				<div class="section-inner">
 					<div class="section-heading portfolio-showcase-heading">
-						<p class="section-label">Featured Work</p>
-						<h2>Top Picks</h2>
+						<p class="section-label" data-portfolio-featured-heading="">Featured Work</p>
 					</div>
 
 					<div class="top-pick-slider" id="topPickSlider">
-						<!-- Top pick content is added by JavaScript -->
+						<div class="top-pick-track">
+							<div class="top-pick-slide">
+								<a class="top-pick-card" href="#">
+									<div class="top-pick-image-wrap">
+										<div class="mock-wide">Featured Image</div>
+									</div>
+
+									<div class="top-pick-content">
+										<h3>Atmospheric Cave Scene</h3>
+
+										<p>
+											A featured portfolio piece showing how the new colour scheme frames visual work.
+										</p>
+									</div>
+								</a>
+							</div>
+						</div>
 					</div>
 
 					<div class="top-pick-dots" id="topPickDots">
-						<!-- Slider dots are added by JavaScript -->
+						<button class="top-pick-dot active" type="button" aria-label="Top pick 1"></button>
+						<button class="top-pick-dot" type="button" aria-label="Top pick 2"></button>
+						<button class="top-pick-dot" type="button" aria-label="Top pick 3"></button>
 					</div>
 
 					<div class="section-heading portfolio-grid-heading">
-						<p class="section-label">Full Collection</p>
-						<h2>All Portfolio Pieces</h2>
+						<p class="section-label" data-portfolio-collection-heading="">Full Collection</p>
+
+						<h2 data-portfolio-collection-title="">All Portfolio Pieces</h2>
 					</div>
 
 					<div class="portfolio-grid" id="portfolioGrid">
-						<!-- Thumbnail cards are added by JavaScript -->
+						<a class="portfolio-thumbnail-card" href="#">
+							<div class="mock-thumb">Portfolio Image</div>
+							<div class="portfolio-thumbnail-overlay">
+								<h3>World Study</h3>
+							</div>
+						</a>
+
+						<a class="portfolio-thumbnail-card" href="#">
+							<div class="mock-thumb">Portfolio Image</div>
+							<div class="portfolio-thumbnail-overlay">
+								<h3>Lighting Test</h3>
+							</div>
+						</a>
+
+						<a class="portfolio-thumbnail-card" href="#">
+							<div class="mock-thumb">Portfolio Image</div>
+							<div class="portfolio-thumbnail-overlay">
+								<h3>Environment Blockout</h3>
+							</div>
+						</a>
+
+						<a class="portfolio-thumbnail-card" href="#">
+							<div class="mock-thumb">Portfolio Image</div>
+							<div class="portfolio-thumbnail-overlay">
+								<h3>Interactive Scene</h3>
+							</div>
+						</a>
 					</div>
 				</div>
 			</section>
 		</main>
 
 		<footer class="site-footer">
-			<p>© 2026 Lava Lantern Studios. All rights reserved.</p>
+			<p>&copy; 2026 Lava Lantern Studios. All rights reserved.</p>
 		</footer>
 
 		<script src="script.js"></script>
+
+		<script src="assets/content/portfolio-page.js"></script>
+		<script src="assets/js/portfolio-content.js"></script>
+
 		<script src="assets/data/portfolio-data.js"></script>
 		<script src="assets/js/portfolio.js"></script>
 	</body>
