@@ -9,8 +9,8 @@ window.portfolioPageContent = {
 
 	text: {
 		heroHeading: "Portfolio",
-		heroTitle: "Creative work, projects, and visual development.",
-		heroBody: "Explore a selection of Lava Lantern Studios projects, artwork, environments, assets, and creative development work.",
+		heroTitle: "Personal work and creative projects across games, environments, and assets.",
+		heroBody: "This portfolio showcases personal projects and creative work I have developed over time, highlighting the skills, style, and technical experience that now shape the direction of Lava Lantern Studios.",
 
 		featuredHeading: "Featured Work",
 
@@ -19,8 +19,8 @@ window.portfolioPageContent = {
 	},
 
 	textSizes: {
-		orangeHeading: "1rem",
-		whiteTitle: "3rem",
+		orangeHeading: "2rem",
+		whiteTitle: "2.5rem",
 		whiteBody: "1.15rem"
 	}
 };

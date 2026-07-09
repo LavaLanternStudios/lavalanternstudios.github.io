@@ -9,20 +9,20 @@ window.gamesPageContent = {
 
 	text: {
 		heroHeading: "Games",
-		heroTitle: "Player-focused games with atmosphere, character, and craft.",
-		heroBody: "At Lava Lantern Studios, each game is built around the player experience. We aim to create games that feel responsive, memorable, and rewarding, refining ideas through feedback, playtesting, and player input.",
+		heroTitle: "Games built around the players, for the players.",
+		heroBody: "At Lava Lantern Studios, we aim to create games with the player at the heart of each design. Building fun, memorable experiences players can enjoy, connect with, and share with others.",
 
 		latestHeading: "Latest Release",
-		latestIntro: "Our latest playable release, available now.",
+		latestIntro: "Our latest release, available now!",
 
-		moreGamesHeading: "More Games & Projects",
-		moreGamesTitle: "Current and upcoming work",
-		moreGamesBody: "A growing collection of released games, prototypes, experiments, and upcoming projects."
+		moreGamesHeading: "More Games & Releases",
+		moreGamesTitle: "Released and upcoming titles",
+		moreGamesBody: "Explore the latest games from Lava Lantern Studios, including playable releases and upcoming titles currently on the way."
 	},
 
 	textSizes: {
-		orangeHeading: "1rem",
-		whiteTitle: "3rem",
+		orangeHeading: "2rem",
+		whiteTitle: "2.5rem",
 		whiteBody: "1.15rem"
 	}
 };

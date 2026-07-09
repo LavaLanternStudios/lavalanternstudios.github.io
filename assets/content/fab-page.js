@@ -8,19 +8,20 @@ window.fabPageContent = {
 	},
 
 	text: {
-		heroTitle: "Fab Products",
-		heroBody: "Explore Lava Lantern Studios content available through Fab, including game-ready assets, tools, resources, and creative packs designed to support developers, creators, and studios.",
+		heroHeading: "Fab Marketplace",
+		heroTitle: "Game-ready packs built to fit your project.",
+		heroBody: "Explore high-quality assets and creative packs designed to be versatile, adaptable, and easy to use across different engines, styles, and workflows.",
 
-		latestHeading: "Latest Release",
-		latestTitle: "Latest Fab Product",
+		latestHeading: "Latest on Fab",
+		latestTitle: "Latest Asset Release",
 
-		moreHeading: "More Products",
+		moreHeading: "More Assets and Packs",
 		moreTitle: "Available on Fab"
 	},
 
 	textSizes: {
-		orangeHeading: "1rem",
-		whiteTitle: "3rem",
+		orangeHeading: "2rem",
+		whiteTitle: "2.5rem",
 		whiteBody: "1.15rem"
 	}
 };

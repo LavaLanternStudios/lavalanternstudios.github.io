@@ -2,7 +2,7 @@ window.games = [
   {
     title: "Lava Below",
     releaseDate: "2026-07-02",
-    description: "Lava Below is a compact game experience built around atmosphere, timing, and exploration beneath the surface. Descend into a dangerous underground world, avoid the rising heat, and see how far you can push your run.",
+    description: "Lava Below is a free-to-play, fast-paced vertical arcade platformer where you climb out of an erupting volcano before the rising lava catches you. Dodge falling rocks, avoid lava hazards, cross unstable platforms, and use doorways between floors to keep moving upward.",
     price: "Free to Play",
     platforms: ["Itch.io", "Browser / PC"],
     released: true,
@@ -12,12 +12,12 @@ window.games = [
   },
   {
     title: "Unannounced Title",
-    releaseDate: "2026-06-31",
-    description: "A short description of this game or project. Explain the core idea, genre, or player experience in one or two sentences.",
+    releaseDate: "2026-07-08",
+    description: "Currently in development! More details will be shared when the project is ready to reveal.",
     price: "TBC",
     platforms: ["Itch.io", "Browser / PC"],
     released: false,
-    image: "assets/images/games/game-preview-02.jpg",
+    image: "assets/images/games/UnannouncedTitle.jpg",
     gameURL: "https://example.com",
     tags: ["Upcoming", "In Development"]
   }

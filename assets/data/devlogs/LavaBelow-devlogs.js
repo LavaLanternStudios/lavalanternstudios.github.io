@@ -1,16 +1,16 @@
 window.LavaLanternDevlogs.registerGame("LavaBelow-devlogs.js", [
 	{
-		date: "2026-07-06",
-		title: "Lava Below Devlog Example",
-		image: "assets/images/games/lava-below-cover.png",
-		description: "Initial devlog entry for Lava Below. Replace this text with what changed, what was improved, or what was worked on during development.",
-		devlogURL: "#"
+		date: "2026-07-02",
+		title: "Lava Below v1.0.1 - Hazard Warning Update",
+		image: "assets/images/games/lava-below-cover.jpg",
+		description: "Improvements to how hazards are communicated before appearing, as well as some quality of life changes.",
+		devlogURL: "https://lava-lantern-studios.itch.io/lava-below/devlog/1572556/lava-below-v101-hazard-warning-update"
 	},
 	{
-		date: "2026-07-05",
-		title: "Early Gameplay Refinement",
-		image: "assets/images/games/lava-below-cover.png",
-		description: "Worked on early gameplay feel, player feedback, and the first pass of general game flow.",
-		devlogURL: "#"
+		date: "2026-07-02",
+		title: "Lava Below v1.0.0 - Released on itch.io",
+		image: "assets/images/games/lava-below-cover.jpg",
+		description: "Lava Below is released and ready to play!",
+		devlogURL: "https://lava-lantern-studios.itch.io/lava-below"
 	}
 ]);

@@ -10,33 +10,33 @@ window.homePageContent = {
 	},
 
 	text: {
-		heroTagline: "Creating games, assets, and digital worlds with atmosphere, character, and craft.",
+		heroTagline: "Games, Assets, and Experiences Built with Character",
 
 		aboutStudioHeading: "About the Studio",
-		aboutStudioTitle: "Independent games, creative tools, and characterful worlds.",
+		aboutStudioTitle: "Independent games, game-ready assets, and worlds with character.",
 		aboutStudioBody: [
-			"Lava Lantern Studios is an independent creative studio focused on game development, Unreal Engine content, digital environments, and interactive experiences.",
-			"Guided by a love of atmosphere, playful worlds, strong visual identity, and a curious corgi named Loki, we create projects designed to feel polished, memorable, and full of personality."
+			"Lava Lantern Studios is an independent game and interactive development studio creating original games, game-ready assets, digital environments, and interactive experiences.",
+			"Our games are designed around the player, focusing on fun, enjoyable experiences with atmosphere, personality, and a strong sense of connection that players can share with others. Our assets are made to be high-quality, versatile, and adaptable, giving creators content they can shape around their own projects."
 		],
 
-		featuredWorkHeading: "Featured Work",
-		featuredWorkTitle: "Games & Projects",
-		featuredWorkBody: "A preview of current, upcoming, and in-development projects from Lava Lantern Studios.",
+		featuredWorkHeading: "Games & Projects",
+		featuredWorkTitle: "Latest & Upcoming Releases",
+		featuredWorkBody: "Explore current and upcoming games from Lava Lantern Studios.",
 
 		fabHeading: "Fab Marketplace",
-		fabTitle: "Fab Previews",
-		fabBody: "Game-ready assets, tools, and creative resources for developers.",
+		fabTitle: "Game-ready assets for creative projects.",
+		fabBody: "Game-ready assets designed to be versatile, adaptable, and easy to use across different creative projects.",
 
 		portfolioHeading: "Portfolio",
-		portfolioTitle: "Portfolio Highlights",
-		portfolioBody: "A selected look at visual, technical, and interactive work.",
+		portfolioTitle: "A look at the work behind the studio.",
+		portfolioBody: "A selection of projects, experiments, and development work showcasing the creative and technical side of the studio.",
 
 		bottomTitle: "Explore Lava Lantern Studios",
-		bottomBody: "Discover our games, follow development progress, view marketplace content, or get in touch."
+		bottomBody: "Take a closer look at our games, learn what drives the studio, or get in touch about future projects and collaborations."
 	},
 
 	textSizes: {
-		orangeHeading: "1.25rem",
+		orangeHeading: "2rem",
 		whiteTitle: "2.5rem",
 		whiteBody: "1.15rem"
 	}

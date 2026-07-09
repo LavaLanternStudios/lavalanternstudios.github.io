@@ -64,12 +64,19 @@ function renderSummaryPoints(selector, points) {
 	if (!container || !Array.isArray(points)) return;
 
 	container.innerHTML = points
-		.map((point, index) => `
-			<div class="about-stat">
-				<span>${String(index + 1).padStart(2, "0")}</span>
-				<p>${escapeHTML(point)}</p>
-			</div>
-		`)
+		.map((point, index) => {
+			const number = point.number || String(index + 1).padStart(2, "0");
+			const title = point.title || "";
+			const body = point.body || "";
+
+			return `
+				<div class="about-stat">
+					<span>${escapeHTML(number)}</span>
+					<h3>${escapeHTML(title)}</h3>
+					<p>${escapeHTML(body)}</p>
+				</div>
+			`;
+		})
 		.join("");
 }
 

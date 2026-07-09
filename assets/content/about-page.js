@@ -7,74 +7,86 @@ window.aboutPageContent = {
 
 	text: {
 		heroHeading: "About Lava Lantern",
-		heroTitle: "Small studio. Atmospheric worlds. Player-focused design.",
-		heroBody: "Lava Lantern Studios is an independent creative studio focused on building games, assets, and digital experiences with atmosphere, character, and care.",
+		heroTitle: "A small independent studio creating games, assets, and digital experiences.",
+		heroBody: "Lava Lantern Studios is built around creativity, care, and player-focused design. We create original games for players to enjoy and share, alongside game-ready assets designed to help fellow developers build their own worlds.",
 
 		whoHeading: "Who Are We?",
-		whoTitle: "Independent, creative, and hands-on.",
+		whoTitle: "Independent, creative, and player-focused.",
 		whoBody: [
-			"We are a small independent studio creating projects with a strong sense of identity. Our work is shaped by curiosity, experimentation, and a love for atmospheric digital worlds.",
-			"Lava Lantern Studios exists to make work that feels memorable, crafted, and personal, whether that is a playable game, a visual environment, or a game-ready creative asset."
+			"Lava Lantern Studios is currently a small independent studio led by one developer, with a focus on creating work that feels polished, useful, and full of personality.",
+			"The studio brings together original games, game-ready assets, and digital experiences with a simple aim: to create things players can enjoy and creators can build from."
 		],
 
 		lokiHeading: "Meet Loki",
 		lokiTitle: "The studio companion behind the lantern.",
-		lokiBody: "Loki is part of the personality behind Lava Lantern Studios. Her curious, playful energy reflects the kind of work we want to make: characterful, memorable, and full of life.",
+		lokiBody: "Loki is the playful, sassy little floof who helped inspire the Lava Lantern Studios mascot. Her curiosity and energy made her the perfect fit for the little pupper staring up at the glowing lantern of lava.",
 
 		whatHeading: "What We Do",
-		whatTitle: "Games, assets, worlds, and creative development.",
+		whatTitle: "Games, assets, and creative development.",
 
 		directionHeading: "Goals & Direction",
-		directionTitle: "Build steadily. Improve constantly. Stay recognisable.",
+		directionTitle: "Creating games people enjoy, and assets creators can rely on.",
 		directionBody: [
-			"Our direction is to grow Lava Lantern Studios into a recognisable independent studio known for atmospheric games, useful creative assets, and a consistent visual identity.",
-			"We want each release to feel more refined than the last. That means listening to players, learning from development, improving our process, and keeping quality at the centre of what we make."
+			"The direction for Lava Lantern Studios is to grow into a recognisable independent studio known for enjoyable games, adaptable creative assets, and a clear creative identity.",
+			"Each release is an opportunity to improve the work, learn from the process, and build a stronger foundation for future games, resources, and collaborations. Long term, the aim is to create original IP while also supporting other developers with useful, high-quality content."
 		],
 
-		valuesHeading: "Our Morals",
+		valuesHeading: "Our Values",
 		valuesTitle: "The values behind the work.",
 
-		feedbackHeading: "Feedback",
-		feedbackTitle: "What people say after working with Lava Lantern Studios."
+		feedbackHeading: "Kind Words",
+		feedbackTitle: "Kind words from clients, creators, and collaborators."
 	},
 
 	summaryPoints: [
-		"Games with atmosphere and player focus.",
-		"Assets and tools for developers and creators.",
-		"Creative work shaped by feedback and refinement."
+		{
+			number: "01",
+			title: "The Player",
+			body: "Games are designed around player experience, with a focus on fun, memorable, and moments people can enjoy, connect with, and share."
+		},
+		{
+			number: "02",
+			title: "The Creator",
+			body: "Assets and packs are made to be flexible, adaptable, and easy to build from across different projects, styles, and needs."
+		},
+		{
+			number: "03",
+			title: "The Vision",
+			body: "The goal is to grow Lava Lantern Studios into a reliable creative space for making enjoyable games, and useful resources that support the indie development community."
+		}
 	],
 
 	workCards: [
 		{
 			title: "Game Development",
-			body: "We create games designed around atmosphere, readable gameplay, player feedback, and memorable moments."
+			body: "Original games designed around player enjoyment, clear interaction, and experiences that are fun to play and easy to connect with."
 		},
 		{
-			title: "Digital Assets",
-			body: "We produce game-ready assets, interface elements, environments, tools, and creative resources for other developers and studios."
+			title: "Game-Ready Assets",
+			body: "Versatile assets and packs designed to support developers and creators across different engines, styles, and project needs."
 		},
 		{
 			title: "Visual Development",
-			body: "We explore concepts, worlds, styles, and visual ideas that help give each project its own tone and identity."
+			body: "Creative exploration for worlds, environments, interfaces, and visual ideas that help give each project direction and identity."
 		}
 	],
 
 	values: [
 		{
-			title: "Player respect",
-			body: "We aim to create experiences that respect the player's time, attention, feedback, and enjoyment."
+			title: "Player Enjoyment",
+			body: "We want our games to feel fun, replayable, and engaging, with experiences that players can connect with, enjoy, and share with others."
 		},
 		{
-			title: "Honest craft",
-			body: "We believe in making things with care, improving through iteration, and being honest about the work behind each project."
+			title: "Creator Support",
+			body: "We create assets and packs to be useful, adaptable, and easy to work with, helping developers save time and build with confidence."
 		},
 		{
-			title: "Creative identity",
-			body: "We want our projects to feel like they belong to Lava Lantern Studios: atmospheric, characterful, and thoughtfully designed."
+			title: "Quality Over Quantity",
+			body: "We would rather take the time to make something polished than rush work out before it is ready. We want the Lava Lantern Studios logo to convey fun, high-quality games and assets."
 		},
 		{
-			title: "Community input",
-			body: "We value feedback, playtesting, and conversation with players, creators, and developers who help shape better work."
+			title: "Open & Curious",
+			body: "We want Lava Lantern Studios to stay friendly, approachable, and willing to learn from feedback, while exploring different genres, ideas, and creative directions."
 		}
 	],
 
@@ -97,8 +109,8 @@ window.aboutPageContent = {
 	],
 
 	textSizes: {
-		orangeHeading: "1rem",
-		whiteTitle: "3rem",
+		orangeHeading: "2rem",
+		whiteTitle: "2.5rem",
 		whiteBody: "1.15rem"
 	}
 };

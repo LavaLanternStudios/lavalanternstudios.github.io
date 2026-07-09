@@ -5,14 +5,14 @@ const devlogsPageContent = {
 	heroImageAlt: "Lava Lantern Studios devlog hero image",
 
 	heroOrangeHeading: "DEVLOGS",
-	heroWhiteTitle: "Development updates, progress notes, and project changes.",
+	heroWhiteTitle: "Game updates, patch notes, and release progress.",
 	heroWhiteBody:
-		"Follow the latest Lava Lantern Studios development updates, including gameplay changes, project progress, visual improvements, experiments, and release notes.",
+		"Follow the latest updates for Lava Lantern Studios games, including patch notes, gameplay changes, release news, and ongoing improvements after launch.",
 
 	browseOrangeHeading: "BROWSE UPDATES",
-	browseWhiteTitle: "All devlogs",
+	browseWhiteTitle: "Latest game updates",
 
-	orangeHeadingTextSize: "1rem",
-	whiteTitleTextSize: "4.2rem",
-	whiteBodyTextSize: "1.25rem"
+	orangeHeadingTextSize: "2rem",
+	whiteTitleTextSize: "2.5rem",
+	whiteBodyTextSize: "1.15rem"
 };
