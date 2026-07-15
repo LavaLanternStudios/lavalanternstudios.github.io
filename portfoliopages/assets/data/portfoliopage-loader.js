@@ -2,6 +2,49 @@ const projectId = document.body.dataset.projectId;
 const project = portfolioPages[projectId];
 const projectContent = window.projectPageContent?.[projectId];
 
+
+function getYouTubeVideoId(url) {
+	const value = String(url || "").trim();
+
+	const match = value.match(
+		/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/|youtube\.com\/live\/)([^&?/]+)/
+	);
+
+	return match ? match[1] : "";
+}
+
+function createHeroYouTubeURL(url) {
+	const videoId = getYouTubeVideoId(url);
+	if (!videoId) return url || "";
+
+	const embedURL = new URL(`https://www.youtube.com/embed/${videoId}`);
+
+	try {
+		const suppliedURL = new URL(url, window.location.href);
+		const shareToken = suppliedURL.searchParams.get("si");
+
+		if (shareToken) {
+			embedURL.searchParams.set("si", shareToken);
+		}
+	} catch (error) {
+		/* The validated video ID is enough to build the player URL. */
+	}
+
+	/*
+		YouTube requires the video ID in `playlist` when looping one video.
+		Muted playback gives autoplay the best browser compatibility.
+	*/
+	embedURL.searchParams.set("autoplay", "1");
+	embedURL.searchParams.set("mute", "1");
+	embedURL.searchParams.set("loop", "1");
+	embedURL.searchParams.set("playlist", videoId);
+	embedURL.searchParams.set("controls", "0");
+	embedURL.searchParams.set("playsinline", "1");
+	embedURL.searchParams.set("rel", "0");
+
+	return embedURL.toString();
+}
+
 function getMediaSource(media, section = null) {
 	let source = media?.src || "";
 
@@ -696,11 +739,14 @@ if (project) {
 
 	if (heroElement) {
 		if (project.heroType === "video" && project.heroVideo) {
+			const heroVideoURL = createHeroYouTubeURL(project.heroVideo);
+
 			heroElement.innerHTML = `
 				<iframe
-					src="${project.heroVideo}"
+					src="${heroVideoURL}"
 					title="${project.title}"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					referrerpolicy="strict-origin-when-cross-origin"
 					allowfullscreen
 				></iframe>
 			`;

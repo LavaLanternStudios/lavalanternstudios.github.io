@@ -3688,3 +3688,23 @@ h3,
 		order: 3;
 	}
 }
+
+/* ================================
+   Main Hero YouTube Interaction Fix
+   Allows autoplay, with clickable player controls as a fallback.
+================================ */
+
+.hero-video-embed,
+.games-video-embed,
+.fab-video-embed,
+.portfolio-video-embed {
+	pointer-events: auto;
+}
+
+.hero-overlay,
+.games-hero-overlay,
+.fab-hero-overlay,
+.portfolio-hero-overlay {
+	pointer-events: none;
+}
+

@@ -38,26 +38,59 @@ function renderYouTubeEmbed(selector, url) {
 	const container = document.querySelector(selector);
 	if (!container || !url) return;
 
-	const videoId = getYouTubeVideoId(url);
-	if (!videoId) return;
-
-	const origin = window.location.origin && window.location.origin !== "null"
-		? `&origin=${encodeURIComponent(window.location.origin)}`
-		: "";
+	const embedURL = createHeroYouTubeURL(url);
+	if (!embedURL) return;
 
 	container.innerHTML = `
 		<iframe
-			src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&playsinline=1&rel=0${origin}"
-			title="Lava Lantern Studios games showreel"
-			allow="autoplay; encrypted-media; picture-in-picture"
-			referrerpolicy="strict-origin-when-cross-origin"
-			allowfullscreen>
-		</iframe>
+			src="${embedURL}"
+			title="${container.getAttribute("aria-label") || "Lava Lantern Studios showreel"}"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+			allowfullscreen
+		></iframe>
 	`;
 }
 
+function createHeroYouTubeURL(url) {
+	const videoId = getYouTubeVideoId(url);
+	if (!videoId) return "";
+
+	const embedURL = new URL(`https://www.youtube.com/embed/${videoId}`);
+
+	try {
+		const suppliedURL = new URL(url, window.location.href);
+		const shareToken = suppliedURL.searchParams.get("si");
+
+		if (shareToken) {
+			embedURL.searchParams.set("si", shareToken);
+		}
+	} catch (error) {
+		/* The video ID has already been validated, so playback can continue. */
+	}
+
+	/*
+		Autoplay remains muted and looping for the hero design.
+		Controls remain available as a fallback if the browser does not
+		begin autoplay automatically.
+	*/
+	embedURL.searchParams.set("autoplay", "1");
+	embedURL.searchParams.set("mute", "1");
+	embedURL.searchParams.set("loop", "1");
+	embedURL.searchParams.set("playlist", videoId);
+	embedURL.searchParams.set("controls", "1");
+	embedURL.searchParams.set("playsinline", "1");
+	embedURL.searchParams.set("rel", "0");
+
+	return embedURL.toString();
+}
+
 function getYouTubeVideoId(url) {
-	const match = String(url).match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/]+)/);
+	const value = String(url || "").trim();
+
+	const match = value.match(
+		/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/|youtube\.com\/live\/)([^&?/]+)/
+	);
+
 	return match ? match[1] : "";
 }
 
