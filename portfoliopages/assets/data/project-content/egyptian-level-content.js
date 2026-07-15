@@ -11,12 +11,13 @@ window.projectPageContent["egyptian-level"] = {
 		{
 			type: "intro",
 			kicker: "Project Overview",
-			title: "Egyptian Level Design Project",
+			title: "Collaborative Egyptian-Themed Vertical Slice Demo",
 			body: [
-				"Add your brief description of the Egyptian Level project here.",
-				"Use this section to explain the design goal, environment theme, tools used, and final result."
+				"This Egyptian level was developed as part of a collaborative team project, where I worked as producer and designer. My responsibilities included level design, blockout development, puzzle mechanics, prop modelling, texturing, and UI design.",
+				"The level was built in Unreal Engine with distinct gameplay phases focused on environmental storytelling, platforming, puzzle-solving, and thematic progression. Using Maya, Mudbox, Substance Painter, Affinity Designer, and Affinity Photo, I created a range of 3D assets and 2D interface elements that supported the level’s visual style and gameplay flow.",
+				"The project also included design documentation and annotated maps, showing the planning process from early paper layouts through to the final in-engine level."
 			],
-			image: "assets/projects/egyptian-level/final-01.jpg",
+			image: "assets/projects/egyptian-level/Final10.jpg",
 			imageAlt: "Final Egyptian Level"
 		},
 
@@ -24,7 +25,7 @@ window.projectPageContent["egyptian-level"] = {
 			type: "video",
 			kicker: "Final Level",
 			title: "Video Walkthrough",
-			youtubeEmbed: "https://www.youtube.com/embed/YOUTUBE_VIDEO_ID"
+			youtubeEmbed: "https://www.youtube.com/watch?v=AioxEuHqQws"
 		},
 
 		{
@@ -32,9 +33,20 @@ window.projectPageContent["egyptian-level"] = {
 			kicker: "Final Level",
 			title: "Images Of The Final Level",
 			images: [
-				{ src: "assets/projects/egyptian-level/final-01.jpg", alt: "Final Egyptian Level 01" },
-				{ src: "assets/projects/egyptian-level/final-02.jpg", alt: "Final Egyptian Level 02" },
-				{ src: "assets/projects/egyptian-level/final-03.jpg", alt: "Final Egyptian Level 03" }
+				{ src: "assets/projects/egyptian-level/Final1.jpg", alt: "Final Egyptian Level 01" },
+				{ src: "assets/projects/egyptian-level/Final2.jpg", alt: "Final Egyptian Level 02" },
+				{ src: "assets/projects/egyptian-level/Final3.jpg", alt: "Final Egyptian Level 03" },
+				{ src: "assets/projects/egyptian-level/Final4.jpg", alt: "Final Egyptian Level 04" },
+				{ src: "assets/projects/egyptian-level/Final5.jpg", alt: "Final Egyptian Level 05" },
+				{ src: "assets/projects/egyptian-level/Final6.jpg", alt: "Final Egyptian Level 06" },
+				{ src: "assets/projects/egyptian-level/Final7.jpg", alt: "Final Egyptian Level 07" },
+				{ src: "assets/projects/egyptian-level/Final8.jpg", alt: "Final Egyptian Level 08" },
+				{ src: "assets/projects/egyptian-level/Final9.jpg", alt: "Final Egyptian Level 09" },
+				{ src: "assets/projects/egyptian-level/Final10.jpg", alt: "Final Egyptian Level 10" },
+				{ src: "assets/projects/egyptian-level/Final11.jpg", alt: "Final Egyptian Level 11" },
+				{ src: "assets/projects/egyptian-level/Final12.jpg", alt: "Final Egyptian Level 12" },
+				{ src: "assets/projects/egyptian-level/Final13.jpg", alt: "Final Egyptian Level 13" },
+				{ src: "assets/projects/egyptian-level/Final14.jpg", alt: "Final Egyptian Level 14" }
 			]
 		},
 
@@ -43,9 +55,9 @@ window.projectPageContent["egyptian-level"] = {
 			kicker: "Assets",
 			title: "Models Created And Textured",
 			images: [
-				{ src: "assets/projects/egyptian-level/model-01.jpg", alt: "Egyptian Model 01" },
-				{ src: "assets/projects/egyptian-level/model-02.jpg", alt: "Egyptian Model 02" },
-				{ src: "assets/projects/egyptian-level/model-03.jpg", alt: "Egyptian Model 03" }
+				{ src: "assets/projects/egyptian-level/Assets1.jpg", alt: "Egyptian Model 01" },
+				{ src: "assets/projects/egyptian-level/Assets2.jpg", alt: "Egyptian Model 02" },
+				{ src: "assets/projects/egyptian-level/Assets3.jpg", alt: "Egyptian Model 03" }
 			]
 		},
 
@@ -54,8 +66,13 @@ window.projectPageContent["egyptian-level"] = {
 			kicker: "Planning",
 			title: "Level Design Drawings",
 			images: [
-				{ src: "assets/projects/egyptian-level/drawing-01.jpg", alt: "Egyptian Level Drawing 01" },
-				{ src: "assets/projects/egyptian-level/drawing-02.jpg", alt: "Egyptian Level Drawing 02" }
+				{ src: "assets/projects/egyptian-level/Drawing1.jpg", alt: "Egyptian Level Drawing 01" },
+				{ src: "assets/projects/egyptian-level/Drawing2.jpg", alt: "Egyptian Level Drawing 02" },
+				{ src: "assets/projects/egyptian-level/Drawing3.jpg", alt: "Egyptian Level Drawing 03" },
+				{ src: "assets/projects/egyptian-level/Drawing4.jpg", alt: "Egyptian Level Drawing 04" },
+				{ src: "assets/projects/egyptian-level/Design1.jpg", alt: "Egyptian Level Drawing 05" },
+				{ src: "assets/projects/egyptian-level/Design2.jpg", alt: "Egyptian Level Drawing 06" },
+				{ src: "assets/projects/egyptian-level/Design3.jpg", alt: "Egyptian Level Drawing 07" }
 			]
 		},
 
@@ -64,8 +81,11 @@ window.projectPageContent["egyptian-level"] = {
 			kicker: "Blockout",
 			title: "Blockout Phase",
 			images: [
-				{ src: "assets/projects/egyptian-level/blockout-01.jpg", alt: "Egyptian Blockout 01" },
-				{ src: "assets/projects/egyptian-level/blockout-02.jpg", alt: "Egyptian Blockout 02" }
+				{ src: "assets/projects/egyptian-level/Whitebox1.jpg", alt: "Egyptian Blockout 01" },
+				{ src: "assets/projects/egyptian-level/Whitebox2.jpg", alt: "Egyptian Blockout 02" },
+				{ src: "assets/projects/egyptian-level/Whitebox3.jpg", alt: "Egyptian Blockout 03" },
+				{ src: "assets/projects/egyptian-level/Whitebox4.jpg", alt: "Egyptian Blockout 04" },
+				{ src: "assets/projects/egyptian-level/Whitebox5.jpg", alt: "Egyptian Blockout 05" }
 			]
 		}
 	]

@@ -42,14 +42,23 @@
 .project-hero-content {
 	position: relative;
 	z-index: 2;
-	max-width: 900px;
-	padding-top: 96px;
-	padding-bottom: 96px;
+	width: 100%;
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 96px 24px;
+	text-align: left;
 }
 
 .project-hero-content h1 {
+	max-width: 950px;
 	margin-bottom: 20px;
 	font-size: var(--portfolio-detail-white-title-size, 3rem);
+}
+
+.project-hero-content > p:not(.section-label) {
+	max-width: 900px;
+	text-align: left;
 }
 
 .portfolio-detail-page .section-label,
@@ -60,6 +69,7 @@
 .project-tags {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: flex-start;
 	gap: 10px;
 	margin: 24px 0 32px;
 }
@@ -411,6 +421,32 @@ body.lightbox-open {
 .prison-level-page {
 }
 
+.project-bottom-note-section {
+	padding: 32px 24px 72px;
+}
+
+.project-bottom-note {
+	max-width: 900px;
+	margin: 0 auto;
+	color: var(--lava-text-muted, #d9e2e8);
+	font-size: 0.95rem;
+	line-height: 1.6;
+	text-align: center;
+	opacity: 0.85;
+}
+
+.project-intro-copy a {
+	color: var(--lava-orange, #e58745);
+	font-weight: 900;
+	text-decoration: underline;
+	text-underline-offset: 0.2rem;
+}
+
+.project-intro-copy a:hover,
+.project-intro-copy a:focus-visible {
+	color: #ffffff;
+}
+
 /* Mobile */
 
 @media (max-width: 900px) {
@@ -424,14 +460,15 @@ body.lightbox-open {
 	}
 }
 
+
+
 @media (max-width: 800px) {
 	.project-hero {
 		min-height: 520px;
 	}
 
 	.project-hero-content {
-		padding-top: 72px;
-		padding-bottom: 72px;
+		padding: 72px 20px;
 	}
 
 	.project-section {
@@ -471,3 +508,369 @@ body.lightbox-open {
 		right: 12px;
 	}
 }
+
+/* ================================
+   Portfolio Gallery Carousels
+   Steam, Prison, Space, Egyptian,
+   Corgi, Viking and Triceratops
+================================ */
+
+/* Playable Corgi animation tests */
+.project-animation-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 20px;
+}
+
+.project-video-tile {
+	width: 100%;
+	overflow: hidden;
+	border: 1px solid var(--lava-border, rgba(255, 255, 255, 0.13));
+	border-radius: 18px;
+	background:
+		linear-gradient(to bottom right, var(--lava-navy-deep, #061622) 0%, #092034 42%, var(--lava-navy, #0d2b42) 100%);
+	box-shadow: 0 1.1rem 2.8rem rgba(0, 0, 0, 0.22);
+}
+
+.project-video-tile video {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: contain;
+	background: #050506;
+}
+
+/* Final Steam Images remains a four-column static desktop gallery */
+@media (min-width: 901px) {
+	.steam-images-galatico-page
+	.project-section--final-steam-images
+	.project-gallery {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.portfolio-detail-page .project-gallery-carousel {
+		position: relative;
+		width: 100%;
+	}
+
+	.portfolio-detail-page .project-gallery-carousel-viewport {
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.portfolio-detail-page .project-gallery-carousel-track {
+		display: flex;
+		grid-template-columns: none;
+		width: 100%;
+		transition: transform 0.45s ease;
+		will-change: transform;
+	}
+
+	.portfolio-detail-page
+	.project-gallery-carousel--4
+	.project-gallery-carousel-track {
+		gap: 20px;
+	}
+
+	.portfolio-detail-page
+	.project-gallery-carousel--4
+	.project-gallery-carousel-track
+	> * {
+		flex: 0 0 calc((100% - 60px) / 4);
+		min-width: 0;
+	}
+
+	.portfolio-detail-page
+	.project-gallery-carousel--2
+	.project-gallery-carousel-track {
+		gap: 14px;
+	}
+
+	.portfolio-detail-page
+	.project-gallery-carousel--2
+	.project-gallery-carousel-track
+	> * {
+		flex: 0 0 calc((100% - 14px) / 2);
+		min-width: 0;
+	}
+
+	.project-gallery-carousel-button {
+		position: absolute;
+		top: 50%;
+		z-index: 3;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 48px;
+		height: 48px;
+		padding: 0;
+		border: 1px solid rgba(255, 255, 255, 0.42);
+		border-radius: 999px;
+		background: rgba(6, 22, 34, 0.88);
+		color: #ffffff;
+		font-size: 1.7rem;
+		line-height: 1;
+		cursor: pointer;
+		transform: translateY(-50%);
+		box-shadow: 0 0.7rem 1.8rem rgba(0, 0, 0, 0.42);
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease,
+			opacity 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	.project-gallery-carousel-button:hover,
+	.project-gallery-carousel-button:focus-visible {
+		background: var(--lava-orange, #e58745);
+		border-color: var(--lava-orange, #e58745);
+		color: #100e0d;
+		transform: translateY(-50%) scale(1.06);
+	}
+
+	.project-gallery-carousel-button:disabled {
+		opacity: 0.28;
+		cursor: not-allowed;
+		transform: translateY(-50%);
+	}
+
+	.project-gallery-carousel-button.previous {
+		left: 12px;
+	}
+
+	.project-gallery-carousel-button.next {
+		right: 12px;
+	}
+
+	/* Comparison cards keep two visible images per side: four across overall */
+	.project-comparison-card--carousel {
+		min-width: 0;
+	}
+
+	.project-comparison-side-carousel .project-gallery-carousel-button {
+		width: 42px;
+		height: 42px;
+		font-size: 1.45rem;
+	}
+
+	.project-comparison-side-carousel .project-gallery-carousel-button.previous {
+		left: 8px;
+	}
+
+	.project-comparison-side-carousel .project-gallery-carousel-button.next {
+		right: 8px;
+	}
+}
+
+/* Tablet and mobile: remove carousel movement and restore grids */
+@media (max-width: 900px) {
+	.portfolio-detail-page .project-gallery-carousel-button {
+		display: none;
+	}
+
+	.portfolio-detail-page .project-gallery-carousel-viewport {
+		overflow: visible;
+	}
+
+	.portfolio-detail-page .project-gallery-carousel-track {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 20px;
+		transform: none !important;
+	}
+
+	.project-animation-grid {
+		grid-template-columns: 1fr;
+	}
+
+	/* Corgi comparison: one image per row on mobile/tablet */
+	.corgi-character-page
+	.project-section--low-poly-and-high-poly-comparison
+	.project-comparison-gallery,
+	.corgi-character-page
+	.project-section--low-poly-vs-high-poly
+	.project-comparison-gallery {
+		grid-template-columns: 1fr;
+	}
+}
+
+/*
+   Small mobile normally uses one gallery column.
+   The requested sections below deliberately retain two columns.
+*/
+@media (max-width: 600px) {
+	/* Space Level */
+	.space-station-level-page
+	.project-section--images-of-the-final-level
+	.project-gallery-carousel-track,
+	.space-station-level-page
+	.project-section--level-design-drawings
+	.project-gallery-carousel-track,
+	.space-station-level-page
+	.project-section--blockout-phase
+	.project-gallery-carousel-track,
+	.space-station-level-page
+	.project-section--blueprinting
+	.project-gallery-carousel-track,
+
+	/* Egyptian Level */
+	.egyptian-level-page
+	.project-section--images-of-the-final-level
+	.project-gallery-carousel-track,
+	.egyptian-level-page
+	.project-section--level-design-drawings
+	.project-gallery-carousel-track,
+	.egyptian-level-page
+	.project-section--blockout-phase
+	.project-gallery-carousel-track,
+	.egyptian-level-page
+	.project-section--models-created-and-textured
+	.project-gallery,
+
+	/* Corgi final model */
+	.corgi-character-page
+	.project-section--images-of-the-final-corgi-model
+	.project-gallery-carousel-track,
+	.corgi-character-page
+	.project-section--images-of-the-final-model
+	.project-gallery-carousel-track,
+	.corgi-character-page
+	.project-section--final-corgi-model
+	.project-gallery-carousel-track,
+	.corgi-character-page
+	.project-section--final-model
+	.project-gallery-carousel-track,
+
+	/* Viking galleries and comparison sides */
+	.viking-character-model-page
+	.project-section--blockout-low-poly
+	.project-gallery-carousel-track,
+	.viking-character-model-page
+	.project-section--blockout-and-low-poly
+	.project-gallery-carousel-track,
+	.viking-character-model-page
+	.project-section--low-poly-vs-high-poly
+	.project-gallery-carousel-track,
+	.viking-character-model-page
+	.project-section--low-poly-and-high-poly-comparison
+	.project-gallery-carousel-track,
+	.viking-character-model-page
+	.project-section--model-breakdown
+	.project-gallery-carousel-track,
+
+	/* Every non-overview Triceratops gallery */
+	.triceratops-model-page
+	.project-gallery-carousel-track,
+	.triceratops-model-page
+	.project-comparison-gallery {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	/* Corgi animation tests remain one tile wide */
+	.corgi-character-page .project-animation-grid {
+		grid-template-columns: 1fr;
+	}
+
+	/* Corgi low/high comparison remains one tile wide per side */
+	.corgi-character-page
+	.project-section--low-poly-and-high-poly-comparison
+	.project-comparison-gallery,
+	.corgi-character-page
+	.project-section--low-poly-vs-high-poly
+	.project-comparison-gallery {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ================================
+   Materials, Aston Martin, UI/UX,
+   Egyptian UI and Tabletop Artwork
+================================ */
+
+/* Carousels with no additional images do not need controls */
+.project-gallery-carousel.is-static .project-gallery-carousel-button {
+	display: none;
+}
+
+/* Materials page retains two material cards across on desktop */
+@media (min-width: 901px) {
+	.materials-textures-page .project-material-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.materials-textures-page .project-material-card {
+		min-width: 0;
+	}
+
+	.materials-textures-page
+	.project-material-image-carousel
+	.project-gallery-carousel-button {
+		width: 42px;
+		height: 42px;
+		font-size: 1.45rem;
+	}
+
+	.materials-textures-page
+	.project-material-image-carousel
+	.project-gallery-carousel-button.previous {
+		left: 8px;
+	}
+
+	.materials-textures-page
+	.project-material-image-carousel
+	.project-gallery-carousel-button.next {
+		right: 8px;
+	}
+}
+
+/* One material card per row, with two images across inside each card */
+@media (max-width: 900px) {
+	.materials-textures-page .project-material-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.materials-textures-page
+	.project-material-image-carousel
+	.project-material-images.project-gallery-carousel-track {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 12px;
+	}
+}
+
+/*
+   These pages keep two image tiles across on small mobile screens.
+   Their desktop gallery/reel/comparison sections are generated as
+   four-wide arrow carousels by portfoliopage-loader.js.
+*/
+@media (max-width: 600px) {
+	.textured-aston-martin-page .project-gallery-carousel-track,
+	.textured-aston-martin-page .project-gallery,
+	.textured-aston-martin-page .project-comparison-gallery,
+
+	.ui-ux-design-game-interface-page .project-gallery-carousel-track,
+	.ui-ux-design-game-interface-page .project-gallery,
+	.ui-ux-design-game-interface-page .project-comparison-gallery,
+
+	.egyptian-ui-page .project-gallery-carousel-track,
+	.egyptian-ui-page .project-gallery,
+	.egyptian-ui-page .project-comparison-gallery,
+
+	.tabletop-artwork-page .project-gallery-carousel-track,
+	.tabletop-artwork-page .project-gallery,
+	.tabletop-artwork-page .project-comparison-gallery,
+
+	.materials-textures-page
+	.project-material-image-carousel
+	.project-material-images.project-gallery-carousel-track {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	/* Fixed two-image comparison sections also remain two tiles across */
+	.textured-aston-martin-page .project-comparison-grid,
+	.ui-ux-design-game-interface-page .project-comparison-grid,
+	.egyptian-ui-page .project-comparison-grid,
+	.tabletop-artwork-page .project-comparison-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+

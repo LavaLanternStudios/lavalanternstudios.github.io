@@ -11,12 +11,12 @@ window.projectPageContent["lifeguard-sim"] = {
 		{
 			type: "intro",
 			kicker: "Project Overview",
-			title: "Lifeguard Simulator",
+			title: "A 2D Pixel Game With Alternative Input Mechanics",
 			body: [
-				"Add your description of the Lifeguard Simulator project here.",
-				"Use this section to explain the project goal, interaction methods, mini-game design, and accessibility/input features."
+				"Lifeguard Simulator is a 2D pixel-art game I created, combining custom artwork, UI design, gameplay systems, and alternative input mechanics.",
+				"The project used hand tracking, voice control, and eye tracking, so the visuals and interactions needed to be clear, readable, and easy to understand during gameplay."
 			],
-			image: "assets/projects/lifeguard-sim/final-01.jpg",
+			image: "assets/projects/lifeguard-sim/GameplayImage.png",
 			imageAlt: "Lifeguard Simulator preview"
 		},
 
@@ -24,7 +24,7 @@ window.projectPageContent["lifeguard-sim"] = {
 			type: "video",
 			kicker: "Final Game",
 			title: "Final Game Video",
-			youtubeEmbed: "https://www.youtube.com/embed/YOUTUBE_VIDEO_ID"
+			youtubeEmbed: "https://youtu.be/Rd9lI682Yjo"
 		},
 
 		{
@@ -32,9 +32,9 @@ window.projectPageContent["lifeguard-sim"] = {
 			kicker: "Game Screens",
 			title: "Separate Game Screens",
 			images: [
-				{ src: "assets/projects/lifeguard-sim/screen-01.jpg", alt: "Lifeguard Simulator game screen 01" },
-				{ src: "assets/projects/lifeguard-sim/screen-02.jpg", alt: "Lifeguard Simulator game screen 02" },
-				{ src: "assets/projects/lifeguard-sim/screen-03.jpg", alt: "Lifeguard Simulator game screen 03" }
+				{ src: "assets/projects/lifeguard-sim/MainMenu.png", alt: "Lifeguard Simulator main menu screen" },
+				{ src: "assets/projects/lifeguard-sim/GameScreen.png", alt: "Lifeguard Simulator game screen" },
+				{ src: "assets/projects/lifeguard-sim/EndScreen.png", alt: "Lifeguard Simulator end screen 03" }
 			]
 		},
 
@@ -43,9 +43,9 @@ window.projectPageContent["lifeguard-sim"] = {
 			kicker: "2D Artwork",
 			title: "Separate 2D Artwork And Elements",
 			images: [
-				{ src: "assets/projects/lifeguard-sim/artwork-01.jpg", alt: "Lifeguard Simulator 2D artwork 01" },
-				{ src: "assets/projects/lifeguard-sim/artwork-02.jpg", alt: "Lifeguard Simulator 2D artwork 02" },
-				{ src: "assets/projects/lifeguard-sim/artwork-03.jpg", alt: "Lifeguard Simulator 2D artwork 03" }
+				{ src: "assets/projects/lifeguard-sim/2D-Assets1.png", alt: "Lifeguard Simulator 2D artwork 01" },
+				{ src: "assets/projects/lifeguard-sim/2D-Assets2.png", alt: "Lifeguard Simulator 2D artwork 02" },
+				{ src: "assets/projects/lifeguard-sim/2D-Assets3.png", alt: "Lifeguard Simulator 2D artwork 03" }
 			]
 		}
 	]
