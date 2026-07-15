@@ -25,7 +25,7 @@ window.projectPageContent["egyptian-level"] = {
 			type: "video",
 			kicker: "Final Level",
 			title: "Video Walkthrough",
-			youtubeEmbed: "https://www.youtube.com/embed/AioxEuHqQws?si=pygWIMuCHQbV_P_0"
+			youtubeEmbed: "https://www.youtube.com/watch?v=AioxEuHqQws"
 		},
 
 		{

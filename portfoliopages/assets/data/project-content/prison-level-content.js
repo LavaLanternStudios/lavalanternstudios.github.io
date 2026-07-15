@@ -24,7 +24,7 @@ window.projectPageContent["prison-level"] = {
 			type: "video",
 			kicker: "Final Level",
 			title: "Video Walkthrough",
-			youtubeEmbed: "https://www.youtube.com/embed/lldtxdSlr1I?si=aK2VrcezwIxVHcNq"
+			youtubeEmbed: "https://www.youtube.com/watch?v=lldtxdSlr1I"
 		},
 
 		{

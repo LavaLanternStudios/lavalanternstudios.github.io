@@ -24,7 +24,7 @@ window.projectPageContent["textured-aston-martin"] = {
 			type: "video",
 			kicker: "Final Cinematic",
 			title: "Final Cinematic Video",
-			youtubeEmbed: "https://www.youtube.com/embed/IoNrfETROSU?si=kCsvpKAi7GJq-rYh"
+			youtubeEmbed: "https://www.youtube.com/watch?v=IoNrfETROSU"
 		},
 
 		{

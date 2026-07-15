@@ -874,33 +874,3 @@ body.lightbox-open {
 	}
 }
 
-/* ================================
-   Final Direct YouTube Portfolio Hero
-================================ */
-
-.project-hero-media {
-	position: absolute;
-	inset: 0;
-	z-index: 0;
-	overflow: hidden;
-	background: #050506;
-	pointer-events: none;
-}
-
-.project-hero-media iframe {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 100vw;
-	height: 56.25vw;
-	min-width: 177.78vh;
-	min-height: 100vh;
-	max-width: none;
-	transform: translate(-50%, -50%) scale(1.18);
-	transform-origin: center;
-	border: 0;
-	opacity: 1 !important;
-	visibility: visible !important;
-	pointer-events: none;
-}
-

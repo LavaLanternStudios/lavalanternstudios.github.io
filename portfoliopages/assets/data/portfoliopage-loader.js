@@ -2,61 +2,6 @@ const projectId = document.body.dataset.projectId;
 const project = portfolioPages[projectId];
 const projectContent = window.projectPageContent?.[projectId];
 
-
-function getHeroYouTubeVideoId(url) {
-	const value = String(url || "").trim();
-
-	const patterns = [
-		/[?&]v=([^&?/]+)/i,
-		/(?:youtu\.be\/)([^&?/]+)/i,
-		/(?:youtube\.com\/embed\/)([^&?/]+)/i,
-		/(?:youtube\.com\/shorts\/)([^&?/]+)/i,
-		/(?:youtube\.com\/live\/)([^&?/]+)/i
-	];
-
-	for (const pattern of patterns) {
-		const match = value.match(pattern);
-
-		if (match) {
-			return match[1];
-		}
-	}
-
-	return "";
-}
-
-function createPortfolioHeroYouTubeURL(url) {
-	const videoId = getHeroYouTubeVideoId(url);
-	if (!videoId) return "";
-
-	const embedURL = new URL(`https://www.youtube.com/embed/${videoId}`);
-
-	try {
-		const suppliedURL = new URL(url, window.location.href);
-		const shareToken = suppliedURL.searchParams.get("si");
-
-		if (shareToken) {
-			embedURL.searchParams.set("si", shareToken);
-		}
-	} catch (error) {
-		/* The validated video ID is sufficient to build the embed. */
-	}
-
-	embedURL.searchParams.set("autoplay", "1");
-	embedURL.searchParams.set("mute", "1");
-	embedURL.searchParams.set("loop", "1");
-	embedURL.searchParams.set("playlist", videoId);
-	embedURL.searchParams.set("controls", "0");
-	embedURL.searchParams.set("disablekb", "1");
-	embedURL.searchParams.set("fs", "0");
-	embedURL.searchParams.set("iv_load_policy", "3");
-	embedURL.searchParams.set("playsinline", "1");
-	embedURL.searchParams.set("rel", "0");
-	embedURL.searchParams.set("start", "1");
-
-	return embedURL.toString();
-}
-
 function getMediaSource(media, section = null) {
 	let source = media?.src || "";
 
@@ -751,20 +696,12 @@ if (project) {
 
 	if (heroElement) {
 		if (project.heroType === "video" && project.heroVideo) {
-			const heroVideoURL = createPortfolioHeroYouTubeURL(
-				project.heroVideo
-			);
-
 			heroElement.innerHTML = `
 				<iframe
-					src="${heroVideoURL}"
+					src="${project.heroVideo}"
 					title="${project.title}"
-					loading="eager"
-					tabindex="-1"
-					aria-hidden="true"
-					allow="autoplay; encrypted-media; picture-in-picture"
-					referrerpolicy="origin-when-cross-origin"
-					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
 				></iframe>
 			`;
 		} else if (project.heroImage) {

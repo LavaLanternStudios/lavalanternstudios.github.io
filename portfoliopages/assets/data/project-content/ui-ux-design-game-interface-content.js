@@ -24,7 +24,7 @@ window.projectPageContent["ui-ux-design-game-interface"] = {
 			type: "video",
 			kicker: "Final Playthrough",
 			title: "Final UI Playthrough",
-			youtubeEmbed: "https://www.youtube.com/embed/6yIg5HN_9jQ?si=4P2pIMSyl64NUWOc"
+			youtubeEmbed: "https://www.youtube.com/watch?v=6yIg5HN_9jQ&feature=youtu.be"
 		},
 
 		{

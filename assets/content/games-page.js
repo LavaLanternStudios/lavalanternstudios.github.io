@@ -4,7 +4,7 @@ window.gamesPageContent = {
 	},
 
 	video: {
-		showreelYouTubeURL: "https://www.youtube.com/embed/wDV5dVzQNzs?si=Ov6lrFmtKRCyOVPf"
+		showreelYouTubeURL: "https://www.youtube.com/watch?v=wDV5dVzQNzs"
 	},
 
 	text: {

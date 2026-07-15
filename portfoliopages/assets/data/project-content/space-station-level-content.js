@@ -27,11 +27,11 @@ window.projectPageContent["space-station-level"] = {
 			videos: [
 				{
 					title: "Cinematic Sequence",
-					youtubeEmbed: "https://www.youtube.com/embed/IrDDFPE4T_k?si=WidyvDGyhODzBTtA"
+					youtubeEmbed: "https://www.youtube.com/watch?v=IrDDFPE4T_k"
 				},
 				{
 					title: "Playthrough",
-					youtubeEmbed: "https://www.youtube.com/embed/_LmpNg8cMUg?si=DEUwtnATNrYfoCIm"
+					youtubeEmbed: "https://www.youtube.com/watch?v=_LmpNg8cMUg"
 				}
 			]
 		},

@@ -24,7 +24,7 @@ window.projectPageContent["viking-character-model"] = {
 			type: "video",
 			kicker: "Turntable",
 			title: "Viking Character Turntable",
-			youtubeEmbed: "https://www.youtube.com/embed/fDrez2Gg26w?si=K6Zdki9Hqaq6ponV"
+			youtubeEmbed: "https://www.youtube.com/watch?v=fDrez2Gg26w&feature=youtu.be"
 		},
 
 		{
