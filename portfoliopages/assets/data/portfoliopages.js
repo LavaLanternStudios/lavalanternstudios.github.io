@@ -1,8 +1,14 @@
+/*
+ * Portfolio project catalogue.
+ *
+ * Video heroes use local, repository-hosted files. Paths are relative to each
+ * HTML page in the /portfoliopages/ directory.
+ */
 const portfolioPages = {
 	"corgi-character-model": {
 		title: "Corgi Character Model",
 		heroType: "image",
-		heroImage: "assets/projects/corgi-character-model/hero.jpg",
+		heroImage: "assets/projects/corgi-character-model/hp2.png",
 		heroVideo: "",
 		tags: ["Blender", "Substance Painter", "Character Modelling", "Texturing", "Animation"],
 		portfolioFolder: "assets/projects/corgi-character-model/",
@@ -17,7 +23,9 @@ const portfolioPages = {
 		title: "Egyptian Level",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "https://www.youtube.com/watch?v=gv0XmMzVmBM",
+		heroVideo: "assets/projects/egyptian-level/egyptian-level-hero.mp4",
+		heroPoster: "assets/projects/egyptian-level/egyptian-level-hero-poster.webp",
+		heroPosition: "center center",
 		tags: ["Unreal Engine", "Maya", "Substance Painter", "Level Design", "Environment Art", "3D Modelling"],
 		portfolioFolder: "assets/projects/egyptian-level/",
 		galleryImages: [
@@ -45,7 +53,9 @@ const portfolioPages = {
 		title: "Lifeguard Simulator",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "https://www.youtube.com/watch?v=xcWfQ5UEt9s",
+		heroVideo: "assets/projects/lifeguard-sim/lifeguard-sim-hero.mp4",
+		heroPoster: "assets/projects/lifeguard-sim/lifeguard-sim-hero-poster.webp",
+		heroPosition: "center center",
 		tags: ["Unity", "Affinity Suite", "2D Art", "Level Design", "Mini-Game", "Voice Control", "Hand-Motion", "Eye-Tracking"],
 		portfolioFolder: "assets/projects/lifeguard-sim/",
 		galleryImages: [
@@ -77,7 +87,9 @@ const portfolioPages = {
 		title: "Prison Level",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "https://www.youtube.com/watch?v=PmB5UgXN5DY",
+		heroVideo: "assets/projects/prison-level/prison-level-hero.mp4",
+		heroPoster: "assets/projects/prison-level/prison-level-hero-poster.webp",
+		heroPosition: "center center",
 		tags: ["Unreal Engine", "Level Design", "Sound Design", "Narrative Design"],
 		portfolioFolder: "assets/projects/prison-level/",
 		galleryImages: [
@@ -115,7 +127,9 @@ const portfolioPages = {
 		title: "Space Level",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "https://www.youtube.com/watch?v=IrDDFPE4T_k",
+		heroVideo: "assets/projects/space-station-level/space-station-level-hero.mp4",
+		heroPoster: "assets/projects/space-station-level/space-station-level-hero-poster.webp",
+		heroPosition: "center center",
 		tags: ["Unreal Engine", "Level Design", "Environmental Art"],
 		portfolioFolder: "assets/projects/space-station-level/",
 		galleryImages: [
@@ -170,7 +184,9 @@ const portfolioPages = {
 		title: "Textured Aston Martin",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "https://www.youtube.com/watch?v=IoNrfETROSU",
+		heroVideo: "assets/projects/textured-aston-martin/textured-aston-martin-hero.mp4",
+		heroPoster: "assets/projects/textured-aston-martin/textured-aston-martin-hero-poster.webp",
+		heroPosition: "center center",
 		tags: ["Substance Painter", "Unreal Engine", "Maya", "3D Texturing", "Lighting"],
 		portfolioFolder: "assets/projects/textured-aston-martin/",
 		galleryImages: [
@@ -198,7 +214,9 @@ const portfolioPages = {
 		title: "UI/UX Design - Game Interface",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "https://www.youtube.com/watch?v=8UPenKSTQIo&feature=youtu.be",
+		heroVideo: "assets/projects/ui-ux-design-game-interface/ui-ux-design-game-interface-hero.mp4",
+		heroPoster: "assets/projects/ui-ux-design-game-interface/ui-ux-design-game-interface-hero-poster.webp",
+		heroPosition: "center center",
 		tags: ["Unity", "Affinity Suite", "UI/UX Design", "UI/UX Design"],
 		portfolioFolder: "assets/projects/ui-ux-design-game-interface/",
 		galleryImages: [

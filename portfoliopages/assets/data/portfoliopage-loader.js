@@ -696,15 +696,49 @@ if (project) {
 
 	if (heroElement) {
 		if (project.heroType === "video" && project.heroVideo) {
+			const posterAttribute = project.heroPoster
+				? ` poster="${project.heroPoster}"`
+				: "";
+
+			if (project.heroPoster) {
+				heroElement.style.backgroundImage = `url("${project.heroPoster}")`;
+			}
+
+			if (project.heroPosition) {
+				heroElement.style.setProperty("--project-hero-position", project.heroPosition);
+			}
+
 			heroElement.innerHTML = `
-				<iframe
-					src="${project.heroVideo}"
-					title="${project.title}"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-					allowfullscreen
-				></iframe>
+				<video
+					class="project-hero-video"
+					autoplay
+					muted
+					loop
+					playsinline
+					preload="metadata"
+					aria-hidden="true"${posterAttribute}
+				>
+					<source src="${project.heroVideo}" type="${getVideoMimeType(project.heroVideo)}" />
+				</video>
 			`;
+
+			const heroVideo = heroElement.querySelector("video");
+			const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+			if (heroVideo && !reducedMotion.matches) {
+				const playAttempt = heroVideo.play();
+
+				if (playAttempt && typeof playAttempt.catch === "function") {
+					playAttempt.catch(() => {
+						/* The poster remains visible if autoplay is blocked. */
+					});
+				}
+			}
 		} else if (project.heroImage) {
+			if (project.heroPosition) {
+				heroElement.style.setProperty("--project-hero-position", project.heroPosition);
+			}
+
 			heroElement.innerHTML = `
 				<img src="${project.heroImage}" alt="${project.title}" />
 			`;

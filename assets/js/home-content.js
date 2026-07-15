@@ -27,8 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	setText("[data-home-bottom-title]", content.text.bottomTitle);
 	setText("[data-home-bottom-body]", content.text.bottomBody);
-
-	renderYouTubeEmbed("[data-home-showreel]", content.video.showreelYouTubeURL);
 	applyTextSizes(content.textSizes);
 });
 
@@ -55,32 +53,6 @@ function setParagraphs(selector, paragraphs) {
 		.join("");
 }
 
-function renderYouTubeEmbed(selector, url) {
-	const container = document.querySelector(selector);
-	if (!container || !url) return;
-
-	const videoId = getYouTubeVideoId(url);
-	if (!videoId) return;
-
-	const origin = window.location.origin && window.location.origin !== "null"
-		? `&origin=${encodeURIComponent(window.location.origin)}`
-		: "";
-
-	container.innerHTML = `
-		<iframe
-			src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&playsinline=1&rel=0${origin}"
-			title="Lava Lantern Studios showreel"
-			allow="autoplay; encrypted-media; picture-in-picture"
-			referrerpolicy="strict-origin-when-cross-origin"
-			allowfullscreen>
-		</iframe>
-	`;
-}
-
-function getYouTubeVideoId(url) {
-	const match = String(url).match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&?/]+)/);
-	return match ? match[1] : "";
-}
 
 function applyTextSizes(sizes) {
 	if (!sizes) return;
