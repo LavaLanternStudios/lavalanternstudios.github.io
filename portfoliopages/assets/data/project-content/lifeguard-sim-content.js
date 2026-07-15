@@ -24,7 +24,7 @@ window.projectPageContent["lifeguard-sim"] = {
 			type: "video",
 			kicker: "Final Game",
 			title: "Final Game Video",
-			youtubeEmbed: "https://youtu.be/Rd9lI682Yjo"
+			youtubeEmbed: "https://www.youtube.com/embed/Rd9lI682Yjo?si=tGCBLuJnwoTdd4H_"
 		},
 
 		{
