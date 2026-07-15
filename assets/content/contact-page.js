@@ -1,7 +1,7 @@
 window.contactPageContent = {
 	images: {
 		mainMenuLogo: "assets/images/logo/lava-lantern-header-logo.png",
-		heroImage: "assets/images/logo/lava-lantern-main-logo.png"
+		heroImage: "assets/images/general/ContactUsHero.png"
 	},
 
 	text: {

@@ -1,0 +1,33 @@
+LAVA LANTERN STUDIOS — PORTFOLIO CLEAN URL UPDATE
+
+This ZIP is already arranged in the correct website folder structure.
+
+Copy the contents into the ROOT of the website and allow matching files to be replaced.
+
+It contains:
+
+assets/
+└── data/
+    └── portfolio-data.js
+
+portfoliopages/
+├── 13 portfolio HTML pages
+├── portfoliostyle.css
+└── assets/
+    └── data/
+        ├── portfoliopages.js
+        └── portfoliopage-loader.js
+
+Do not move the portfolio HTML pages into the website root.
+They must remain inside the portfoliopages folder.
+
+This update expects the shared script.js and 404.html from the earlier
+github-clean-url-main-pages ZIP to already be installed in the website root.
+
+Expected live examples:
+
+https://lavalanternstudios.co.uk/portfoliopages/prison-level
+https://lavalanternstudios.co.uk/portfoliopages/corgi-character-model
+https://lavalanternstudios.co.uk/portfoliopages/materials-textures
+
+The detail-page navigation remains compatible with local file testing.

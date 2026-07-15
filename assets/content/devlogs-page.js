@@ -1,7 +1,7 @@
 const devlogsPageContent = {
 	mainMenuLogo: "assets/images/logo/lava-lantern-header-logo.png",
 
-	heroImage: "assets/images/logo/lava-lantern-main-logo.png",
+	heroImage: "assets/images/general/DevlogsHero.png",
 	heroImageAlt: "Lava Lantern Studios devlog hero image",
 
 	heroOrangeHeading: "DEVLOGS",

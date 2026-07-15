@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="robots" content="noindex" />
+		<title>Opening page | Lava Lantern Studios</title>
+
+		<script>
+			(function routeCleanURLToHTMLFile() {
+				const currentPath = window.location.pathname;
+
+				if (currentPath === "/" || currentPath === "/404.html") {
+					return;
+				}
+
+				const hasFileExtension = /\/[^/]+\.[^/]+$/.test(currentPath);
+
+				if (hasFileExtension) {
+					return;
+				}
+
+				const route =
+					currentPath.length > 1 && currentPath.endsWith("/")
+						? currentPath.slice(0, -1)
+						: currentPath;
+
+				window.location.replace(
+					`${route}.html${window.location.search}${window.location.hash}`
+				);
+			})();
+		</script>
+
+		<style>
+			* { box-sizing: border-box; }
+
+			body {
+				min-height: 100vh;
+				margin: 0;
+				display: grid;
+				place-items: center;
+				padding: 24px;
+				background: #100e0d;
+				color: #ffffff;
+				font-family: Arial, Helvetica, sans-serif;
+				text-align: center;
+			}
+
+			main {
+				max-width: 640px;
+				padding: 32px;
+				border: 1px solid rgba(255, 255, 255, 0.13);
+				border-radius: 18px;
+				background: linear-gradient(to bottom right, #061622, #0d2b42);
+			}
+
+			a {
+				display: inline-block;
+				margin-top: 16px;
+				padding: 12px 20px;
+				border-radius: 8px;
+				background: #ffffff;
+				color: #100e0d;
+				font-weight: 700;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<main>
+			<h1>Page not found</h1>
+			<p>The requested page could not be found.</p>
+			<a href="/">Return Home</a>
+		</main>
+	</body>
+</html>

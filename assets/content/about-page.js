@@ -1,8 +1,8 @@
 window.aboutPageContent = {
 	images: {
 		mainMenuLogo: "assets/images/logo/lava-lantern-header-logo.png",
-		heroImage: "assets/images/logo/lava-lantern-main-logo.png",
-		lokiImage: "assets/images/about/loki.png"
+		heroImage: "assets/images/general/AboutUsHero.png",
+		lokiImage: "assets/images/about/MeetLokiImage.JPG"
 	},
 
 	text: {

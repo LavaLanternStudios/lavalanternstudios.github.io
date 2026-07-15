@@ -225,8 +225,31 @@ function sortPortfolioItems(a, b) {
 
 function createHomePortfolioCard(item) {
 	const title = item.title || "Untitled Portfolio Piece";
-	const image = item.image || item.thumbnail || item.coverImage || "";
-	const link = item.projectURL || item.portfolioURL || item.url || item.link || "portfolio.html";
+
+	/*
+		Use the same featured image as the Portfolio page.
+		Fall back to the thumbnail or older property names if needed.
+	*/
+	const image =
+		item.topPickImage ||
+		item.thumbnailImage ||
+		item.image ||
+		item.thumbnail ||
+		item.coverImage ||
+		"";
+
+	/*
+		The current portfolio data stores each detail-page link in `page`.
+		Older link property names remain as fallbacks.
+	*/
+	const link =
+		item.page ||
+		item.projectURL ||
+		item.portfolioURL ||
+		item.url ||
+		item.link ||
+		"portfolio.html";
+
 	const linkAttributes = createLinkAttributes(link, "portfolio.html");
 
 	return `

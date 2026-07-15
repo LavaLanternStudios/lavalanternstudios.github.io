@@ -6,7 +6,7 @@ window.homePageContent = {
 	},
 
 	video: {
-		showreelYouTubeURL: "https://www.youtube.com/watch?v=tBZMDChxWWw"
+		showreelYouTubeURL: "https://www.youtube.com/watch?v=2oTJp0fKoIc"
 	},
 
 	text: {
@@ -15,8 +15,8 @@ window.homePageContent = {
 		aboutStudioHeading: "About the Studio",
 		aboutStudioTitle: "Independent games, game-ready assets, and worlds with character.",
 		aboutStudioBody: [
-			"Lava Lantern Studios is an independent game and interactive development studio creating original games, game-ready assets, digital environments, and interactive experiences.",
-			"Our games are designed around the player, focusing on fun, enjoyable experiences with atmosphere, personality, and a strong sense of connection that players can share with others. Our assets are made to be high-quality, versatile, and adaptable, giving creators content they can shape around their own projects."
+			"Lava Lantern Studios is an independent game and interactive development studio creating original games, game-ready assets, digital environments, and experiences with character.",
+			"Our work combines enjoyable player experiences, distinctive visual design, and versatile assets that creators can shape around their own projects."
 		],
 
 		featuredWorkHeading: "Games & Projects",

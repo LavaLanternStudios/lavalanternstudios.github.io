@@ -1,3 +1,120 @@
+/* ================================
+   Clean Page URLs
+   Hosted: /games instead of /games.html
+   Local: clean links reopen the matching .html file
+================================ */
+
+(function setupCleanPageURLs() {
+  const isLocalFile = window.location.protocol === "file:";
+
+  function splitHref(href) {
+    const specialIndexes = [href.indexOf("?"), href.indexOf("#")]
+      .filter((index) => index !== -1);
+    const cutIndex = specialIndexes.length > 0
+      ? Math.min(...specialIndexes)
+      : href.length;
+
+    return {
+      pathname: href.slice(0, cutIndex),
+      suffix: href.slice(cutIndex)
+    };
+  }
+
+  function getCleanHostedPath(pathname) {
+    if (pathname === "/index.html" || pathname.endsWith("/index.html")) {
+      return pathname.slice(0, -10) || "/";
+    }
+
+    if (pathname.toLowerCase().endsWith(".html")) {
+      return pathname.slice(0, -5) || "/";
+    }
+
+    return pathname;
+  }
+
+  function getLocalHTMLPath(pathname) {
+    const cleanPath = pathname.replace(/^\/+|\/+$/g, "");
+
+    if (!cleanPath) return "index.html";
+    if (cleanPath.toLowerCase().endsWith(".html")) return cleanPath;
+
+    return `${cleanPath}.html`;
+  }
+
+  function normaliseAnchor(anchor) {
+    const rawHref = anchor.getAttribute("href");
+
+    if (
+      !rawHref ||
+      rawHref.startsWith("#") ||
+      /^(mailto:|tel:|javascript:|data:)/i.test(rawHref)
+    ) {
+      return;
+    }
+
+    if (isLocalFile) {
+      if (!rawHref.startsWith("/")) return;
+
+      const { pathname, suffix } = splitHref(rawHref);
+      anchor.setAttribute("href", getLocalHTMLPath(pathname) + suffix);
+      return;
+    }
+
+    let url;
+
+    try {
+      url = new URL(rawHref, window.location.href);
+    } catch (error) {
+      return;
+    }
+
+    if (url.origin !== window.location.origin) return;
+
+    const cleanPath = getCleanHostedPath(url.pathname);
+    anchor.setAttribute("href", `${cleanPath}${url.search}${url.hash}`);
+  }
+
+  function normaliseLinks(root = document) {
+    if (root instanceof HTMLAnchorElement) {
+      normaliseAnchor(root);
+      return;
+    }
+
+    root.querySelectorAll?.("a[href]").forEach(normaliseAnchor);
+  }
+
+  if (!isLocalFile) {
+    const cleanCurrentPath = getCleanHostedPath(window.location.pathname);
+
+    if (cleanCurrentPath !== window.location.pathname) {
+      window.history.replaceState(
+        null,
+        "",
+        `${cleanCurrentPath}${window.location.search}${window.location.hash}`
+      );
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    normaliseLinks(document);
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            normaliseLinks(node);
+          }
+        });
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  });
+})();
+
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector(".site-nav");
 
