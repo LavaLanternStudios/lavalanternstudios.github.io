@@ -1,0 +1,26 @@
+LAVA LANTERN DOMAIN CORRECTION
+
+Correct domain:
+lavalantern.co.uk
+
+Copy the CONTENTS of this extracted folder into the root of the cloned
+lavalanternstudios.github.io repository.
+
+Allow the seven root HTML pages, the portfolio HTML pages, and CNAME to replace
+their existing versions.
+
+Then use GitHub Desktop:
+1. Commit to main
+2. Push origin
+
+After pushing, set GitHub:
+Repository > Settings > Pages > Custom domain
+to:
+lavalantern.co.uk
+
+Your Namecheap DNS records remain:
+A @ 185.199.108.153
+A @ 185.199.109.153
+A @ 185.199.110.153
+A @ 185.199.111.153
+CNAME www lavalanternstudios.github.io
