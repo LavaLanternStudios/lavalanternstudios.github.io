@@ -1,65 +1,69 @@
-YOUTUBE-ONLY HERO BACKGROUND FIX
+FINAL DIRECT YOUTUBE HERO FIX
 
-This package DOES NOT use MP4 files.
+This package uses ONLY the YouTube links already present in the website.
+It does not require MP4 files and does not use the YouTube JavaScript API.
 
-It uses the YouTube URLs already stored in:
+WHY THE PREVIOUS VERSION WAS BLACK
 
-assets/content/home-page.js
-assets/content/games-page.js
-assets/content/fab-page.js
-assets/content/portfolio-page.js
+The previous API version hid the iframe until YouTube reported that playback
+had started. If the API script, autoplay, an extension, or the video failed,
+the iframe remained invisible and the hero stayed black.
 
-and the YouTube hero URLs already stored in:
+THIS VERSION
 
-portfoliopages/assets/data/portfoliopages.js
-
-No video links need to be re-entered.
-
-FILES TO REPLACE
-
-style.css
-
-assets/js/home-content.js
-assets/js/games-content.js
-assets/js/fab-content.js
-assets/js/portfolio-content.js
-
-portfoliopages/portfoliostyle.css
-portfoliopages/assets/data/portfoliopage-loader.js
+- creates a normal YouTube iframe directly;
+- never hides the iframe while it loads;
+- sends an origin referrer to YouTube;
+- requests muted autoplay;
+- requests single-video looping;
+- hides controls;
+- disables keyboard and pointer interaction;
+- starts one second into the video;
+- enlarges and crops the player to move most YouTube edge chrome outside
+  the visible hero;
+- uses all YouTube links already stored in the existing content/data files.
 
 INSTALLATION
 
-1. Extract the ZIP.
-2. Copy its contents into the root of the cloned repository.
-3. Allow all six matching files to be replaced.
-4. Do NOT copy anything from the earlier MP4 package.
-5. Open GitHub Desktop.
-6. Commit with:
-   Use YouTube API for hero videos
-7. Push origin.
-8. Wait for GitHub Pages to deploy.
-9. Open the site in an Incognito window or press Ctrl + F5.
+1. Delete or ignore the earlier YouTube API and MP4 fix packages.
+2. Extract this ZIP.
+3. Copy its contents into the ROOT of the cloned repository.
+4. Replace these seven files:
 
-BEHAVIOUR
+   style.css
 
-All main-page and portfolio-detail YouTube hero videos:
+   assets/js/home-content.js
+   assets/js/games-content.js
+   assets/js/fab-content.js
+   assets/js/portfolio-content.js
 
-- use the existing YouTube links;
-- start muted;
-- request autoplay through the official YouTube IFrame Player API;
-- loop continuously;
-- restart if YouTube reports the video has ended;
-- retry after returning to the tab;
-- retry after a browser autoplay block on the first interaction;
-- hide controls;
-- ignore pointer input;
-- crop to cover the hero area.
+   portfoliopages/portfoliostyle.css
+   portfoliopages/assets/data/portfoliopage-loader.js
 
-Normal YouTube videos inside the body of portfolio detail pages remain
-interactive and are not changed.
+5. In GitHub Desktop, commit with:
 
-DIAGNOSTIC INFORMATION
+   Restore direct YouTube hero videos
 
-If YouTube still refuses one particular video, open the browser console.
-The script will report YouTube's numeric player error code with the video ID.
-That distinguishes a code problem from a video-level embedding restriction.
+6. Push origin.
+7. Wait for the Pages deployment to turn green.
+8. Test in a Chrome Incognito window with extensions disabled.
+9. Also press Ctrl + F5 on the normal browser window.
+
+IMPORTANT YOUTUBE LIMITATION
+
+YouTube controls can be hidden with controls=0. However, YouTube decides when
+its own branding treatment appears. Its modestbranding parameter is deprecated
+and no longer has any effect. Cropping the iframe removes most edge chrome, but
+no website code can guarantee that YouTube will never display any branding or
+error overlay.
+
+DIRECT EMBED TEST
+
+For each main-page video, open its embed link directly in an Incognito window.
+For example:
+
+https://www.youtube.com/embed/2oTJp0fKoIc
+
+If that direct YouTube page says “This video is unavailable”, the website code
+cannot play that particular ID. The link, visibility, embedding permission, or
+YouTube account/video restriction must be corrected for that video.

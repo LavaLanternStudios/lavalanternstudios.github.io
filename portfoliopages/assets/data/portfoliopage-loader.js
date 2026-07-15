@@ -7,7 +7,7 @@ function getHeroYouTubeVideoId(url) {
 	const value = String(url || "").trim();
 
 	const patterns = [
-		/(?:youtube\.com\/watch\?.*?[?&]v=)([^&?/]+)/i,
+		/[?&]v=([^&?/]+)/i,
 		/(?:youtu\.be\/)([^&?/]+)/i,
 		/(?:youtube\.com\/embed\/)([^&?/]+)/i,
 		/(?:youtube\.com\/shorts\/)([^&?/]+)/i,
@@ -25,194 +25,36 @@ function getHeroYouTubeVideoId(url) {
 	return "";
 }
 
-function loadPortfolioYouTubeIframeAPI() {
-	if (window.YT?.Player) {
-		return Promise.resolve(window.YT);
-	}
-
-	if (window.__lavaYouTubeAPIReadyPromise) {
-		return window.__lavaYouTubeAPIReadyPromise;
-	}
-
-	window.__lavaYouTubeAPIReadyPromise = new Promise((resolve, reject) => {
-		const previousReadyHandler = window.onYouTubeIframeAPIReady;
-
-		window.onYouTubeIframeAPIReady = () => {
-			if (typeof previousReadyHandler === "function") {
-				previousReadyHandler();
-			}
-
-			resolve(window.YT);
-		};
-
-		let apiScript = document.querySelector(
-			'script[src="https://www.youtube.com/iframe_api"]'
-		);
-
-		if (!apiScript) {
-			apiScript = document.createElement("script");
-			apiScript.src = "https://www.youtube.com/iframe_api";
-			apiScript.async = true;
-			apiScript.onerror = () => {
-				reject(new Error("The YouTube IFrame Player API could not be loaded."));
-			};
-
-			document.head.appendChild(apiScript);
-		}
-	});
-
-	return window.__lavaYouTubeAPIReadyPromise;
-}
-
-function createPortfolioHeroYouTubePlayer(container, url, title) {
+function createPortfolioHeroYouTubeURL(url) {
 	const videoId = getHeroYouTubeVideoId(url);
-	if (!videoId) return;
+	if (!videoId) return "";
 
-	container.replaceChildren();
-	container.classList.add("youtube-background-loading");
-	container.classList.remove("youtube-background-error");
+	const embedURL = new URL(`https://www.youtube.com/embed/${videoId}`);
 
-	const mount = document.createElement("div");
-	mount.id = `portfolio-hero-youtube-${videoId}-${Math.random()
-		.toString(36)
-		.slice(2, 9)}`;
-	mount.className = "youtube-background-player";
-	container.appendChild(mount);
+	try {
+		const suppliedURL = new URL(url, window.location.href);
+		const shareToken = suppliedURL.searchParams.get("si");
 
-	let player = null;
-	let fallbackAdded = false;
-
-	function requestPlayback() {
-		if (!player || typeof player.playVideo !== "function") return;
-
-		try {
-			player.mute();
-			player.setVolume(0);
-			player.playVideo();
-		} catch (error) {}
+		if (shareToken) {
+			embedURL.searchParams.set("si", shareToken);
+		}
+	} catch (error) {
+		/* The validated video ID is sufficient to build the embed. */
 	}
 
-	function addFallback() {
-		if (fallbackAdded) return;
-		fallbackAdded = true;
+	embedURL.searchParams.set("autoplay", "1");
+	embedURL.searchParams.set("mute", "1");
+	embedURL.searchParams.set("loop", "1");
+	embedURL.searchParams.set("playlist", videoId);
+	embedURL.searchParams.set("controls", "0");
+	embedURL.searchParams.set("disablekb", "1");
+	embedURL.searchParams.set("fs", "0");
+	embedURL.searchParams.set("iv_load_policy", "3");
+	embedURL.searchParams.set("playsinline", "1");
+	embedURL.searchParams.set("rel", "0");
+	embedURL.searchParams.set("start", "1");
 
-		const resume = () => {
-			requestPlayback();
-
-			["pointerdown", "touchstart", "keydown", "scroll"].forEach((eventName) => {
-				window.removeEventListener(eventName, resume);
-			});
-		};
-
-		["pointerdown", "touchstart", "keydown", "scroll"].forEach((eventName) => {
-			window.addEventListener(eventName, resume, {
-				once: true,
-				passive: true
-			});
-		});
-	}
-
-	loadPortfolioYouTubeIframeAPI()
-		.then(() => {
-			const origin =
-				window.location.protocol === "http:" ||
-				window.location.protocol === "https:"
-					? window.location.origin
-					: undefined;
-
-			const playerVars = {
-				autoplay: 1,
-				controls: 0,
-				disablekb: 1,
-				enablejsapi: 1,
-				fs: 0,
-				iv_load_policy: 3,
-				loop: 1,
-				playlist: videoId,
-				playsinline: 1,
-				rel: 0
-			};
-
-			if (origin) {
-				playerVars.origin = origin;
-				playerVars.widget_referrer = window.location.href;
-			}
-
-			player = new window.YT.Player(mount.id, {
-				videoId,
-				width: "100%",
-				height: "100%",
-				playerVars,
-				events: {
-					onReady(event) {
-						event.target.mute();
-						event.target.setVolume(0);
-						event.target.playVideo();
-					},
-
-					onStateChange(event) {
-						if (event.data === window.YT.PlayerState.PLAYING) {
-							container.classList.remove("youtube-background-loading");
-							container.classList.remove("youtube-background-error");
-						}
-
-						if (event.data === window.YT.PlayerState.ENDED) {
-							event.target.seekTo(0, true);
-							event.target.playVideo();
-						}
-
-						if (
-							event.data === window.YT.PlayerState.PAUSED ||
-							event.data === window.YT.PlayerState.CUED
-						) {
-							requestPlayback();
-						}
-					},
-
-					onAutoplayBlocked() {
-						addFallback();
-					},
-
-					onError(event) {
-						container.classList.remove("youtube-background-loading");
-						container.classList.add("youtube-background-error");
-
-						console.error(
-							`Portfolio hero video ${videoId} returned YouTube error ${event.data}.`
-						);
-					}
-				}
-			});
-
-			const iframe = player.getIframe();
-
-			if (iframe) {
-				iframe.setAttribute("title", title || "Portfolio project showreel");
-				iframe.setAttribute(
-					"referrerpolicy",
-					"strict-origin-when-cross-origin"
-				);
-				iframe.setAttribute(
-					"allow",
-					"autoplay; encrypted-media; picture-in-picture"
-				);
-				iframe.setAttribute("tabindex", "-1");
-				iframe.setAttribute("aria-hidden", "true");
-			}
-
-			window.addEventListener("pageshow", requestPlayback);
-
-			document.addEventListener("visibilitychange", () => {
-				if (!document.hidden) {
-					requestPlayback();
-				}
-			});
-		})
-		.catch((error) => {
-			container.classList.remove("youtube-background-loading");
-			container.classList.add("youtube-background-error");
-			console.error(error);
-		});
+	return embedURL.toString();
 }
 
 function getMediaSource(media, section = null) {
@@ -909,11 +751,22 @@ if (project) {
 
 	if (heroElement) {
 		if (project.heroType === "video" && project.heroVideo) {
-			createPortfolioHeroYouTubePlayer(
-				heroElement,
-				project.heroVideo,
-				project.title
+			const heroVideoURL = createPortfolioHeroYouTubeURL(
+				project.heroVideo
 			);
+
+			heroElement.innerHTML = `
+				<iframe
+					src="${heroVideoURL}"
+					title="${project.title}"
+					loading="eager"
+					tabindex="-1"
+					aria-hidden="true"
+					allow="autoplay; encrypted-media; picture-in-picture"
+					referrerpolicy="origin-when-cross-origin"
+					frameborder="0"
+				></iframe>
+			`;
 		} else if (project.heroImage) {
 			heroElement.innerHTML = `
 				<img src="${project.heroImage}" alt="${project.title}" />

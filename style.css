@@ -3690,40 +3690,21 @@ h3,
 }
 
 /* ================================
-   Main Hero YouTube Interaction Fix
-   Allows autoplay, with clickable player controls as a fallback.
+   Final Direct YouTube Hero Background
 ================================ */
 
 .hero-video-embed,
 .games-video-embed,
 .fab-video-embed,
 .portfolio-video-embed {
-	pointer-events: auto;
-}
-
-.hero-overlay,
-.games-hero-overlay,
-.fab-hero-overlay,
-.portfolio-hero-overlay {
-	pointer-events: none;
-}
-
-/* ================================
-   YouTube IFrame API Hero Backgrounds
-================================ */
-
-.hero-video-embed,
-.games-video-embed,
-.fab-video-embed,
-.portfolio-video-embed {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	overflow: hidden;
 	background: #0b0c10;
 	pointer-events: none !important;
 }
 
-.hero-video-embed .youtube-background-player,
-.games-video-embed .youtube-background-player,
-.fab-video-embed .youtube-background-player,
-.portfolio-video-embed .youtube-background-player,
 .hero-video-embed iframe,
 .games-video-embed iframe,
 .fab-video-embed iframe,
@@ -3736,8 +3717,11 @@ h3,
 	min-width: 177.78vh;
 	min-height: 100vh;
 	max-width: none;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(1.18);
+	transform-origin: center;
 	border: 0;
+	opacity: 1 !important;
+	visibility: visible !important;
 	pointer-events: none !important;
 }
 
@@ -3746,18 +3730,5 @@ h3,
 .fab-hero-overlay,
 .portfolio-hero-overlay {
 	pointer-events: none;
-}
-
-.youtube-background-loading iframe {
-	opacity: 0;
-}
-
-.youtube-background-player,
-.youtube-background-player iframe {
-	transition: opacity 0.35s ease;
-}
-
-.youtube-background-error iframe {
-	visibility: hidden;
 }
 
