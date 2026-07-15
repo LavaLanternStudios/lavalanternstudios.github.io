@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	setText("[data-portfolio-collection-heading]", content.text.collectionHeading);
 	setText("[data-portfolio-collection-title]", content.text.collectionTitle);
 
-	renderYouTubeEmbed("[data-portfolio-showreel]", content.video.showreelYouTubeURL);
+	renderHeroBackgroundVideo("[data-portfolio-showreel]", content.video.showreelVideoURL);
 	applyTextSizes(content.textSizes);
 });
 
@@ -34,64 +34,80 @@ function setImage(selector, src) {
 	}
 }
 
-function renderYouTubeEmbed(selector, url) {
+function renderHeroBackgroundVideo(selector, videoURL) {
 	const container = document.querySelector(selector);
-	if (!container || !url) return;
+	if (!container || !videoURL) return;
 
-	const embedURL = createHeroYouTubeURL(url);
-	if (!embedURL) return;
+	const video = document.createElement("video");
+	const source = document.createElement("source");
 
-	container.innerHTML = `
-		<iframe
-			src="${embedURL}"
-			title="${container.getAttribute("aria-label") || "Lava Lantern Studios showreel"}"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-			allowfullscreen
-		></iframe>
-	`;
-}
+	video.className = "hero-background-video";
+	video.autoplay = true;
+	video.loop = true;
+	video.muted = true;
+	video.defaultMuted = true;
+	video.playsInline = true;
+	video.preload = "auto";
+	video.disablePictureInPicture = true;
+	video.tabIndex = -1;
 
-function createHeroYouTubeURL(url) {
-	const videoId = getYouTubeVideoId(url);
-	if (!videoId) return "";
+	video.setAttribute("autoplay", "");
+	video.setAttribute("loop", "");
+	video.setAttribute("muted", "");
+	video.setAttribute("playsinline", "");
+	video.setAttribute("webkit-playsinline", "");
+	video.setAttribute("disablepictureinpicture", "");
+	video.setAttribute("disableremoteplayback", "");
+	video.setAttribute("aria-hidden", "true");
 
-	const embedURL = new URL(`https://www.youtube.com/embed/${videoId}`);
+	source.src = videoURL;
+	source.type = getHeroVideoMimeType(videoURL);
 
-	try {
-		const suppliedURL = new URL(url, window.location.href);
-		const shareToken = suppliedURL.searchParams.get("si");
+	video.appendChild(source);
+	container.replaceChildren(video);
+	container.classList.remove("hero-video-unavailable");
 
-		if (shareToken) {
-			embedURL.searchParams.set("si", shareToken);
+	function requestPlayback() {
+		video.muted = true;
+		video.defaultMuted = true;
+
+		const playAttempt = video.play();
+
+		if (playAttempt && typeof playAttempt.catch === "function") {
+			playAttempt.catch(() => {
+				/*
+					A browser or device may still override autoplay.
+					The video remains ready to resume after visibility/pageshow.
+				*/
+			});
 		}
-	} catch (error) {
-		/* The video ID has already been validated, so playback can continue. */
 	}
 
-	/*
-		Autoplay remains muted and looping for the hero design.
-		Controls remain available as a fallback if the browser does not
-		begin autoplay automatically.
-	*/
-	embedURL.searchParams.set("autoplay", "1");
-	embedURL.searchParams.set("mute", "1");
-	embedURL.searchParams.set("loop", "1");
-	embedURL.searchParams.set("playlist", videoId);
-	embedURL.searchParams.set("controls", "1");
-	embedURL.searchParams.set("playsinline", "1");
-	embedURL.searchParams.set("rel", "0");
+	function showVideoError() {
+		container.classList.add("hero-video-unavailable");
+		console.error(`Hero video could not be loaded: ${videoURL}`);
+	}
 
-	return embedURL.toString();
+	source.addEventListener("error", showVideoError);
+	video.addEventListener("loadedmetadata", requestPlayback, { once: true });
+	video.addEventListener("loadeddata", requestPlayback, { once: true });
+	video.addEventListener("canplay", requestPlayback, { once: true });
+
+	window.addEventListener("pageshow", requestPlayback);
+
+	document.addEventListener("visibilitychange", () => {
+		if (!document.hidden) {
+			requestPlayback();
+		}
+	});
+
+	requestPlayback();
 }
 
-function getYouTubeVideoId(url) {
-	const value = String(url || "").trim();
-
-	const match = value.match(
-		/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/|youtube\.com\/live\/)([^&?/]+)/
-	);
-
-	return match ? match[1] : "";
+function getHeroVideoMimeType(source) {
+	if (/\.webm(?:[?#].*)?$/i.test(source)) return "video/webm";
+	if (/\.ogg(?:[?#].*)?$/i.test(source)) return "video/ogg";
+	return "video/mp4";
 }
 
 function applyTextSizes(sizes) {

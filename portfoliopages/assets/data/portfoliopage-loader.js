@@ -3,46 +3,40 @@ const project = portfolioPages[projectId];
 const projectContent = window.projectPageContent?.[projectId];
 
 
-function getYouTubeVideoId(url) {
-	const value = String(url || "").trim();
+function startHeroVideoPlayback(video) {
+	if (!(video instanceof HTMLVideoElement)) return;
 
-	const match = value.match(
-		/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/|youtube\.com\/live\/)([^&?/]+)/
-	);
+	video.muted = true;
+	video.defaultMuted = true;
+	video.loop = true;
+	video.playsInline = true;
 
-	return match ? match[1] : "";
-}
+	const requestPlayback = () => {
+		video.muted = true;
+		video.defaultMuted = true;
 
-function createHeroYouTubeURL(url) {
-	const videoId = getYouTubeVideoId(url);
-	if (!videoId) return url || "";
+		const playAttempt = video.play();
 
-	const embedURL = new URL(`https://www.youtube.com/embed/${videoId}`);
-
-	try {
-		const suppliedURL = new URL(url, window.location.href);
-		const shareToken = suppliedURL.searchParams.get("si");
-
-		if (shareToken) {
-			embedURL.searchParams.set("si", shareToken);
+		if (playAttempt && typeof playAttempt.catch === "function") {
+			playAttempt.catch(() => {
+				/* The browser may override autoplay on an individual device. */
+			});
 		}
-	} catch (error) {
-		/* The validated video ID is enough to build the player URL. */
-	}
+	};
 
-	/*
-		YouTube requires the video ID in `playlist` when looping one video.
-		Muted playback gives autoplay the best browser compatibility.
-	*/
-	embedURL.searchParams.set("autoplay", "1");
-	embedURL.searchParams.set("mute", "1");
-	embedURL.searchParams.set("loop", "1");
-	embedURL.searchParams.set("playlist", videoId);
-	embedURL.searchParams.set("controls", "0");
-	embedURL.searchParams.set("playsinline", "1");
-	embedURL.searchParams.set("rel", "0");
+	video.addEventListener("loadedmetadata", requestPlayback, { once: true });
+	video.addEventListener("loadeddata", requestPlayback, { once: true });
+	video.addEventListener("canplay", requestPlayback, { once: true });
 
-	return embedURL.toString();
+	window.addEventListener("pageshow", requestPlayback);
+
+	document.addEventListener("visibilitychange", () => {
+		if (!document.hidden) {
+			requestPlayback();
+		}
+	});
+
+	requestPlayback();
 }
 
 function getMediaSource(media, section = null) {
@@ -739,17 +733,30 @@ if (project) {
 
 	if (heroElement) {
 		if (project.heroType === "video" && project.heroVideo) {
-			const heroVideoURL = createHeroYouTubeURL(project.heroVideo);
-
 			heroElement.innerHTML = `
-				<iframe
-					src="${heroVideoURL}"
-					title="${project.title}"
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-					referrerpolicy="strict-origin-when-cross-origin"
-					allowfullscreen
-				></iframe>
+				<video
+					class="project-hero-background-video"
+					autoplay
+					loop
+					muted
+					playsinline
+					webkit-playsinline
+					preload="auto"
+					disablepictureinpicture
+					disableremoteplayback
+					tabindex="-1"
+					aria-hidden="true"
+				>
+					<source
+						src="${project.heroVideo}"
+						type="${getVideoMimeType(project.heroVideo)}"
+					/>
+				</video>
 			`;
+
+			startHeroVideoPlayback(
+				heroElement.querySelector(".project-hero-background-video")
+			);
 		} else if (project.heroImage) {
 			heroElement.innerHTML = `
 				<img src="${project.heroImage}" alt="${project.title}" />

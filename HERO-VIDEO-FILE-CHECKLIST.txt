@@ -1,0 +1,15 @@
+HERO VIDEO FILE CHECKLIST
+
+MAIN PAGES
+[ ] assets/videos/home-hero.mp4
+[ ] assets/videos/games-hero.mp4
+[ ] assets/videos/fab-hero.mp4
+[ ] assets/videos/portfolio-hero.mp4
+
+PORTFOLIO DETAIL PAGES
+[ ] portfoliopages/assets/projects/egyptian-level/hero.mp4
+[ ] portfoliopages/assets/projects/lifeguard-sim/hero.mp4
+[ ] portfoliopages/assets/projects/prison-level/hero.mp4
+[ ] portfoliopages/assets/projects/space-station-level/hero.mp4
+[ ] portfoliopages/assets/projects/textured-aston-martin/hero.mp4
+[ ] portfoliopages/assets/projects/ui-ux-design-game-interface/hero.mp4

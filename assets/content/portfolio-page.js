@@ -4,7 +4,7 @@ window.portfolioPageContent = {
 	},
 
 	video: {
-		showreelYouTubeURL: "https://www.youtube.com/embed/6R31XvtdSvg?si=UWRCz8vPetLthR4z"
+		showreelVideoURL: "assets/videos/portfolio-hero.mp4"
 	},
 
 	text: {

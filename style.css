@@ -3708,3 +3708,45 @@ h3,
 	pointer-events: none;
 }
 
+/* ================================
+   Frontier-Style Self-Hosted Hero Video
+================================ */
+
+.hero-video-embed,
+.games-video-embed,
+.fab-video-embed,
+.portfolio-video-embed {
+	background: #0b0c10;
+	pointer-events: none;
+}
+
+.hero-video-embed .hero-background-video,
+.games-video-embed .hero-background-video,
+.fab-video-embed .hero-background-video,
+.portfolio-video-embed .hero-background-video {
+	position: absolute;
+	inset: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	object-fit: cover;
+	object-position: center center;
+	border: 0;
+	pointer-events: none;
+}
+
+.hero-video-embed.hero-video-unavailable .hero-background-video,
+.games-video-embed.hero-video-unavailable .hero-background-video,
+.fab-video-embed.hero-video-unavailable .hero-background-video,
+.portfolio-video-embed.hero-video-unavailable .hero-background-video {
+	display: none;
+}
+
+.hero-overlay,
+.games-hero-overlay,
+.fab-hero-overlay,
+.portfolio-hero-overlay {
+	pointer-events: none;
+}
+
