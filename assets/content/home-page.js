@@ -6,7 +6,7 @@ window.homePageContent = {
 	},
 
 	video: {
-		showreelVideoURL: "assets/videos/home-hero.mp4"
+		showreelYouTubeURL: "https://www.youtube.com/embed/2oTJp0fKoIc?si=hhduuhi_xU0IxfRn"
 	},
 
 	text: {

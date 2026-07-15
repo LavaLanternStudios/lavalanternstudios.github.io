@@ -4,7 +4,7 @@ window.fabPageContent = {
 	},
 
 	video: {
-		showreelVideoURL: "assets/videos/fab-hero.mp4"
+		showreelYouTubeURL: "https://www.youtube.com/embed/J5Rq2UTOfxI?si=WB6k5a9dnvc05y8e"
 	},
 
 	text: {

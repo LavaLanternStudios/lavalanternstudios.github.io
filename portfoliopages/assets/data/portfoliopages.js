@@ -17,7 +17,7 @@ const portfolioPages = {
 		title: "Egyptian Level",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "assets/projects/egyptian-level/hero.mp4",
+		heroVideo: "https://www.youtube.com/embed/gv0XmMzVmBM?si=OJrtt4_Cjvfr6b-N",
 		tags: ["Unreal Engine", "Maya", "Substance Painter", "Level Design", "Environment Art", "3D Modelling"],
 		portfolioFolder: "assets/projects/egyptian-level/",
 		galleryImages: [
@@ -45,7 +45,7 @@ const portfolioPages = {
 		title: "Lifeguard Simulator",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "assets/projects/lifeguard-sim/hero.mp4",
+		heroVideo: "https://www.youtube.com/embed/xcWfQ5UEt9s?si=PjlU3AgV5_oX18BR",
 		tags: ["Unity", "Affinity Suite", "2D Art", "Level Design", "Mini-Game", "Voice Control", "Hand-Motion", "Eye-Tracking"],
 		portfolioFolder: "assets/projects/lifeguard-sim/",
 		galleryImages: [
@@ -77,7 +77,7 @@ const portfolioPages = {
 		title: "Prison Level",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "assets/projects/prison-level/hero.mp4",
+		heroVideo: "https://www.youtube.com/embed/PmB5UgXN5DY?si=cbX9eVWSqP-q8nFG",
 		tags: ["Unreal Engine", "Level Design", "Sound Design", "Narrative Design"],
 		portfolioFolder: "assets/projects/prison-level/",
 		galleryImages: [
@@ -115,7 +115,7 @@ const portfolioPages = {
 		title: "Space Level",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "assets/projects/space-station-level/hero.mp4",
+		heroVideo: "https://www.youtube.com/embed/IrDDFPE4T_k?si=NEaVLb2dWBlY2cfa",
 		tags: ["Unreal Engine", "Level Design", "Environmental Art"],
 		portfolioFolder: "assets/projects/space-station-level/",
 		galleryImages: [
@@ -170,7 +170,7 @@ const portfolioPages = {
 		title: "Textured Aston Martin",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "assets/projects/textured-aston-martin/hero.mp4",
+		heroVideo: "https://www.youtube.com/embed/IoNrfETROSU?si=GBQUwp9u1yiBZVoY",
 		tags: ["Substance Painter", "Unreal Engine", "Maya", "3D Texturing", "Lighting"],
 		portfolioFolder: "assets/projects/textured-aston-martin/",
 		galleryImages: [
@@ -198,7 +198,7 @@ const portfolioPages = {
 		title: "UI/UX Design - Game Interface",
 		heroType: "video",
 		heroImage: "",
-		heroVideo: "assets/projects/ui-ux-design-game-interface/hero.mp4",
+		heroVideo: "https://www.youtube.com/embed/8UPenKSTQIo?si=4IW47VlklJ3W66CX",
 		tags: ["Unity", "Affinity Suite", "UI/UX Design", "UI/UX Design"],
 		portfolioFolder: "assets/projects/ui-ux-design-game-interface/",
 		galleryImages: [

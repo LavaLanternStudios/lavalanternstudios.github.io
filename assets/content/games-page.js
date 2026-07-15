@@ -4,7 +4,7 @@ window.gamesPageContent = {
 	},
 
 	video: {
-		showreelVideoURL: "assets/videos/games-hero.mp4"
+		showreelYouTubeURL: "https://www.youtube.com/embed/wDV5dVzQNzs?si=Ov6lrFmtKRCyOVPf"
 	},
 
 	text: {
