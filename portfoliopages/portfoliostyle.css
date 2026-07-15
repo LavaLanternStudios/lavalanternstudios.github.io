@@ -875,20 +875,38 @@ body.lightbox-open {
 }
 
 /* ================================
-   Self-Hosted Portfolio Hero Videos
+   Portfolio YouTube Hero Backgrounds
 ================================ */
 
-.project-hero-media .project-hero-background-video {
+.project-hero-media {
+	pointer-events: none;
+}
+
+.project-hero-media .youtube-background-player,
+.project-hero-media .youtube-background-player iframe {
 	position: absolute;
-	inset: 0;
-	display: block;
-	width: 100%;
-	height: 100%;
+	top: 50%;
+	left: 50%;
+	width: 100vw;
+	height: 56.25vw;
+	min-width: 177.78vh;
+	min-height: 100vh;
 	max-width: none;
-	object-fit: cover;
-	object-position: center center;
+	transform: translate(-50%, -50%);
 	border: 0;
 	pointer-events: none;
-	background: #050506;
+}
+
+.project-hero-media.youtube-background-loading iframe {
+	opacity: 0;
+}
+
+.project-hero-media .youtube-background-player,
+.project-hero-media .youtube-background-player iframe {
+	transition: opacity 0.35s ease;
+}
+
+.project-hero-media.youtube-background-error iframe {
+	visibility: hidden;
 }
 

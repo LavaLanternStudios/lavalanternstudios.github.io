@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	setText("[data-home-bottom-title]", content.text.bottomTitle);
 	setText("[data-home-bottom-body]", content.text.bottomBody);
 
-	renderHeroBackgroundVideo("[data-home-showreel]", content.video.showreelVideoURL);
+	renderYouTubeEmbed("[data-home-showreel]", content.video.showreelYouTubeURL);
 	applyTextSizes(content.textSizes);
 });
 
@@ -55,80 +55,230 @@ function setParagraphs(selector, paragraphs) {
 		.join("");
 }
 
-function renderHeroBackgroundVideo(selector, videoURL) {
+function renderYouTubeEmbed(selector, url) {
 	const container = document.querySelector(selector);
-	if (!container || !videoURL) return;
+	if (!container || !url) return;
 
-	const video = document.createElement("video");
-	const source = document.createElement("source");
+	const videoId = getYouTubeVideoId(url);
+	if (!videoId) {
+		console.error(`A valid YouTube video ID could not be read from: ${url}`);
+		return;
+	}
 
-	video.className = "hero-background-video";
-	video.autoplay = true;
-	video.loop = true;
-	video.muted = true;
-	video.defaultMuted = true;
-	video.playsInline = true;
-	video.preload = "auto";
-	video.disablePictureInPicture = true;
-	video.tabIndex = -1;
+	createYouTubeBackgroundPlayer(container, videoId);
+}
 
-	video.setAttribute("autoplay", "");
-	video.setAttribute("loop", "");
-	video.setAttribute("muted", "");
-	video.setAttribute("playsinline", "");
-	video.setAttribute("webkit-playsinline", "");
-	video.setAttribute("disablepictureinpicture", "");
-	video.setAttribute("disableremoteplayback", "");
-	video.setAttribute("aria-hidden", "true");
+function getYouTubeVideoId(url) {
+	const value = String(url || "").trim();
 
-	source.src = videoURL;
-	source.type = getHeroVideoMimeType(videoURL);
+	const patterns = [
+		/(?:youtube\.com\/watch\?.*?[?&]v=)([^&?/]+)/i,
+		/(?:youtu\.be\/)([^&?/]+)/i,
+		/(?:youtube\.com\/embed\/)([^&?/]+)/i,
+		/(?:youtube\.com\/shorts\/)([^&?/]+)/i,
+		/(?:youtube\.com\/live\/)([^&?/]+)/i
+	];
 
-	video.appendChild(source);
-	container.replaceChildren(video);
-	container.classList.remove("hero-video-unavailable");
+	for (const pattern of patterns) {
+		const match = value.match(pattern);
 
-	function requestPlayback() {
-		video.muted = true;
-		video.defaultMuted = true;
-
-		const playAttempt = video.play();
-
-		if (playAttempt && typeof playAttempt.catch === "function") {
-			playAttempt.catch(() => {
-				/*
-					A browser or device may still override autoplay.
-					The video remains ready to resume after visibility/pageshow.
-				*/
-			});
+		if (match) {
+			return match[1];
 		}
 	}
 
-	function showVideoError() {
-		container.classList.add("hero-video-unavailable");
-		console.error(`Hero video could not be loaded: ${videoURL}`);
+	return "";
+}
+
+function loadYouTubeIframeAPI() {
+	if (window.YT?.Player) {
+		return Promise.resolve(window.YT);
 	}
 
-	source.addEventListener("error", showVideoError);
-	video.addEventListener("loadedmetadata", requestPlayback, { once: true });
-	video.addEventListener("loadeddata", requestPlayback, { once: true });
-	video.addEventListener("canplay", requestPlayback, { once: true });
+	if (window.__lavaYouTubeAPIReadyPromise) {
+		return window.__lavaYouTubeAPIReadyPromise;
+	}
 
-	window.addEventListener("pageshow", requestPlayback);
+	window.__lavaYouTubeAPIReadyPromise = new Promise((resolve, reject) => {
+		const previousReadyHandler = window.onYouTubeIframeAPIReady;
 
-	document.addEventListener("visibilitychange", () => {
-		if (!document.hidden) {
-			requestPlayback();
+		window.onYouTubeIframeAPIReady = () => {
+			if (typeof previousReadyHandler === "function") {
+				previousReadyHandler();
+			}
+
+			resolve(window.YT);
+		};
+
+		let apiScript = document.querySelector(
+			'script[src="https://www.youtube.com/iframe_api"]'
+		);
+
+		if (!apiScript) {
+			apiScript = document.createElement("script");
+			apiScript.src = "https://www.youtube.com/iframe_api";
+			apiScript.async = true;
+			apiScript.onerror = () => {
+				reject(new Error("The YouTube IFrame Player API could not be loaded."));
+			};
+
+			document.head.appendChild(apiScript);
 		}
 	});
 
-	requestPlayback();
+	return window.__lavaYouTubeAPIReadyPromise;
 }
 
-function getHeroVideoMimeType(source) {
-	if (/\.webm(?:[?#].*)?$/i.test(source)) return "video/webm";
-	if (/\.ogg(?:[?#].*)?$/i.test(source)) return "video/ogg";
-	return "video/mp4";
+function createYouTubeBackgroundPlayer(container, videoId) {
+	container.replaceChildren();
+	container.classList.add("youtube-background-loading");
+	container.classList.remove("youtube-background-error");
+
+	const playerMount = document.createElement("div");
+	const playerId = `youtube-background-${videoId}-${Math.random()
+		.toString(36)
+		.slice(2, 9)}`;
+
+	playerMount.id = playerId;
+	playerMount.className = "youtube-background-player";
+	container.appendChild(playerMount);
+
+	let player = null;
+	let interactionFallbackAdded = false;
+
+	function requestPlayback() {
+		if (!player || typeof player.playVideo !== "function") return;
+
+		try {
+			player.mute();
+			player.setVolume(0);
+			player.playVideo();
+		} catch (error) {
+			/* The API may not be ready for commands until its next state event. */
+		}
+	}
+
+	function addInteractionFallback() {
+		if (interactionFallbackAdded) return;
+		interactionFallbackAdded = true;
+
+		const resumePlayback = () => {
+			requestPlayback();
+
+			["pointerdown", "touchstart", "keydown", "scroll"].forEach((eventName) => {
+				window.removeEventListener(eventName, resumePlayback);
+			});
+		};
+
+		["pointerdown", "touchstart", "keydown", "scroll"].forEach((eventName) => {
+			window.addEventListener(eventName, resumePlayback, {
+				once: true,
+				passive: true
+			});
+		});
+	}
+
+	loadYouTubeIframeAPI()
+		.then(() => {
+			const origin =
+				window.location.protocol === "http:" ||
+				window.location.protocol === "https:"
+					? window.location.origin
+					: undefined;
+
+			const playerVars = {
+				autoplay: 1,
+				controls: 0,
+				disablekb: 1,
+				enablejsapi: 1,
+				fs: 0,
+				iv_load_policy: 3,
+				loop: 1,
+				playlist: videoId,
+				playsinline: 1,
+				rel: 0
+			};
+
+			if (origin) {
+				playerVars.origin = origin;
+				playerVars.widget_referrer = window.location.href;
+			}
+
+			player = new window.YT.Player(playerId, {
+				videoId,
+				width: "100%",
+				height: "100%",
+				playerVars,
+				events: {
+					onReady(event) {
+						event.target.mute();
+						event.target.setVolume(0);
+						event.target.playVideo();
+					},
+
+					onStateChange(event) {
+						if (event.data === window.YT.PlayerState.PLAYING) {
+							container.classList.remove("youtube-background-loading");
+							container.classList.remove("youtube-background-error");
+						}
+
+						if (event.data === window.YT.PlayerState.ENDED) {
+							event.target.seekTo(0, true);
+							event.target.playVideo();
+						}
+
+						if (
+							event.data === window.YT.PlayerState.PAUSED ||
+							event.data === window.YT.PlayerState.CUED
+						) {
+							requestPlayback();
+						}
+					},
+
+					onAutoplayBlocked() {
+						addInteractionFallback();
+					},
+
+					onError(event) {
+						container.classList.remove("youtube-background-loading");
+						container.classList.add("youtube-background-error");
+
+						console.error(
+							`YouTube hero video ${videoId} returned player error ${event.data}.`
+						);
+					}
+				}
+			});
+
+			const iframe = player.getIframe();
+
+			if (iframe) {
+				iframe.setAttribute("title", "Lava Lantern Studios background showreel");
+				iframe.setAttribute(
+					"referrerpolicy",
+					"strict-origin-when-cross-origin"
+				);
+				iframe.setAttribute(
+					"allow",
+					"autoplay; encrypted-media; picture-in-picture"
+				);
+				iframe.setAttribute("tabindex", "-1");
+				iframe.setAttribute("aria-hidden", "true");
+			}
+
+			window.addEventListener("pageshow", requestPlayback);
+
+			document.addEventListener("visibilitychange", () => {
+				if (!document.hidden) {
+					requestPlayback();
+				}
+			});
+		})
+		.catch((error) => {
+			container.classList.remove("youtube-background-loading");
+			container.classList.add("youtube-background-error");
+			console.error(error);
+		});
 }
 
 function applyTextSizes(sizes) {

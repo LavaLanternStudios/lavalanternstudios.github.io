@@ -3709,7 +3709,7 @@ h3,
 }
 
 /* ================================
-   Frontier-Style Self-Hosted Hero Video
+   YouTube IFrame API Hero Backgrounds
 ================================ */
 
 .hero-video-embed,
@@ -3717,30 +3717,28 @@ h3,
 .fab-video-embed,
 .portfolio-video-embed {
 	background: #0b0c10;
-	pointer-events: none;
+	pointer-events: none !important;
 }
 
-.hero-video-embed .hero-background-video,
-.games-video-embed .hero-background-video,
-.fab-video-embed .hero-background-video,
-.portfolio-video-embed .hero-background-video {
+.hero-video-embed .youtube-background-player,
+.games-video-embed .youtube-background-player,
+.fab-video-embed .youtube-background-player,
+.portfolio-video-embed .youtube-background-player,
+.hero-video-embed iframe,
+.games-video-embed iframe,
+.fab-video-embed iframe,
+.portfolio-video-embed iframe {
 	position: absolute;
-	inset: 0;
-	display: block;
-	width: 100%;
-	height: 100%;
+	top: 50%;
+	left: 50%;
+	width: 100vw;
+	height: 56.25vw;
+	min-width: 177.78vh;
+	min-height: 100vh;
 	max-width: none;
-	object-fit: cover;
-	object-position: center center;
+	transform: translate(-50%, -50%);
 	border: 0;
-	pointer-events: none;
-}
-
-.hero-video-embed.hero-video-unavailable .hero-background-video,
-.games-video-embed.hero-video-unavailable .hero-background-video,
-.fab-video-embed.hero-video-unavailable .hero-background-video,
-.portfolio-video-embed.hero-video-unavailable .hero-background-video {
-	display: none;
+	pointer-events: none !important;
 }
 
 .hero-overlay,
@@ -3748,5 +3746,18 @@ h3,
 .fab-hero-overlay,
 .portfolio-hero-overlay {
 	pointer-events: none;
+}
+
+.youtube-background-loading iframe {
+	opacity: 0;
+}
+
+.youtube-background-player,
+.youtube-background-player iframe {
+	transition: opacity 0.35s ease;
+}
+
+.youtube-background-error iframe {
+	visibility: hidden;
 }
 

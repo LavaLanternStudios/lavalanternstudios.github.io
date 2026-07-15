@@ -3,40 +3,216 @@ const project = portfolioPages[projectId];
 const projectContent = window.projectPageContent?.[projectId];
 
 
-function startHeroVideoPlayback(video) {
-	if (!(video instanceof HTMLVideoElement)) return;
+function getHeroYouTubeVideoId(url) {
+	const value = String(url || "").trim();
 
-	video.muted = true;
-	video.defaultMuted = true;
-	video.loop = true;
-	video.playsInline = true;
+	const patterns = [
+		/(?:youtube\.com\/watch\?.*?[?&]v=)([^&?/]+)/i,
+		/(?:youtu\.be\/)([^&?/]+)/i,
+		/(?:youtube\.com\/embed\/)([^&?/]+)/i,
+		/(?:youtube\.com\/shorts\/)([^&?/]+)/i,
+		/(?:youtube\.com\/live\/)([^&?/]+)/i
+	];
 
-	const requestPlayback = () => {
-		video.muted = true;
-		video.defaultMuted = true;
+	for (const pattern of patterns) {
+		const match = value.match(pattern);
 
-		const playAttempt = video.play();
-
-		if (playAttempt && typeof playAttempt.catch === "function") {
-			playAttempt.catch(() => {
-				/* The browser may override autoplay on an individual device. */
-			});
+		if (match) {
+			return match[1];
 		}
-	};
+	}
 
-	video.addEventListener("loadedmetadata", requestPlayback, { once: true });
-	video.addEventListener("loadeddata", requestPlayback, { once: true });
-	video.addEventListener("canplay", requestPlayback, { once: true });
+	return "";
+}
 
-	window.addEventListener("pageshow", requestPlayback);
+function loadPortfolioYouTubeIframeAPI() {
+	if (window.YT?.Player) {
+		return Promise.resolve(window.YT);
+	}
 
-	document.addEventListener("visibilitychange", () => {
-		if (!document.hidden) {
-			requestPlayback();
+	if (window.__lavaYouTubeAPIReadyPromise) {
+		return window.__lavaYouTubeAPIReadyPromise;
+	}
+
+	window.__lavaYouTubeAPIReadyPromise = new Promise((resolve, reject) => {
+		const previousReadyHandler = window.onYouTubeIframeAPIReady;
+
+		window.onYouTubeIframeAPIReady = () => {
+			if (typeof previousReadyHandler === "function") {
+				previousReadyHandler();
+			}
+
+			resolve(window.YT);
+		};
+
+		let apiScript = document.querySelector(
+			'script[src="https://www.youtube.com/iframe_api"]'
+		);
+
+		if (!apiScript) {
+			apiScript = document.createElement("script");
+			apiScript.src = "https://www.youtube.com/iframe_api";
+			apiScript.async = true;
+			apiScript.onerror = () => {
+				reject(new Error("The YouTube IFrame Player API could not be loaded."));
+			};
+
+			document.head.appendChild(apiScript);
 		}
 	});
 
-	requestPlayback();
+	return window.__lavaYouTubeAPIReadyPromise;
+}
+
+function createPortfolioHeroYouTubePlayer(container, url, title) {
+	const videoId = getHeroYouTubeVideoId(url);
+	if (!videoId) return;
+
+	container.replaceChildren();
+	container.classList.add("youtube-background-loading");
+	container.classList.remove("youtube-background-error");
+
+	const mount = document.createElement("div");
+	mount.id = `portfolio-hero-youtube-${videoId}-${Math.random()
+		.toString(36)
+		.slice(2, 9)}`;
+	mount.className = "youtube-background-player";
+	container.appendChild(mount);
+
+	let player = null;
+	let fallbackAdded = false;
+
+	function requestPlayback() {
+		if (!player || typeof player.playVideo !== "function") return;
+
+		try {
+			player.mute();
+			player.setVolume(0);
+			player.playVideo();
+		} catch (error) {}
+	}
+
+	function addFallback() {
+		if (fallbackAdded) return;
+		fallbackAdded = true;
+
+		const resume = () => {
+			requestPlayback();
+
+			["pointerdown", "touchstart", "keydown", "scroll"].forEach((eventName) => {
+				window.removeEventListener(eventName, resume);
+			});
+		};
+
+		["pointerdown", "touchstart", "keydown", "scroll"].forEach((eventName) => {
+			window.addEventListener(eventName, resume, {
+				once: true,
+				passive: true
+			});
+		});
+	}
+
+	loadPortfolioYouTubeIframeAPI()
+		.then(() => {
+			const origin =
+				window.location.protocol === "http:" ||
+				window.location.protocol === "https:"
+					? window.location.origin
+					: undefined;
+
+			const playerVars = {
+				autoplay: 1,
+				controls: 0,
+				disablekb: 1,
+				enablejsapi: 1,
+				fs: 0,
+				iv_load_policy: 3,
+				loop: 1,
+				playlist: videoId,
+				playsinline: 1,
+				rel: 0
+			};
+
+			if (origin) {
+				playerVars.origin = origin;
+				playerVars.widget_referrer = window.location.href;
+			}
+
+			player = new window.YT.Player(mount.id, {
+				videoId,
+				width: "100%",
+				height: "100%",
+				playerVars,
+				events: {
+					onReady(event) {
+						event.target.mute();
+						event.target.setVolume(0);
+						event.target.playVideo();
+					},
+
+					onStateChange(event) {
+						if (event.data === window.YT.PlayerState.PLAYING) {
+							container.classList.remove("youtube-background-loading");
+							container.classList.remove("youtube-background-error");
+						}
+
+						if (event.data === window.YT.PlayerState.ENDED) {
+							event.target.seekTo(0, true);
+							event.target.playVideo();
+						}
+
+						if (
+							event.data === window.YT.PlayerState.PAUSED ||
+							event.data === window.YT.PlayerState.CUED
+						) {
+							requestPlayback();
+						}
+					},
+
+					onAutoplayBlocked() {
+						addFallback();
+					},
+
+					onError(event) {
+						container.classList.remove("youtube-background-loading");
+						container.classList.add("youtube-background-error");
+
+						console.error(
+							`Portfolio hero video ${videoId} returned YouTube error ${event.data}.`
+						);
+					}
+				}
+			});
+
+			const iframe = player.getIframe();
+
+			if (iframe) {
+				iframe.setAttribute("title", title || "Portfolio project showreel");
+				iframe.setAttribute(
+					"referrerpolicy",
+					"strict-origin-when-cross-origin"
+				);
+				iframe.setAttribute(
+					"allow",
+					"autoplay; encrypted-media; picture-in-picture"
+				);
+				iframe.setAttribute("tabindex", "-1");
+				iframe.setAttribute("aria-hidden", "true");
+			}
+
+			window.addEventListener("pageshow", requestPlayback);
+
+			document.addEventListener("visibilitychange", () => {
+				if (!document.hidden) {
+					requestPlayback();
+				}
+			});
+		})
+		.catch((error) => {
+			container.classList.remove("youtube-background-loading");
+			container.classList.add("youtube-background-error");
+			console.error(error);
+		});
 }
 
 function getMediaSource(media, section = null) {
@@ -733,29 +909,10 @@ if (project) {
 
 	if (heroElement) {
 		if (project.heroType === "video" && project.heroVideo) {
-			heroElement.innerHTML = `
-				<video
-					class="project-hero-background-video"
-					autoplay
-					loop
-					muted
-					playsinline
-					webkit-playsinline
-					preload="auto"
-					disablepictureinpicture
-					disableremoteplayback
-					tabindex="-1"
-					aria-hidden="true"
-				>
-					<source
-						src="${project.heroVideo}"
-						type="${getVideoMimeType(project.heroVideo)}"
-					/>
-				</video>
-			`;
-
-			startHeroVideoPlayback(
-				heroElement.querySelector(".project-hero-background-video")
+			createPortfolioHeroYouTubePlayer(
+				heroElement,
+				project.heroVideo,
+				project.title
 			);
 		} else if (project.heroImage) {
 			heroElement.innerHTML = `
