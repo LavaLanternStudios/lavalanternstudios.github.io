@@ -357,7 +357,6 @@ function loadScript(source) {
 
 function renderLatestDevlogPanel(panel, devlog) {
 	const displayDate = formatDate(devlog.parsedDate);
-	const linkAttributes = createLinkAttributes(devlog.devlogURL, "devlogs.html");
 
 	panel.innerHTML = `
 		<div>
@@ -367,7 +366,7 @@ function renderLatestDevlogPanel(panel, devlog) {
 			<p>${escapeHTML(devlog.description)}</p>
 		</div>
 
-		<a class="button" ${linkAttributes}>View Devlogs</a>
+		<a class="button" href="/devlogs">View Devlogs</a>
 	`;
 }
 
