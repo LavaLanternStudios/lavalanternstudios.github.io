@@ -1025,6 +1025,115 @@ video {
 }
 
 /* ================================
+   Home Teams We've Worked With
+================================ */
+
+.home-page .home-teams-section {
+	padding-top: 0;
+	padding-bottom: 48px;
+}
+
+.home-teams-panel {
+	width: 100%;
+	padding: 28px 32px;
+	overflow: hidden;
+	background:
+		linear-gradient(
+			to bottom right,
+			var(--lava-navy-deep) 0%,
+			#092034 42%,
+			var(--lava-navy) 100%
+		);
+	border: 1px solid var(--lava-border);
+	border-radius: 18px;
+	box-shadow: 0 1.1rem 2.8rem rgba(0, 0, 0, 0.22);
+}
+
+.home-teams-heading {
+	margin-bottom: 24px;
+	text-align: center;
+}
+
+.home-teams-heading h2 {
+	margin: 0;
+	text-align: center;
+}
+
+.home-teams-list {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap;
+	gap: clamp(24px, 4vw, 56px);
+	width: 100%;
+}
+
+.home-team-link,
+.home-team-item {
+	flex: 1 1 0;
+	max-width: 190px;
+	min-width: 0;
+	height: 82px;
+	padding: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 12px;
+}
+
+.home-team-link {
+	text-decoration: none;
+	transition:
+		transform 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.home-team-link:hover,
+.home-team-link:focus-visible {
+	transform: translateY(-3px);
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.home-team-logo {
+	display: block;
+	width: 100%;
+	max-width: 160px;
+	height: 64px;
+	object-fit: contain;
+	object-position: center center;
+}
+
+@media (max-width: 600px) {
+	.home-page .home-teams-section {
+		padding-top: 0;
+		padding-bottom: 32px;
+	}
+
+	.home-teams-panel {
+		padding: 24px 18px;
+	}
+
+	.home-teams-heading {
+		margin-bottom: 18px;
+	}
+
+	.home-teams-list {
+		gap: 14px;
+	}
+
+	.home-team-link,
+	.home-team-item {
+		height: 64px;
+		padding: 5px;
+	}
+
+	.home-team-logo {
+		max-width: 110px;
+		height: 50px;
+	}
+}
+
+/* ================================
    Games Page
 ================================ */
 
