@@ -24,6 +24,12 @@ const teams = [
 		logo: "assets/images/teams/Snackbox_Logo.png",
 		website: "https://snackbox.games/"
 	},
+	{
+		name: "Bournemouth University - Esports Society",
+		logo: "assets/images/teams/BU_Barracudas_Logo_Final.png",
+		website: "https://www.subu.org.uk/organisation/6423/"
+	},
+
 ];
 
 const teamsSection = document.getElementById("teams-we-worked-with");

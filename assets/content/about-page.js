@@ -92,19 +92,9 @@ window.aboutPageContent = {
 
 	reviews: [
 		{
-			name: "Reviewer Name",
-			image: "assets/images/about/reviews/reviewer-one.png",
-			quote: "Lava Lantern Studios brought care, clarity, and a strong creative eye to the project."
-		},
-		{
-			name: "Company Name",
-			image: "assets/images/about/reviews/reviewer-two.png",
-			quote: "The work felt polished, thoughtful, and easy to build from."
-		},
-		{
-			name: "Reviewer Name",
-			image: "assets/images/about/reviews/reviewer-three.png",
-			quote: "A reliable creative collaborator with strong attention to atmosphere and detail."
+			name: "Dom Dawson - Bournemouth University - Esports Society Team Lead",
+			image: "assets/images/about/reviews/BU_Barracudas_Logo_Final.png",
+			quote: "I had the pleasure working with Ryan to update the BU Esports Logo and he’s been brilliant to work with from start to finish. He outlined what to expect from the project along with clear timeframes each stage would be completed by, and was given consistent weekly updates either by message or through meetings on how the progress was going. He truly made the experience as easy as possible, adapting the design to all the feedback I could throw his way. I’m incredibly happy with the final result and I’d strongly recommend working with Ryan."
 		}
 	],
 

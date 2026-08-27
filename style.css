@@ -1070,11 +1070,10 @@ video {
 
 .home-team-link,
 .home-team-item {
-	flex: 1 1 0;
-	max-width: 190px;
-	min-width: 0;
-	height: 82px;
-	padding: 8px;
+	flex: 0 0 130px;
+	width: 130px;
+	height: 130px;
+	padding: 10px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1097,8 +1096,7 @@ video {
 .home-team-logo {
 	display: block;
 	width: 100%;
-	max-width: 160px;
-	height: 64px;
+	height: 100%;
 	object-fit: contain;
 	object-position: center center;
 }
@@ -1123,13 +1121,16 @@ video {
 
 	.home-team-link,
 	.home-team-item {
-		height: 64px;
-		padding: 5px;
+		flex: 0 0 90px;
+		width: 90px;
+		height: 90px;
+		padding: 7px;
 	}
 
 	.home-team-logo {
-		max-width: 110px;
-		height: 50px;
+		width: 100%;
+		height: 100%;
+		max-width: none;
 	}
 }
 
