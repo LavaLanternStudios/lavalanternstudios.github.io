@@ -1,0 +1,223 @@
+/* ================================
+   Lava Lantern Run - Website Wrapper
+================================ */
+
+(() => {
+  const canvas = document.querySelector("#unity-canvas");
+  const loadingBar = document.querySelector("#unity-loading-bar");
+  const progressBar = document.querySelector("#unity-progress-bar-full");
+  const progressTrack = document.querySelector("#unity-progress-track");
+  const loadingStatus = document.querySelector("#unity-loading-status");
+  const warningBanner = document.querySelector("#unity-warning");
+  const fullscreenButton = document.querySelector("#play-fullscreen-button");
+
+  let unityInstance = null;
+  let viewportMode = false;
+
+  if (!canvas) {
+    return;
+  }
+
+  /*
+     Unity calls this function through the existing .jslib bridge.
+     If GA4 is added later, gtag events are sent automatically.
+     Until then, events remain visible in the browser console so the
+     integration can be tested without breaking gameplay.
+  */
+  window.LavaLanternAnalyticsTrack = function (
+    eventName,
+    parameterName,
+    value
+  ) {
+    if (!eventName) {
+      return;
+    }
+
+    const parameters = {};
+
+    if (parameterName) {
+      const numericValue = Number(value);
+      const hasNumericValue =
+        value !== null &&
+        value !== "" &&
+        Number.isFinite(numericValue);
+
+      parameters[parameterName] = hasNumericValue ? numericValue : value;
+    }
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", eventName, parameters);
+      return;
+    }
+
+    if (Array.isArray(window.dataLayer)) {
+      window.dataLayer.push({
+        event: eventName,
+        ...parameters
+      });
+      return;
+    }
+
+    console.info(
+      "[Lava Lantern Analytics]",
+      eventName,
+      Object.keys(parameters).length ? parameters : ""
+    );
+  };
+
+  function unityShowBanner(message, type) {
+    if (!warningBanner) {
+      return;
+    }
+
+    const item = document.createElement("div");
+    item.className = `play-warning-message ${type || "info"}`;
+    item.textContent = message;
+    warningBanner.appendChild(item);
+
+    if (type !== "error") {
+      window.setTimeout(() => {
+        item.remove();
+      }, 5000);
+    }
+  }
+
+  const buildUrl = "Build";
+  const loaderUrl = `${buildUrl}/LavaLanternRun_1.0.0_Itch.loader.js`;
+
+  const config = {
+    arguments: [],
+    dataUrl: `${buildUrl}/LavaLanternRun_1.0.0_Itch.data.unityweb`,
+    frameworkUrl: `${buildUrl}/LavaLanternRun_1.0.0_Itch.framework.js.unityweb`,
+    codeUrl: `${buildUrl}/LavaLanternRun_1.0.0_Itch.wasm.unityweb`,
+    symbolsUrl: `${buildUrl}/LavaLanternRun_1.0.0_Itch.symbols.json.unityweb`,
+    streamingAssetsUrl: "StreamingAssets",
+    companyName: "Lava Lantern Studios",
+    productName: "Lava Lantern Run",
+    productVersion: "1.0.0",
+    showBanner: unityShowBanner
+  };
+
+  function setLoadingProgress(progress) {
+    const percent = Math.round(progress * 100);
+
+    if (progressBar) {
+      progressBar.style.width = `${percent}%`;
+    }
+
+    if (progressTrack) {
+      progressTrack.setAttribute("aria-valuenow", String(percent));
+    }
+
+    if (loadingStatus) {
+      loadingStatus.textContent = `Loading game… ${percent}%`;
+    }
+  }
+
+  function finishLoading() {
+    if (loadingStatus) {
+      loadingStatus.textContent = "Ready!";
+    }
+
+    window.setTimeout(() => {
+      loadingBar?.classList.add("is-hidden");
+      canvas.focus({ preventScroll: true });
+    }, 180);
+
+    if (fullscreenButton) {
+      fullscreenButton.disabled = false;
+    }
+  }
+
+  function setViewportMode(enabled) {
+    viewportMode = enabled;
+    document.body.classList.toggle("play-viewport-mode", enabled);
+
+    if (fullscreenButton) {
+      fullscreenButton.textContent = enabled ? "Exit Fullscreen" : "Fullscreen";
+    }
+
+    window.setTimeout(() => {
+      canvas.focus({ preventScroll: true });
+      window.dispatchEvent(new Event("resize"));
+    }, 50);
+  }
+
+  function toggleFullscreen() {
+    if (!unityInstance) {
+      return;
+    }
+
+    if (viewportMode) {
+      setViewportMode(false);
+      return;
+    }
+
+    /* Unity's own fullscreen path is preferred on desktop/Android. */
+    if (document.fullscreenEnabled) {
+      try {
+        unityInstance.SetFullscreen(1);
+        return;
+      } catch (error) {
+        console.warn("Unity fullscreen was unavailable; using viewport mode instead.", error);
+      }
+    }
+
+    /* Safari/iOS fallback: fill the browser viewport while preserving 9:16. */
+    setViewportMode(true);
+  }
+
+  fullscreenButton?.addEventListener("click", toggleFullscreen);
+
+  /* Escape also exits the browser-viewport fallback mode. */
+  document.addEventListener("keydown", (event) => {
+    if (event.code === "Escape" && viewportMode) {
+      setViewportMode(false);
+    }
+
+    /* Prevent the browser from scrolling the page when Space is used to jump. */
+    if (
+      event.code === "Space" &&
+      !event.ctrlKey &&
+      !event.metaKey &&
+      !event.altKey &&
+      !/INPUT|TEXTAREA|SELECT|BUTTON/.test(document.activeElement?.tagName || "")
+    ) {
+      event.preventDefault();
+    }
+  });
+
+  canvas.addEventListener("contextmenu", (event) => {
+    event.preventDefault();
+  });
+
+  const loaderScript = document.createElement("script");
+  loaderScript.src = loaderUrl;
+  loaderScript.async = true;
+
+  loaderScript.onload = () => {
+    createUnityInstance(canvas, config, setLoadingProgress)
+      .then((instance) => {
+        unityInstance = instance;
+        finishLoading();
+      })
+      .catch((error) => {
+        console.error(error);
+        unityShowBanner(String(error), "error");
+
+        if (loadingStatus) {
+          loadingStatus.textContent = "The game could not be loaded. Please refresh and try again.";
+        }
+      });
+  };
+
+  loaderScript.onerror = () => {
+    unityShowBanner("The Unity loader could not be downloaded.", "error");
+
+    if (loadingStatus) {
+      loadingStatus.textContent = "The game could not be loaded. Please refresh and try again.";
+    }
+  };
+
+  document.body.appendChild(loaderScript);
+})();

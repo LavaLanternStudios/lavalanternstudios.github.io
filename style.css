@@ -3773,3 +3773,340 @@ h3,
     display: none;
   }
 }
+
+
+/* ================================
+   Play Page - Lava Lantern Run
+================================ */
+
+.play-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at top center, rgba(229, 135, 69, 0.12), transparent 28rem),
+    linear-gradient(180deg, #100e0d 0%, #070605 100%);
+}
+
+.play-main {
+  min-height: calc(100dvh - 92px);
+  padding: 28px 20px 36px;
+}
+
+.play-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.play-intro {
+  width: min(760px, 100%);
+  margin: 0 auto 18px;
+  text-align: center;
+}
+
+.play-intro .section-kicker {
+  margin-bottom: 6px;
+}
+
+.play-title {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.play-intro-text {
+  margin: 10px auto 0;
+  max-width: 680px;
+  color: var(--lava-text-muted, #d9e2e8);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.play-game-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*
+   The width calculation keeps the embedded game at exactly 9:16 while also
+   accounting for the site header, intro copy and game controls. The game may
+   become smaller on short screens, but it will never stretch or crop.
+*/
+.play-game-frame {
+  position: relative;
+  width: min(
+    540px,
+    calc(100vw - 40px),
+    calc((100dvh - 235px) * 9 / 16)
+  );
+  min-width: 220px;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #050506;
+  border: 1px solid rgba(229, 135, 69, 0.42);
+  border-radius: 18px;
+  box-shadow:
+    0 1.4rem 3.5rem rgba(0, 0, 0, 0.46),
+    0 0 2rem rgba(229, 135, 69, 0.08);
+}
+
+#unity-container,
+#unity-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#unity-container {
+  position: relative;
+  background: #000000;
+}
+
+#unity-canvas {
+  display: block;
+  background: #000000;
+  outline: none;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.play-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 28px;
+  text-align: center;
+  background:
+    radial-gradient(circle at center, rgba(229, 135, 69, 0.14), transparent 45%),
+    linear-gradient(180deg, #07131d 0%, #050506 100%);
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.play-loading.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.play-loading-logo {
+  width: min(270px, 75%);
+  height: auto;
+}
+
+.play-loading-title {
+  margin: 2px 0 0;
+  color: var(--lava-white, #ffffff);
+  font-size: clamp(1.25rem, 4vw, 1.8rem);
+}
+
+.play-loading-status {
+  margin: 0;
+  color: var(--lava-text-muted, #d9e2e8);
+  font-size: 0.9rem;
+}
+
+.play-progress-track {
+  width: min(300px, 82%);
+  height: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.play-progress-bar {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--lava-orange, #e58745);
+  transition: width 0.12s linear;
+}
+
+.play-warning {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  z-index: 6;
+  display: grid;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.play-warning-message {
+  padding: 9px 11px;
+  border-radius: 8px;
+  background: rgba(16, 14, 13, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.play-warning-message.warning {
+  border-color: rgba(229, 135, 69, 0.75);
+}
+
+.play-warning-message.error {
+  border-color: rgba(255, 92, 92, 0.8);
+}
+
+.play-game-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.play-fullscreen-button {
+  border: 1px solid var(--lava-white, #ffffff);
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: var(--lava-white, #ffffff);
+  color: var(--lava-panel, #100e0d);
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.play-fullscreen-button:hover,
+.play-fullscreen-button:focus-visible {
+  transform: translateY(-2px);
+  background: var(--lava-orange, #e58745);
+  border-color: var(--lava-orange, #e58745);
+}
+
+.play-fullscreen-button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+  transform: none;
+}
+
+.play-controls {
+  margin: 10px 0 0;
+  color: var(--lava-text-muted, #d9e2e8);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.play-note {
+  width: min(650px, 100%);
+  margin: 18px auto 0;
+  color: #aeb8c0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* Fallback viewport-filling mode for browsers where the normal Fullscreen API
+   is unavailable. This keeps the game itself at 9:16. */
+body.play-viewport-mode {
+  overflow: hidden;
+}
+
+body.play-viewport-mode .play-game-area {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  justify-content: center;
+  padding:
+    max(12px, env(safe-area-inset-top))
+    max(12px, env(safe-area-inset-right))
+    max(12px, env(safe-area-inset-bottom))
+    max(12px, env(safe-area-inset-left));
+  background: #000000;
+}
+
+body.play-viewport-mode .play-game-frame {
+  width: min(
+    calc(100vw - 24px),
+    calc((100dvh - 78px) * 9 / 16)
+  );
+  max-width: none;
+}
+
+body.play-viewport-mode .play-game-actions {
+  margin-top: 10px;
+}
+
+body.play-viewport-mode .play-controls,
+body.play-viewport-mode .play-note {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .play-main {
+    padding: 20px 12px 28px;
+  }
+
+  .play-intro {
+    margin-bottom: 12px;
+  }
+
+  .play-intro-text {
+    margin-top: 7px;
+    font-size: 0.9rem;
+  }
+
+  .play-game-frame {
+    width: min(
+      calc(100vw - 24px),
+      calc((100dvh - 205px) * 9 / 16)
+    );
+    border-radius: 14px;
+  }
+
+  .play-game-actions {
+    margin-top: 10px;
+  }
+
+  .play-controls {
+    margin-top: 8px;
+    font-size: 0.85rem;
+  }
+
+  .play-note {
+    margin-top: 14px;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-height: 700px) {
+  .play-main {
+    padding-top: 12px;
+  }
+
+  .play-intro-text,
+  .play-note {
+    display: none;
+  }
+
+  .play-intro {
+    margin-bottom: 8px;
+  }
+
+  .play-game-frame {
+    width: min(
+      calc(100vw - 24px),
+      calc((100dvh - 165px) * 9 / 16)
+    );
+  }
+}

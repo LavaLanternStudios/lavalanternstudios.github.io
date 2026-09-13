@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      name="description"
+      content="Play Lava Lantern Run, a quick browser arcade runner from Lava Lantern Studios."
+    />
+
+    <title>Lava Lantern Studios | Play Lava Lantern Run</title>
+    <link rel="canonical" href="https://lavalantern.co.uk/play/" />
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body class="play-page">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="/" aria-label="Lava Lantern Studios Home">
+          <img
+            class="header-logo-image"
+            src="../assets/images/logo/lava-lantern-header-logo.png"
+            alt="Lava Lantern Studios logo"
+          />
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/games">Games</a>
+          <a class="active" aria-current="page" href="/play/">Play</a>
+          <a href="/fab">Fab</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/about">About Lava Lantern</a>
+          <a href="/contact">Contact Us</a>
+          <a href="/devlogs">Devlogs</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="play-main">
+      <div class="play-inner">
+        <section class="play-intro" aria-labelledby="play-page-title">
+          <p class="section-kicker">Play Now</p>
+          <h1 class="play-title" id="play-page-title">Lava Lantern Run</h1>
+          <p class="play-intro-text">
+            Jump, dodge hazards, and see how far you can take Loki in this quick arcade runner from Lava Lantern Studios.
+          </p>
+        </section>
+
+        <section class="play-game-area" aria-label="Lava Lantern Run game">
+          <div class="play-game-frame">
+            <div id="unity-container">
+              <canvas
+                id="unity-canvas"
+                width="540"
+                height="960"
+                tabindex="0"
+                aria-label="Lava Lantern Run game canvas"
+              ></canvas>
+
+              <div class="play-loading" id="unity-loading-bar">
+                <img
+                  class="play-loading-logo"
+                  src="../assets/images/logo/lava-lantern-header-logo.png"
+                  alt="Lava Lantern Studios"
+                />
+                <h2 class="play-loading-title">Lava Lantern Run</h2>
+                <div
+                  class="play-progress-track"
+                  role="progressbar"
+                  aria-label="Game loading progress"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  id="unity-progress-track"
+                >
+                  <div class="play-progress-bar" id="unity-progress-bar-full"></div>
+                </div>
+                <p class="play-loading-status" id="unity-loading-status">Loading game… 0%</p>
+              </div>
+
+              <div class="play-warning" id="unity-warning" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="play-game-actions">
+            <button
+              class="play-fullscreen-button"
+              id="play-fullscreen-button"
+              type="button"
+              disabled
+            >
+              Fullscreen
+            </button>
+          </div>
+
+          <p class="play-controls">
+            <strong>Mobile:</strong> tap to jump &nbsp;•&nbsp;
+            <strong>Desktop:</strong> Space or left-click
+          </p>
+
+          <p class="play-note">
+            The game is designed primarily for phones, but the same browser build is fully playable on desktop too.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Lava Lantern Studios. All rights reserved.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="play.js"></script>
+  </body>
+</html>

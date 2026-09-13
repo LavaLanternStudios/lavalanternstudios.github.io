@@ -34,11 +34,21 @@
 
   function getLocalHTMLPath(pathname) {
     const cleanPath = pathname.replace(/^\/+|\/+$/g, "");
+    const currentPath = window.location.pathname.replace(/\\/g, "/");
+    const insidePlayFolder = /\/play\/(?:index\.html)?$/i.test(currentPath);
+    const rootPrefix = insidePlayFolder ? "../" : "";
 
-    if (!cleanPath) return "index.html";
-    if (cleanPath.toLowerCase().endsWith(".html")) return cleanPath;
+    if (!cleanPath) return `${rootPrefix}index.html`;
 
-    return `${cleanPath}.html`;
+    if (cleanPath.toLowerCase() === "play") {
+      return `${rootPrefix}play/index.html`;
+    }
+
+    if (cleanPath.toLowerCase().endsWith(".html")) {
+      return `${rootPrefix}${cleanPath}`;
+    }
+
+    return `${rootPrefix}${cleanPath}.html`;
   }
 
   function normaliseAnchor(anchor) {
