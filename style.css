@@ -4016,40 +4016,83 @@ h3,
   text-align: center;
 }
 
-/* Fallback viewport-filling mode for browsers where the normal Fullscreen API
-   is unavailable. This keeps the game itself at 9:16. */
-body.play-viewport-mode {
-  overflow: hidden;
-}
+/* ================================================================
+   Strict 9:16 Fullscreen
 
+   IMPORTANT:
+   The website wrapper enters fullscreen - NOT Unity's SetFullscreen().
+   The game frame therefore never adopts the monitor/phone aspect ratio.
+
+   Examples:
+   - 16:9 desktop monitor -> black bars left and right.
+   - phone taller than 9:16 -> black bars top and bottom.
+   - display wider than 9:16 -> black bars left and right.
+================================================================ */
+
+.play-game-area:fullscreen,
+.play-game-area:-webkit-full-screen,
 body.play-viewport-mode .play-game-area {
   position: fixed;
   inset: 0;
   z-index: 10000;
+  width: 100vw;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding:
-    max(12px, env(safe-area-inset-top))
-    max(12px, env(safe-area-inset-right))
-    max(12px, env(safe-area-inset-bottom))
-    max(12px, env(safe-area-inset-left));
+  background: #000000;
+  overflow: hidden;
+}
+
+.play-game-area:fullscreen .play-game-frame,
+.play-game-area:-webkit-full-screen .play-game-frame,
+body.play-viewport-mode .play-game-frame {
+  width: min(100vw, calc(100dvh * 9 / 16));
+  height: auto;
+  max-width: none;
+  max-height: 100dvh;
+  aspect-ratio: 9 / 16;
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   background: #000000;
 }
 
-body.play-viewport-mode .play-game-frame {
-  width: min(
-    calc(100vw - 24px),
-    calc((100dvh - 78px) * 9 / 16)
-  );
-  max-width: none;
+.play-game-area:fullscreen #unity-container,
+.play-game-area:fullscreen #unity-canvas,
+.play-game-area:-webkit-full-screen #unity-container,
+.play-game-area:-webkit-full-screen #unity-canvas,
+body.play-viewport-mode #unity-container,
+body.play-viewport-mode #unity-canvas {
+  width: 100%;
+  height: 100%;
 }
 
+/* Keep the exit control available without stealing layout space from the game. */
+.play-game-area:fullscreen .play-game-actions,
+.play-game-area:-webkit-full-screen .play-game-actions,
 body.play-viewport-mode .play-game-actions {
-  margin-top: 10px;
+  position: absolute;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 20;
+  margin: 0;
 }
 
+.play-game-area:fullscreen .play-controls,
+.play-game-area:fullscreen .play-note,
+.play-game-area:-webkit-full-screen .play-controls,
+.play-game-area:-webkit-full-screen .play-note,
 body.play-viewport-mode .play-controls,
 body.play-viewport-mode .play-note {
   display: none;
+}
+
+body.play-viewport-mode {
+  overflow: hidden;
 }
 
 @media (max-width: 800px) {

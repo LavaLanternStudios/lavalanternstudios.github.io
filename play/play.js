@@ -10,6 +10,7 @@
   const loadingStatus = document.querySelector("#unity-loading-status");
   const warningBanner = document.querySelector("#unity-warning");
   const fullscreenButton = document.querySelector("#play-fullscreen-button");
+  const gameArea = document.querySelector(".play-game-area");
 
   let unityInstance = null;
   let viewportMode = false;
@@ -129,13 +130,23 @@
     }
   }
 
+  function getFullscreenElement() {
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+
+  function setFullscreenButtonLabel() {
+    if (!fullscreenButton) {
+      return;
+    }
+
+    const isFullscreen = Boolean(getFullscreenElement()) || viewportMode;
+    fullscreenButton.textContent = isFullscreen ? "Exit Fullscreen" : "Fullscreen";
+  }
+
   function setViewportMode(enabled) {
     viewportMode = enabled;
     document.body.classList.toggle("play-viewport-mode", enabled);
-
-    if (fullscreenButton) {
-      fullscreenButton.textContent = enabled ? "Exit Fullscreen" : "Fullscreen";
-    }
+    setFullscreenButtonLabel();
 
     window.setTimeout(() => {
       canvas.focus({ preventScroll: true });
@@ -143,29 +154,80 @@
     }, 50);
   }
 
+  async function enterBrowserFullscreen() {
+    if (!gameArea) {
+      setViewportMode(true);
+      return;
+    }
+
+    try {
+      if (gameArea.requestFullscreen) {
+        await gameArea.requestFullscreen();
+        return;
+      }
+
+      if (gameArea.webkitRequestFullscreen) {
+        gameArea.webkitRequestFullscreen();
+        return;
+      }
+    } catch (error) {
+      console.warn(
+        "Browser fullscreen was unavailable; using viewport mode instead.",
+        error
+      );
+    }
+
+    /* iOS/Safari fallback: cover the viewport while preserving 9:16. */
+    setViewportMode(true);
+  }
+
+  async function exitBrowserFullscreen() {
+    try {
+      if (document.exitFullscreen && document.fullscreenElement) {
+        await document.exitFullscreen();
+        return;
+      }
+
+      if (document.webkitExitFullscreen && document.webkitFullscreenElement) {
+        document.webkitExitFullscreen();
+        return;
+      }
+    } catch (error) {
+      console.warn("Could not exit browser fullscreen normally.", error);
+    }
+
+    if (viewportMode) {
+      setViewportMode(false);
+    }
+  }
+
   function toggleFullscreen() {
     if (!unityInstance) {
       return;
     }
 
-    if (viewportMode) {
-      setViewportMode(false);
+    if (getFullscreenElement() || viewportMode) {
+      exitBrowserFullscreen();
       return;
     }
 
-    /* Unity's own fullscreen path is preferred on desktop/Android. */
-    if (document.fullscreenEnabled) {
-      try {
-        unityInstance.SetFullscreen(1);
-        return;
-      } catch (error) {
-        console.warn("Unity fullscreen was unavailable; using viewport mode instead.", error);
-      }
-    }
-
-    /* Safari/iOS fallback: fill the browser viewport while preserving 9:16. */
-    setViewportMode(true);
+    /*
+       IMPORTANT: We fullscreen the WEBSITE WRAPPER, not Unity itself.
+       The wrapper always contains a strict 9:16 game frame, so fullscreen
+       can only add black letterboxing/pillarboxing around the game.
+    */
+    enterBrowserFullscreen();
   }
+
+  document.addEventListener("fullscreenchange", () => {
+    setFullscreenButtonLabel();
+    window.setTimeout(() => window.dispatchEvent(new Event("resize")), 50);
+  });
+
+  document.addEventListener("webkitfullscreenchange", () => {
+    setFullscreenButtonLabel();
+    window.setTimeout(() => window.dispatchEvent(new Event("resize")), 50);
+  });
 
   fullscreenButton?.addEventListener("click", toggleFullscreen);
 
