@@ -84,14 +84,14 @@
   }
 
   const buildUrl = "Build";
-  const loaderUrl = `${buildUrl}/LavaLanternRun_1.0.0_Itch.loader.js`;
+  const loaderUrl = `${buildUrl}/LavaLanternRun_1.0.0_Website.loader.js`;
 
   const config = {
     arguments: [],
-    dataUrl: `${buildUrl}/LavaLanternRun_1.0.0_Itch.data.unityweb`,
-    frameworkUrl: `${buildUrl}/LavaLanternRun_1.0.0_Itch.framework.js.unityweb`,
-    codeUrl: `${buildUrl}/LavaLanternRun_1.0.0_Itch.wasm.unityweb`,
-    symbolsUrl: `${buildUrl}/LavaLanternRun_1.0.0_Itch.symbols.json.unityweb`,
+    dataUrl: `${buildUrl}/LavaLanternRun_1.0.0_Website.data.unityweb`,
+    frameworkUrl: `${buildUrl}/LavaLanternRun_1.0.0_Website.framework.js.unityweb`,
+    codeUrl: `${buildUrl}/LavaLanternRun_1.0.0_Website.wasm.unityweb`,
+    symbolsUrl: `${buildUrl}/LavaLanternRun_1.0.0_Website.symbols.json.unityweb`,
     streamingAssetsUrl: "StreamingAssets",
     companyName: "Lava Lantern Studios",
     productName: "Lava Lantern Run",
