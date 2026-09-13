@@ -46,21 +46,16 @@
       parameters[parameterName] = hasNumericValue ? numericValue : value;
     }
 
-    if (typeof window.gtag === "function") {
+    if (
+      window.LavaLanternAnalyticsAllowed === true &&
+      typeof window.gtag === "function"
+    ) {
       window.gtag("event", eventName, parameters);
       return;
     }
 
-    if (Array.isArray(window.dataLayer)) {
-      window.dataLayer.push({
-        event: eventName,
-        ...parameters
-      });
-      return;
-    }
-
     console.info(
-      "[Lava Lantern Analytics]",
+      "[Lava Lantern Analytics - not sent until analytics consent is granted]",
       eventName,
       Object.keys(parameters).length ? parameters : ""
     );

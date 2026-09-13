@@ -1,4 +1,238 @@
 /* ================================
+   Lava Lantern Studios - Google Analytics 4
+   Measurement ID: G-NHQ7KDPD74
+
+   Privacy behaviour:
+   - Analytics is OFF by default.
+   - Google Analytics only loads after the visitor accepts analytics cookies.
+   - The visitor can change their choice later from the footer.
+================================ */
+
+(function setupLavaLanternAnalytics() {
+  const measurementId = "G-NHQ7KDPD74";
+  const consentStorageKey = "lava_lantern_analytics_consent";
+  const acceptedValue = "accepted";
+  const rejectedValue = "rejected";
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () {
+    window.dataLayer.push(arguments);
+  };
+
+  // Consent Mode defaults must be set before the Google tag is loaded.
+  window.gtag("consent", "default", {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied"
+  });
+
+  window.LavaLanternAnalyticsAllowed = false;
+
+  let googleTagLoaded = false;
+  let consentBanner = null;
+
+  function readStoredConsent() {
+    try {
+      return window.localStorage.getItem(consentStorageKey);
+    } catch (error) {
+      console.warn("Analytics consent preference could not be read.", error);
+      return null;
+    }
+  }
+
+  function storeConsent(value) {
+    try {
+      window.localStorage.setItem(consentStorageKey, value);
+    } catch (error) {
+      console.warn("Analytics consent preference could not be saved.", error);
+    }
+  }
+
+  function setConsentState(granted) {
+    window.gtag("consent", "update", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: granted ? "granted" : "denied"
+    });
+
+    window.LavaLanternAnalyticsAllowed = granted;
+
+    window.dispatchEvent(
+      new CustomEvent("lava-lantern-analytics-consent", {
+        detail: { granted }
+      })
+    );
+  }
+
+  function loadGoogleAnalytics() {
+    if (googleTagLoaded) {
+      return;
+    }
+
+    googleTagLoaded = true;
+    setConsentState(true);
+
+    const googleTag = document.createElement("script");
+    googleTag.async = true;
+    googleTag.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    googleTag.dataset.lavaLanternAnalytics = "true";
+    document.head.appendChild(googleTag);
+
+    // These commands safely queue until gtag.js has finished downloading.
+    window.gtag("js", new Date());
+    window.gtag("config", measurementId, {
+      send_page_view: true
+    });
+  }
+
+  function getCookieRootDomain() {
+    const hostname = window.location.hostname;
+    const parts = hostname.split(".").filter(Boolean);
+
+    if (parts.length < 2 || hostname === "localhost") {
+      return null;
+    }
+
+    return `.${parts.slice(-2).join(".")}`;
+  }
+
+  function clearGoogleAnalyticsCookies() {
+    const rootDomain = getCookieRootDomain();
+
+    document.cookie.split(";").forEach((cookie) => {
+      const name = cookie.split("=")[0].trim();
+
+      if (!name.startsWith("_ga")) {
+        return;
+      }
+
+      document.cookie = `${name}=; Max-Age=0; path=/; SameSite=Lax`;
+
+      if (rootDomain) {
+        document.cookie = `${name}=; Max-Age=0; path=/; domain=${rootDomain}; SameSite=Lax`;
+      }
+    });
+  }
+
+  function hideConsentBanner() {
+    consentBanner?.classList.remove("is-visible");
+    consentBanner?.setAttribute("aria-hidden", "true");
+  }
+
+  function showConsentBanner() {
+    if (!consentBanner) {
+      createConsentUI();
+    }
+
+    consentBanner?.classList.add("is-visible");
+    consentBanner?.setAttribute("aria-hidden", "false");
+  }
+
+  function acceptAnalytics() {
+    storeConsent(acceptedValue);
+    loadGoogleAnalytics();
+    hideConsentBanner();
+  }
+
+  function rejectAnalytics() {
+    storeConsent(rejectedValue);
+    setConsentState(false);
+    clearGoogleAnalyticsCookies();
+    hideConsentBanner();
+  }
+
+  function createConsentUI() {
+    if (document.querySelector("#lava-analytics-consent")) {
+      consentBanner = document.querySelector("#lava-analytics-consent");
+      return;
+    }
+
+    consentBanner = document.createElement("section");
+    consentBanner.id = "lava-analytics-consent";
+    consentBanner.className = "analytics-consent-banner";
+    consentBanner.setAttribute("role", "dialog");
+    consentBanner.setAttribute("aria-modal", "false");
+    consentBanner.setAttribute("aria-labelledby", "lava-analytics-consent-title");
+    consentBanner.setAttribute("aria-hidden", "true");
+
+    consentBanner.innerHTML = `
+      <div class="analytics-consent-copy">
+        <strong id="lava-analytics-consent-title">Analytics cookies</strong>
+        <p>
+          We use Google Analytics to understand website visits and how Lava Lantern Run is played.
+          Gameplay analytics are aggregate and do not include personally identifying gameplay information.
+        </p>
+      </div>
+
+      <div class="analytics-consent-actions">
+        <button type="button" class="analytics-consent-button secondary" data-analytics-reject>
+          Reject analytics
+        </button>
+        <button type="button" class="analytics-consent-button" data-analytics-accept>
+          Accept analytics
+        </button>
+      </div>
+    `;
+
+    consentBanner
+      .querySelector("[data-analytics-accept]")
+      ?.addEventListener("click", acceptAnalytics);
+
+    consentBanner
+      .querySelector("[data-analytics-reject]")
+      ?.addEventListener("click", rejectAnalytics);
+
+    document.body.appendChild(consentBanner);
+  }
+
+  function addAnalyticsSettingsButton() {
+    const footer = document.querySelector(".site-footer");
+
+    if (!footer || footer.querySelector("[data-analytics-settings]")) {
+      return;
+    }
+
+    const settingsButton = document.createElement("button");
+    settingsButton.type = "button";
+    settingsButton.className = "analytics-settings-button";
+    settingsButton.dataset.analyticsSettings = "";
+    settingsButton.textContent = "Analytics settings";
+    settingsButton.addEventListener("click", showConsentBanner);
+
+    footer.appendChild(settingsButton);
+  }
+
+  function initialiseAnalytics() {
+    createConsentUI();
+    addAnalyticsSettingsButton();
+
+    const storedConsent = readStoredConsent();
+
+    if (storedConsent === acceptedValue) {
+      loadGoogleAnalytics();
+      hideConsentBanner();
+      return;
+    }
+
+    if (storedConsent === rejectedValue) {
+      setConsentState(false);
+      hideConsentBanner();
+      return;
+    }
+
+    showConsentBanner();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialiseAnalytics, { once: true });
+  } else {
+    initialiseAnalytics();
+  }
+})();
+
+/* ================================
    Clean Page URLs
    Hosted: /games instead of /games.html
    Local: clean links reopen the matching .html file
