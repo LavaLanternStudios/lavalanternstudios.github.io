@@ -44,6 +44,20 @@
         Number.isFinite(numericValue);
 
       parameters[parameterName] = hasNumericValue ? numericValue : value;
+
+      /*
+         Keep the numeric `score` parameter for the GA4 custom metric,
+         and also send the same result under a second parameter so GA4
+         can register it as an event-scoped custom dimension for an
+         exact score / high-score table.
+      */
+      if (
+        eventName === "score_achieved" &&
+        parameterName === "score" &&
+        hasNumericValue
+      ) {
+        parameters.score_result = numericValue;
+      }
     }
 
     if (
