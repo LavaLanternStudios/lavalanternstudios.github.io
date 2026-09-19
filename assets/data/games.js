@@ -23,7 +23,7 @@ window.games = [
   },
   {
     title: "Unannounced Title",
-    releaseDate: "2026-07-08",
+    releaseDate: "2026-10-08",
     description: "Currently in development! More details will be shared when the project is ready to reveal.",
     price: "TBC",
     platforms: ["Itch.io", "Browser / PC"],
