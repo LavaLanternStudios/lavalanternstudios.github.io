@@ -8,7 +8,18 @@ window.games = [
     released: true,
     image: "assets/images/games/lava-below-cover.jpg",
     gameURL: "https://lava-lantern-studios.itch.io/lava-below",
-    tags: ["Vertical Platformer", "Pixel Game", "Fast-Pased", "Arcade"]
+    tags: ["Vertical Platformer", "Pixel Game", "Fast-Paced", "Arcade"]
+  },
+  {
+    title: "Lava Lantern Run",
+    releaseDate: "2026-09-18",
+    description: "Lava Lantern Run is a free-to-play, runner platformer, where you and your corgi companion run through the woods at night, avoiding obstacles and collect power ups to reach the highest score..",
+    price: "Free to Play",
+    platforms: ["Mobile", "Browser / PC"],
+    released: true,
+    image: "assets/images/games/LavaLanternRun_Cover.png",
+    gameURL: "https://lavalantern.co.uk/play/",
+    tags: ["Endless Runner", "Pixel Game", "Fast-Paced", "Arcade"]
   },
   {
     title: "Unannounced Title",
