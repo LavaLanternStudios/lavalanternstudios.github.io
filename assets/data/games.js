@@ -29,7 +29,7 @@ window.games = [
     platforms: ["Itch.io", "Browser / PC"],
     released: false,
     image: "assets/images/games/UnannouncedTitle.jpg",
-    gameURL: "https://example.com",
+    gameURL: "",
     tags: ["Upcoming", "In Development"]
   }
 ];
