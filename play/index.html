@@ -1,138 +1,130 @@
 <!DOCTYPE html>
-<html lang="en-GB">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-  <meta name="theme-color" content="#000000">
-  <title>Lava Lantern Run | Lava Lantern Studios</title>
-  <link rel="shortcut icon" href="TemplateData/favicon.ico">
-  <link rel="stylesheet" href="TemplateData/style.css">
-</head>
-<body>
-  <div id="game-shell">
-    <div id="unity-container">
-      <canvas id="unity-canvas" width="540" height="960" tabindex="-1" aria-label="Lava Lantern Run"></canvas>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      name="description"
+      content="Play Lava Lantern Run, a quick browser arcade runner from Lava Lantern Studios."
+    />
 
-      <div id="unity-loading-bar" aria-live="polite">
-        <div class="loading-title">Lava Lantern Run</div>
-        <div id="unity-progress-bar-empty" aria-hidden="true">
-          <div id="unity-progress-bar-full"></div>
-        </div>
-        <div id="unity-loading-text">Loading...</div>
+    <title>Lava Lantern Studios | Play Lava Lantern Run</title>
+    <link rel="canonical" href="https://lavalantern.co.uk/play/" />
+    <link rel="icon" type="image/png" href="../assets/images/logo/favicon.png" />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+
+  <body class="play-page">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="/" aria-label="Lava Lantern Studios Home">
+          <img
+            class="header-logo-image"
+            src="../assets/images/logo/lava-lantern-header-logo.png"
+            alt="Lava Lantern Studios logo"
+          />
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/games">Games</a>
+          <a class="active" aria-current="page" href="/play/">Play</a>
+          <a href="/fab">Fab</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/about">About Lava Lantern</a>
+          <a href="/contact">Contact Us</a>
+          <a href="/devlogs">Devlogs</a>
+        </nav>
       </div>
+    </header>
 
-      <div id="unity-warning" role="status" aria-live="polite"></div>
+    <main class="play-main">
+      <div class="play-inner">
+        <section class="play-intro" aria-labelledby="play-page-title">
+          <p class="section-kicker">Play Now</p>
+          <h1 class="play-title" id="play-page-title">Lava Lantern Run</h1>
+          <p class="play-intro-text">
+            Jump, dodge hazards, and see how far you can take Loki in this quick arcade runner from Lava Lantern Studios.
+          </p>
+        </section>
 
-      <button id="unity-fullscreen-button" type="button" aria-label="Enter fullscreen" title="Fullscreen"></button>
-    </div>
-  </div>
+        <section class="play-game-area" aria-label="Lava Lantern Run game">
+          <div class="play-game-frame">
+            <div id="unity-container">
+              <canvas
+                id="unity-canvas"
+                width="540"
+                height="960"
+                tabindex="0"
+                aria-label="Lava Lantern Run game canvas"
+              ></canvas>
 
-  <!-- Keep the existing website analytics/consent bridge. -->
-  <script src="play.js"></script>
+              <div class="play-loading" id="unity-loading-bar">
+                <img
+                  class="play-loading-logo"
+                  src="../assets/images/logo/lava-lantern-header-logo.png"
+                  alt="Lava Lantern Studios"
+                />
+                <h2 class="play-loading-title">Lava Lantern Run</h2>
+                <div
+                  class="play-progress-track"
+                  role="progressbar"
+                  aria-label="Game loading progress"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-valuenow="0"
+                  id="unity-progress-track"
+                >
+                  <div class="play-progress-bar" id="unity-progress-bar-full"></div>
+                </div>
+                <p class="play-loading-status" id="unity-loading-status">Loading game… 0%</p>
+              </div>
 
-  <script>
-    (() => {
-      const canvas = document.querySelector("#unity-canvas");
-      const container = document.querySelector("#unity-container");
-      const loadingBar = document.querySelector("#unity-loading-bar");
-      const loadingText = document.querySelector("#unity-loading-text");
-      const progressBarFull = document.querySelector("#unity-progress-bar-full");
-      const fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      const gameShell = document.querySelector("#game-shell");
+              <div class="play-warning" id="unity-warning" aria-live="polite"></div>
+            </div>
+          </div>
 
-      function unityShowBanner(message, type) {
-        const warningBanner = document.querySelector("#unity-warning");
-        const item = document.createElement("div");
-        item.className = `unity-message unity-message-${type || "info"}`;
-        item.textContent = message;
-        warningBanner.appendChild(item);
-        warningBanner.style.display = "block";
+          <div class="play-game-actions">
+            <button
+              class="play-fullscreen-button"
+              id="play-fullscreen-button"
+              type="button"
+              disabled
+            >
+              Fullscreen
+            </button>
+          </div>
 
-        if (type !== "error") {
-          window.setTimeout(() => {
-            item.remove();
-            if (!warningBanner.children.length) {
-              warningBanner.style.display = "none";
-            }
-          }, 5000);
-        }
-      }
+          <p class="play-controls">
+            <strong>Mobile:</strong> tap to jump &nbsp;•&nbsp;
+            <strong>Desktop:</strong> Space or left-click
+          </p>
 
-      const buildUrl = "Build";
-      const loaderUrl = `${buildUrl}/LavaLanternRun_1.1.0_Website.loader.js`;
-      const config = {
-        arguments: [],
-        dataUrl: `${buildUrl}/LavaLanternRun_1.1.0_Website.data.unityweb`,
-        frameworkUrl: `${buildUrl}/LavaLanternRun_1.1.0_Website.framework.js.unityweb`,
-        codeUrl: `${buildUrl}/LavaLanternRun_1.1.0_Website.wasm.unityweb`,
-        symbolsUrl: `${buildUrl}/LavaLanternRun_1.1.0_Website.symbols.json.unityweb`,
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Lava Lantern Studios",
-        productName: "Lava Lantern Run",
-        productVersion: "1.1.0",
-        showBanner: unityShowBanner
-      };
+          <p class="play-note">
+            The game is designed primarily for phones, but the same browser build is fully playable on desktop too.
+          </p>
+        </section>
+      </div>
+    </main>
 
-      loadingBar.style.display = "flex";
+    <footer class="site-footer">
+      <p>&copy; 2026 Lava Lantern Studios. All rights reserved.</p>
+    </footer>
 
-      const loaderScript = document.createElement("script");
-      loaderScript.src = loaderUrl;
-      loaderScript.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          const percent = Math.round(progress * 100);
-          progressBarFull.style.width = `${percent}%`;
-          loadingText.textContent = `Loading... ${percent}%`;
-        }).then((unityInstance) => {
-          window.unityInstance = unityInstance;
-          loadingBar.style.display = "none";
-          fullscreenButton.classList.add("is-ready");
-
-          canvas.addEventListener("pointerdown", () => canvas.focus(), { passive: true });
-        }).catch((error) => {
-          console.error(error);
-          loadingText.textContent = "Unable to load the game.";
-          unityShowBanner(String(error), "error");
-        });
-      };
-
-      loaderScript.onerror = () => {
-        loadingText.textContent = "Unable to load the game files.";
-        unityShowBanner("The game loader could not be downloaded.", "error");
-      };
-
-      document.body.appendChild(loaderScript);
-
-      fullscreenButton.addEventListener("click", async () => {
-        try {
-          if (document.fullscreenElement || document.webkitFullscreenElement) {
-            if (document.exitFullscreen) {
-              await document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-              document.webkitExitFullscreen();
-            }
-            return;
-          }
-
-          if (gameShell.requestFullscreen) {
-            await gameShell.requestFullscreen();
-          } else if (gameShell.webkitRequestFullscreen) {
-            gameShell.webkitRequestFullscreen();
-          }
-        } catch (error) {
-          console.warn("Fullscreen request failed:", error);
-        }
-      });
-
-      function updateFullscreenLabel() {
-        const active = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
-        fullscreenButton.setAttribute("aria-label", active ? "Exit fullscreen" : "Enter fullscreen");
-        fullscreenButton.title = active ? "Exit fullscreen" : "Fullscreen";
-      }
-
-      document.addEventListener("fullscreenchange", updateFullscreenLabel);
-      document.addEventListener("webkitfullscreenchange", updateFullscreenLabel);
-    })();
-  </script>
-</body>
+    <script src="../script.js"></script>
+    <script src="play.js"></script>
+  </body>
 </html>
