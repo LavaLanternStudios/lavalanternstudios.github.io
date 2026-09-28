@@ -2,7 +2,9 @@ window.aboutPageContent = {
 	images: {
 		mainMenuLogo: "assets/images/logo/lava-lantern-header-logo.png",
 		heroImage: "assets/images/general/AboutUsHero.png",
-		lokiImage: "assets/images/about/MeetLokiImage.JPG"
+		lokiImage: "assets/images/about/MeetLokiImage.JPG",
+		sponsorAnnouncement: "assets/images/about/sponsor/SponsorshipAnnouncement.png",
+		sponsorGroup: "assets/images/about/sponsor/BUBarracudasGroup.jpg"
 	},
 
 	text: {
@@ -23,6 +25,14 @@ window.aboutPageContent = {
 
 		whatHeading: "What We Do",
 		whatTitle: "Games, assets, and creative development.",
+
+		sponsorHeading: "Proud Sponsor",
+		sponsorTitle: "Supporting BU Barracudas.",
+		sponsorBody: [
+			"Lava Lantern Studios is proud to sponsor BU Barracudas, Bournemouth University's Esports Team.",
+			"After having the pleasure of working with BU Barracudas to redesign their team logo and branding, we're excited to continue supporting the team as an official sponsor.",
+			"We're looking forward to supporting BU Barracudas in their upcoming tournaments and seeing where the partnership takes us."
+		],
 
 		directionHeading: "Goals & Direction",
 		directionTitle: "Creating games people enjoy, and assets creators can rely on.",

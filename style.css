@@ -4271,3 +4271,78 @@ body.play-viewport-mode {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ================================
+   About Page - BU Barracudas Sponsorship
+================================ */
+
+.about-page .about-sponsor-section {
+	background: transparent;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 5rem 24px;
+}
+
+.about-page .about-sponsor-card {
+	background:
+		linear-gradient(135deg, rgba(229, 135, 69, 0.10), transparent 38%),
+		linear-gradient(to bottom right, var(--lava-navy-deep, #071a2b) 0%, #092034 42%, var(--lava-navy, #0d2c46) 100%);
+	border: 1px solid var(--lava-border, rgba(255, 255, 255, 0.08));
+	border-radius: 1.4rem;
+	box-shadow: 0 1.1rem 2.8rem rgba(0, 0, 0, 0.22);
+	padding: 2rem;
+	overflow: hidden;
+}
+
+.about-page .about-sponsor-copy {
+	max-width: 900px;
+	margin-bottom: 1.75rem;
+}
+
+.about-page .about-sponsor-copy p {
+	color: #d8d9e6;
+	font-size: var(--about-white-body-size, 1.15rem);
+	line-height: 1.8;
+	margin: 0;
+}
+
+.about-page .about-sponsor-images {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1.25rem;
+	align-items: stretch;
+}
+
+.about-page .about-sponsor-image {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	border: 1px solid rgba(255, 255, 255, 0.10);
+	border-radius: 1rem;
+	background: #101116;
+}
+
+.about-page .about-sponsor-announcement {
+	object-position: center center;
+}
+
+.about-page .about-sponsor-group {
+	object-position: center center;
+}
+
+@media (max-width: 800px) {
+	.about-page .about-sponsor-images {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 600px) {
+	.about-page .about-sponsor-section {
+		padding: 3.5rem 20px;
+	}
+
+	.about-page .about-sponsor-card {
+		padding: 1.25rem;
+	}
+}

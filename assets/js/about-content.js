@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	setImage("[data-about-main-menu-logo]", content.images.mainMenuLogo);
 	setImage("[data-about-hero-image]", content.images.heroImage);
 	setImage("[data-about-loki-image]", content.images.lokiImage);
+	setImage("[data-about-sponsor-announcement]", content.images.sponsorAnnouncement);
+	setImage("[data-about-sponsor-group]", content.images.sponsorGroup);
 
 	setText("[data-about-hero-heading]", content.text.heroHeading);
 	setText("[data-about-hero-title]", content.text.heroTitle);
@@ -21,6 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	setText("[data-about-what-heading]", content.text.whatHeading);
 	setText("[data-about-what-title]", content.text.whatTitle);
+
+	setText("[data-about-sponsor-heading]", content.text.sponsorHeading);
+	setText("[data-about-sponsor-title]", content.text.sponsorTitle);
+	setParagraphs("[data-about-sponsor-body]", content.text.sponsorBody);
 
 	setText("[data-about-direction-heading]", content.text.directionHeading);
 	setText("[data-about-direction-title]", content.text.directionTitle);
