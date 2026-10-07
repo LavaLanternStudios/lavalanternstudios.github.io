@@ -533,15 +533,80 @@ function renderMaterialGridSection(section) {
 	`;
 }
 
+function renderLocalVideoSection(section) {
+	return `
+		<section class="project-section">
+			<div class="section-inner">
+				${renderHeading(section)}
+
+				<div class="project-video-wrap">
+					<video
+						class="project-local-video"
+						src="${section.video}"
+						poster="${section.poster || ""}"
+						autoplay
+						loop
+						muted
+						playsinline
+						preload="auto"
+						data-click-toggle-video
+					></video>
+				</div>
+			</div>
+		</section>
+	`;
+}
+
+function renderDraftShowcaseSection(section) {
+	const draftImages = (section.images || [])
+		.map((media) => createProjectMedia(media, section))
+		.join("");
+
+	const video = section.video || {};
+
+	return `
+		<section class="project-section project-section--${createSectionSlug(section)}">
+			<div class="section-inner">
+				${renderHeading(section)}
+
+				<div class="project-draft-showcase">
+					<div class="project-draft-showcase-images">
+						${draftImages}
+					</div>
+
+					<div class="project-draft-showcase-video">
+						<video
+							class="project-local-video"
+							src="${video.src}"
+							poster="${video.poster || ""}"
+							autoplay
+							loop
+							muted
+							playsinline
+							preload="auto"
+							aria-label="${video.alt || section.title || "Project timelapse"}"
+							data-click-toggle-video
+						></video>
+					</div>
+				</div>
+			</div>
+		</section>
+	`;
+}
+
 function renderSection(section) {
 	if (section.type === "intro") return renderIntroSection(section);
 	if (section.type === "video") return renderVideoSection(section);
+	if (section.type === "localVideo") return renderLocalVideoSection(section);
 	if (section.type === "videoPair") return renderVideoPairSection(section);
 	if (section.type === "gallery") return renderGallerySection(section);
 	if (section.type === "reel") return renderReelSection(section);
 	if (section.type === "comparison") return renderComparisonSection(section);
 	if (section.type === "comparisonGallery") return renderComparisonGallerySection(section);
 	if (section.type === "materialGrid") return renderMaterialGridSection(section);
+	if (section.type === "draftShowcase") return renderDraftShowcaseSection(section);
+
+
 
 	return "";
 }
@@ -682,6 +747,18 @@ function setupLightbox() {
 	});
 }
 
+function setupClickToggleVideos() {
+	document.querySelectorAll("[data-click-toggle-video]").forEach((video) => {
+		video.addEventListener("click", () => {
+			if (video.paused) {
+				video.play();
+			} else {
+				video.pause();
+			}
+		});
+	});
+}
+
 if (project) {
 	document.title = `Lava Lantern Studios | ${project.title}`;
 
@@ -695,6 +772,14 @@ if (project) {
 	});
 
 	if (heroElement) {
+		if (project.heroZoom) {
+			heroElement.style.setProperty("--project-hero-zoom", project.heroZoom);
+		}
+
+		if (project.heroPosition) {
+			heroElement.style.setProperty("--project-hero-position", project.heroPosition);
+		}
+
 		if (project.heroType === "video" && project.heroVideo) {
 			const posterAttribute = project.heroPoster
 				? ` poster="${project.heroPoster}"`
@@ -702,10 +787,6 @@ if (project) {
 
 			if (project.heroPoster) {
 				heroElement.style.backgroundImage = `url("${project.heroPoster}")`;
-			}
-
-			if (project.heroPosition) {
-				heroElement.style.setProperty("--project-hero-position", project.heroPosition);
 			}
 
 			heroElement.innerHTML = `
@@ -725,6 +806,10 @@ if (project) {
 			const heroVideo = heroElement.querySelector("video");
 			const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+			if (heroVideo && project.heroPlaybackSpeed) {
+				heroVideo.playbackRate = project.heroPlaybackSpeed;
+			}
+
 			if (heroVideo && !reducedMotion.matches) {
 				const playAttempt = heroVideo.play();
 
@@ -735,10 +820,6 @@ if (project) {
 				}
 			}
 		} else if (project.heroImage) {
-			if (project.heroPosition) {
-				heroElement.style.setProperty("--project-hero-position", project.heroPosition);
-			}
-
 			heroElement.innerHTML = `
 				<img src="${project.heroImage}" alt="${project.title}" />
 			`;
@@ -786,6 +867,7 @@ if (project) {
 		}
 	});
 
+	setupClickToggleVideos();
 	setupGalleryCarousels();
 	setupLightbox();
 }

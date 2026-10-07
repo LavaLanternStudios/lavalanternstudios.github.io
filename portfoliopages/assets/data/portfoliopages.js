@@ -238,5 +238,42 @@ const portfolioPages = {
 			"02.jpg",
 			"03.jpg"
 		]
+	},
+
+	"esports-logo": {
+		title: "BU Barracudas Esports Logo",
+		heroType: "video",
+		heroImage: "assets/projects/esports-logo/hero.png",
+		heroPoster: "assets/projects/esports-logo/hero.png",
+		heroVideo: "assets/projects/esports-logo/kit-turntable.mp4",
+		heroPlaybackSpeed: 0.25,
+		heroZoom: 2,
+		heroPosition: "center 0%",
+		tags: ["Affinity Designer", "Logo Design", "Branding", "Vector Art", "Esports", "Graphic Design"],
+		portfolioFolder: "assets/projects/esports-logo/",
+		galleryImages: [
+			"final-logo.png",
+			"draft-01.png",
+			"draft-02.png",
+			"initial-concepts.jpg"
+		]
+	},
+
+	"unscrambled-coverart": {
+		title: "Unscrambled Deluxe Cover Art",
+		heroType: "video",
+		heroImage: "assets/projects/unscrambled-coverart/hero-poster.png",
+		heroPoster: "assets/projects/unscrambled-coverart/hero-poster.png",
+		heroVideo: "assets/projects/unscrambled-coverart/draft-timelapse.mp4",
+		heroPlaybackSpeed: 1,
+		heroZoom: 1,
+		heroPosition: "center center",
+		tags: ["Affinity Photo", "Affinity Designer", "Cover Art", "Thumbnail Art", "2D Art", "Graphic Design", "Client Work", "CrazyGames"],
+		portfolioFolder: "assets/projects/unscrambled-coverart/",
+		galleryImages: [
+			"final-1920x1080.png",
+			"final-800x1200.png",
+			"final-800x800.png"
+		]
 	}
 };
